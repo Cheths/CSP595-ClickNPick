@@ -1,7 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-<html>
 <head>
 <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
 <title>Best Deals</title>
