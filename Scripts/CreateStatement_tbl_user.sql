@@ -1,0 +1,20 @@
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `title` varchar(5) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `email_id` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `address_1` varchar(100) NOT NULL,
+  `address_2` varchar(100) DEFAULT NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `zip` varchar(45) DEFAULT NULL,
+  `country` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `role` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
