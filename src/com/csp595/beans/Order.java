@@ -1,4 +1,4 @@
-package com.csp595;
+package com.csp595.beans;
 
 import java.sql.Timestamp;
 
