@@ -15,7 +15,7 @@ public class MySqlUtil {
 	static final String DB_URL = "jdbc:mysql://localhost:3306/db_clicknpick";
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String USERTABLE = "USER";
-	static final String ORDERTABLE = "USER_ORDER_INFO";
+	static final String ORDERTABLE = "ORDERS";
 	static final String PRODUCTTABLE = "PRODUCT";
 	
 	static final String ROLE_CUSTOMER = "Customer";
