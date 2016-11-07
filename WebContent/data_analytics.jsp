@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<%@page import="com.cheths.a1.main.ProductHelper"%>
-<%@page import="com.cheths.a1.main.MongoDBDataStoreUtilities"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <html>
 <body>
 	<%
-		Map<String, String> productIdNamesHashMap = ProductHelper.getProductNames();
-		List<String> columnNamesList = MongoDBDataStoreUtilities.getColumnNames();
+		Map<String, String> productIdNamesHashMap = null;//ProductHelper.getProductNames();
+		List<String> columnNamesList = null;//MongoDBDataStoreUtilities.getColumnNames();
 	%>
 	<h3 style="color: blue">Data Analytics</h3>
 	<div style="height: 700px; width: 990px;">

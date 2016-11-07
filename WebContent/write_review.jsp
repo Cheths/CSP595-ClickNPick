@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<%@page import="com.cheths.a1.main.ProductHelper"%>
-<%@page import="com.cheths.a1.main.Product"%>
+<%@page import="com.csp595.beans.Product"%>
 <html>
 <body>
 <%
 //String productReviewId = request.getParameter("productReviewId");
-Product product = ProductHelper.getProductById(productReviewId);
+Product product = null;//ProductHelper.getProductById(productReviewId);
 //String userName = (String) session.getAttribute("userName");
 %>
 	<div class="span9 content">
