@@ -1,5 +1,9 @@
 create database db_clicknpick;
 
+drop table user;
+drop table product;
+drop table orders;
+
 use db_clicknpick;
 
 CREATE TABLE `user` (

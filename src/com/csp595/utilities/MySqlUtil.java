@@ -74,4 +74,24 @@ public class MySqlUtil {
 		}
 		return result;
 	}
+	
+	public static void insertQueryForUserTable(String username, String password, String role) {
+		Connection connection = getConnection();
+		if (connection != null) {
+			String sql = "INSERT into "+ USERTABLE +"(username,password,role,id) VALUES (?,?,?,?)";
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, username);
+				preparedStatement.setString(2, password);
+				preparedStatement.setString(3, role);
+				preparedStatement.setInt(4, 1);
+				
+				preparedStatement.execute();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

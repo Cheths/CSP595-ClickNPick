@@ -6,12 +6,11 @@ public class Product {
 	private String name;
 	private String category;
 	private double  price;
-	private double manufacturer;
-	private String discount;
+	private double discount;
+	private String manufacturer;
 	private String condition;
+	private String description;
 	private String image;
-	
-	
 	public String getId() {
 		return id;
 	}
@@ -36,17 +35,17 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public double getManufacturer() {
-		return manufacturer;
-	}
-	public void setManufacturer(double manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-	public String getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
-	public void setDiscount(String discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
+	}
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 	public String getCondition() {
 		return condition;
@@ -59,6 +58,14 @@ public class Product {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
