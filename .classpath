@@ -13,8 +13,5 @@
 	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/mongo-java-driver-3.3.0.jar"/>
 	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/tomcat-api.jar"/>
-	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/tomcat-jdbc.jar"/>
-	<classpathentry kind="lib" path="C:/apache-tomcat-7.0.34/lib/tomcat-util.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
