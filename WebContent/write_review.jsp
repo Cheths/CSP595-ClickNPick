@@ -5,7 +5,7 @@
 <%
 //String productReviewId = request.getParameter("productReviewId");
 Product product = null;//ProductHelper.getProductById(productReviewId);
-//String userName = (String) session.getAttribute("userName");
+String userName = (String) session.getAttribute("userName");
 %>
 	<div class="span9 content">
 		<br class="clr">
@@ -53,10 +53,10 @@ Product product = null;//ProductHelper.getProductById(productReviewId);
 								<div class="control-group">
 									<label class="control-label" for="company">Retailer
 										Name</label>
-									<div class="controls">
+									<%-- <div class="controls">
 										<input type="text" id="retailerName" value=<%=product.getRetailer() %>
 											name="retailerName" readonly>
-									</div>
+									</div> --%>
 								</div>
 								<h4>Retailer Information</h4>
 								<div class="control-group">
