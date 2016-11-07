@@ -22,7 +22,8 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 	private static List<Product> productList = new ArrayList<Product>();
 	private String elementValueRead;
 	private static Map<String, Product> productHashMap = new HashMap<String, Product>();
-		
+
+	private int i;
 
 	public Product getProduct() {
 		return product;
