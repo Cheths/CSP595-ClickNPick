@@ -39,7 +39,7 @@ CREATE TABLE `product` (
 
 
 alter table product
-add pdescription varchar(255);
+add description varchar(255);
 
 
 select * from product;
