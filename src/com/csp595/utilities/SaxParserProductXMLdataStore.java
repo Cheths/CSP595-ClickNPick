@@ -36,9 +36,10 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 	}
 
 	public SaxParserProductXMLdataStore(String xmlFileName) {
-		if(productList.isEmpty()){
-			ParseDocument(xmlFileName);
+		if(productHashMap.isEmpty()){
+			//ParseDocument(xmlFileName);
 			//MySqlUtil.insertRecordstoProductTable();
+			productHashMap = MySqlUtil.getAllProductMap();
 		}
 	}
 
