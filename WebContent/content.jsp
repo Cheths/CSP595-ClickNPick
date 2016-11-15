@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
+<% String userCreationStatus = (String) session.getAttribute("userCreationStatus"); 
+		if(userCreationStatus != null){
+			if(userCreationStatus.equals("Success")){%>
+	 		<div>User created successfully!</div>
+	 	<%} else {%>
+	 		<div>Invalid Credentials!</div>
+	 	<% }}
+	 %>
 <div class="span9">
 			<div class="well well-small">
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>

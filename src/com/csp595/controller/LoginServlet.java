@@ -15,7 +15,13 @@ public class LoginServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGet logic
+		HttpSession session = request.getSession();
+		session.removeAttribute("userName");
+		session.removeAttribute("userRole");
+		session.removeAttribute("userCreationStatus");
+		session.removeAttribute("sqlError");
+		session.removeAttribute("loginError");
+		response.sendRedirect("HomeServlet");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

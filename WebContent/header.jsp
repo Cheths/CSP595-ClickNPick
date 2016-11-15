@@ -31,10 +31,16 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
+	<% String userName = (String) session.getAttribute("userName");
+	String user = "User";
+	 	if(userName != null){
+	 		user = userName;
+	 	}
+	 %>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	<div class="span6">Welcome!<strong> <%=user%></strong></div>
 	<div class="span6">
 	<div class="pull-right">
 		<a href="product_summary.html"><span class="">Fr</span></a>
@@ -43,7 +49,7 @@
 		<a href="product_summary.html"><span>&pound;</span></a>
 		<span class="btn btn-mini">$155.00</span>
 		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Items in your cart </span> </a> 
 	</div>
 	</div>
 </div>
@@ -69,11 +75,18 @@
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
-	 <li class=""><a href="normal.html">Delivery</a></li>
-	 <li class=""><a href="contact.html">Contact</a></li>
-	 <li class="">
-	 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
+	<!--  <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
+	 <!-- <li class=""><a href="normal.html">Delivery</a></li>
+	 <li class=""><a href="contact.html">Contact</a></li> -->
+	 <li style="display: -webkit-box;">
+	 <%if(userName != null){
+		 %><a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
+	 <%} else {
+		 %>
+		 <a href="register.jsp"><span class="btn btn-large btn-success">Sign Up</span></a> 
+		 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
+	 <% } %>
+	 
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -105,7 +118,7 @@
 </div>
 <!-- Header End====================================================================== -->
 
-<div id="carouselBlk">
+<!-- <div id="carouselBlk">
 	<div id="myCarousel" class="carousel slide">
 		<div class="carousel-inner">
 		  <div class="item active">
@@ -168,6 +181,6 @@
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 	  </div> 
-</div>
+</div> -->
 </body>
 </html>

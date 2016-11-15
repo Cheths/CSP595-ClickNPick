@@ -59,7 +59,7 @@
 		<div class="span4">
 			<div class="well">
 			<h5>ALREADY REGISTERED ?</h5>
-			<form action="index.jsp" method="POST">
+			<form action="LoginServlet" method="POST">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">Username</label>
 				<div class="controls">

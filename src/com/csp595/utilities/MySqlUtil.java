@@ -52,7 +52,7 @@ public class MySqlUtil {
 		Connection connection = getConnection();
 		int result = 0;
 		if(connection != null){
-			String sql = "SELECT u.name FROM "+ USERTABLE +" u WHERE u.name = ? AND u.role = ?";
+			String sql = "SELECT u.username FROM "+ USERTABLE +" u WHERE u.username = ? AND u.role = ?";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
@@ -78,14 +78,14 @@ public class MySqlUtil {
 	public static void insertQueryForUserTable(String username, String password, String role) {
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ USERTABLE +"(username,password,role,id) VALUES (?,?,?,?)";
+			String sql = "INSERT into "+ USERTABLE +"(username,password,role) VALUES (?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, username);
 				preparedStatement.setString(2, password);
 				preparedStatement.setString(3, role);
-				preparedStatement.setInt(4, 1);
+				//preparedStatement.setInt(4, 11);
 				
 				preparedStatement.execute();
 				connection.close();

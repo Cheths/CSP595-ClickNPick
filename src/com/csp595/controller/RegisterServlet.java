@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
 		if (flagUserExists == 1) {
 			session.setAttribute("userCreationStatus", "Failure");
 			System.out.println("Username Already Exists!");
-			response.sendRedirect("HomeServlet");
+			response.sendRedirect("index.jsp");
 		} else {
 			createUserAccount(username, password, role, request, response);
 		}
@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
 		session.setAttribute("userRole", role);
 		session.setAttribute("userCreationStatus", "Success");
 		try {
-			response.sendRedirect("HomeServlet");
+			response.sendRedirect("index.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
