@@ -1,4 +1,8 @@
-create database db_clicknpick;
+--create database db_clicknpick;-->
+
+drop table user;
+drop table product;
+drop table orders;
 
 use db_clicknpick;
 
@@ -27,6 +31,7 @@ CREATE TABLE `orders` (
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
+  'description' varchar(255)
   `category` varchar(45) NOT NULL,
   `type` varchar(45) NOT NULL,
   `price` double NOT NULL,
@@ -36,13 +41,6 @@ CREATE TABLE `product` (
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-alter table product
-add description varchar(255);
-
-
-select * from product;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
@@ -56,7 +54,7 @@ CREATE TABLE `user` (
   `address_2` varchar(100) DEFAULT NULL,
   `city` varchar(45) NOT NULL,
   `state` varchar(45) NOT NULL,
-  `zip` varchar(45) DEFAULT NULL,userordersuserordersuserorders
+  `zip` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `role` varchar(45) NOT NULL,
@@ -64,3 +62,10 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--Sample Product Data--
+INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (1,'Round Neck','Shirt','0',10,'Wrangler',1,'0',NULL,NULL);
+INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (2,'V Neck','Shirt','0',12,'Wrangler',2,'0',NULL,NULL);
+INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (3,'Slim Fit','Jeans','0',28,'Wrangler',2,'0',NULL,NULL);
+INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (4,'Low Waist','Jeans','0',35,'Denim',2,'0',NULL,NULL);
+INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (5,'Pull Over','Sweaters','0',22,'Addidas',3,'0',NULL,NULL);
