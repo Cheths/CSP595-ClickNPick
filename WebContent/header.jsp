@@ -65,8 +65,9 @@
     <a class="brand" href="index.jsp"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
 		<form class="form-inline navbar-search">
 		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
+		<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 		<div id="auto-row">
-			<table id="complete-table" style="position:absolute;width:315px;"></table>
+			<table id="complete-table" style="position:absolute;width:220px;"></table>
 		</div>
 		 <!-- <select class="srchTxt">
 			<option>All</option>
@@ -75,9 +76,7 @@
 			<option>HEALTH & BEAUTY </option>
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>--> 
-		
+		</select> --> 
     </form>
     <ul id="topMenu" class="nav pull-right">
 	<!--  <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
