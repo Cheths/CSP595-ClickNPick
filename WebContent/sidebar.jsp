@@ -48,6 +48,10 @@
 				  <h5>Payment Methods</h5>
 				</div>
 		</div>
+		<a href="index.jsp?showTrendingView=true">
+					<img style="width: 250px; height: 75px;"
+					src="themes/images/trendingnow.png" alt="">
+		</a>
 	</div>
 <!-- Sidebar end=============================================== -->
 

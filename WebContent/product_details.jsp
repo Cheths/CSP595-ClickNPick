@@ -56,7 +56,10 @@
 					<label class="control-label"><span><%=product.getPrice()%></span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
-					<a class="btn btn-large btn-primary pull-right" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to cart </a>
+						<a class="btn btn-large btn-primary pull-right" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to cart </a>
+					 <%} else{ %>
+					 	<a class="btn btn-large btn-primary pull-right" href="register.jsp"> Add to cart</a>
+					 <%} %>	
 					</div>
 				  </div>
 				</form>
