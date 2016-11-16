@@ -2,16 +2,19 @@
 <html lang="en">
 <body>
 <%@include file="header.jsp" %>
+
 <%@include file="sidebar.jsp" %>
 
 <!-- Sidebar ================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
 	<div class="span9">
     <ul class="breadcrumb">
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active">Login</li>
     </ul>
 	<h3> Login</h3>	
-	<div class="row">
 		<div class="span4">
 			<div class="well">
 			<h5>ALREADY REGISTERED ?</h5>
@@ -48,7 +51,6 @@
 	
 </div>
 </div></div>
-</div>
 <!-- MainBody End ============================= -->
 
 <!-- Placed at the end of the document so the pages load faster ============================================= -->

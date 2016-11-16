@@ -6,9 +6,6 @@
 <html lang="en">
 <body>
 <%@include file="header.jsp" %>
-<div id="mainBody">
-	<div class="container">
-	<div class="row">
 <%@include file="sidebar.jsp" %>
 <script type="text/javascript">
 	function addQty() {
@@ -32,8 +29,9 @@
 	}
 	
 	%>
-	
-<div id="mainBody">
+	<div id="mainBody">
+	<div class="container">
+	<div class="row">
 
 	<div class="span9">
     <ul class="breadcrumb">
