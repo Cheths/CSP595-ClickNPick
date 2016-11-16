@@ -11,51 +11,7 @@
 		<li class="active">Login</li>
     </ul>
 	<h3> Login</h3>	
-	<hr class="soft"/>
-	
 	<div class="row">
-		<div class="span4">
-			<div class="well">
-			<h5>CREATE YOUR ACCOUNT</h5><br/>
-			Enter your username and to create an account.<br/><br/><br/>
-			<form action="RegisterServlet" method="POST">
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail1">Username</label>
-				<div class="controls">
-				  <input class="span3" name="username" type="text" id="inputEmail1" placeholder="Username" required>
-				</div>
-			  </div>
-			  <div class="control-group">
-				<label class="control-label" for="inputPassword1">Password</label>
-				<div class="controls">
-				  <input type="password" name="password" class="span3"  id="inputPassword1" placeholder="Password" required>
-				  <input type="text" name="signup" style=" display: none;" value="yes">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<label class="control-label" for="inputPassword1">Confirm Password</label>
-				<div class="controls">
-				  <input type="password" name="confirmPassword" class="span3"  id="inputPassword2" placeholder="Password" required>
-				  <input type="text" name="signup" style=" display: none;" value="yes">
-				</div>
-			  </div>
-			  <div class="control-group">
-			  <label class="control-label"  for="inputPassword1" > Role </label>
-				<select name="role">
-					<option value="Customer">Customer</option>
-					<option value="Salesman">Salesman</option>
-					<option value="Store Manager">Store Manager</option>
-				</select>
-			  </div>
-			  <div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn">Create Your Account</button>
-				</div>
-			  </div>
-			</form>
-		</div>
-		</div>
-		<div class="span1"> &nbsp;</div>
 		<div class="span4">
 			<div class="well">
 			<h5>ALREADY REGISTERED ?</h5>
