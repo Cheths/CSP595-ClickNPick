@@ -69,7 +69,7 @@ public class MySqlUtil {
 
 			String sql = "SELECT u.username FROM "+ USERTABLE +" u WHERE u.username = ? AND u.role = ?";
 			if(password != null){
-				sql =  sql+"AND u.password = ?"; 
+				sql=sql+" AND u.password = ?"; 
 			}
 			PreparedStatement preparedStatement;
 			try {
