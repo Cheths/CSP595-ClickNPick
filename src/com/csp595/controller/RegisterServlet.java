@@ -20,7 +20,7 @@ public class RegisterServlet extends HttpServlet {
 		String role = request.getParameter("role");
 		HttpSession session = request.getSession(true);
 
-		int flagUserExists = MySqlUtil.checkIfUserExists(username, role);
+		int flagUserExists = MySqlUtil.checkIfUserExists(username, role,null);
 		if (flagUserExists == 1) {
 			session.setAttribute("userCreationStatus", "Failure");
 			System.out.println("Username Already Exists!");
