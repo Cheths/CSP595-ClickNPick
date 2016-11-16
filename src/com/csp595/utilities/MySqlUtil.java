@@ -3,6 +3,7 @@ package com.csp595.utilities;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -145,6 +146,35 @@ public class MySqlUtil {
 							resultSet.getInt(P_DISCOUNT_COL), resultSet.getString(P_MFG_COL), resultSet.getString(P_COND_COL), resultSet.getString(P_DESC_COL), resultSet.getString(P_IMAGE_COL));
 					productHashMap.put(resultSet.getString(P_ID_COL), product);
 				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return productHashMap;
+	}
+	
+	/**
+	 * Function to get ProductHashMap to match the product with auto completion listed string
+	 * @return
+	 */
+	public static HashMap<String, Product> getProductHashMap(){
+		HashMap<String, Product> productHashMap = new HashMap<String,Product>();
+		Connection connection = getConnection();
+		
+		if (connection != null) {
+			String sql = "SELECT * FROM PRODUCT";
+			try {
+				Statement statement = (Statement) connection.createStatement();
+			
+				ResultSet resultSet = statement.executeQuery(sql);
+				while (resultSet.next()){
+					Product product = new Product();
+					product.setId(resultSet.getString("id"));
+					product.setName(resultSet.getString("name"));
+					product.setPrice(resultSet.getDouble("price"));
+					productHashMap.put(resultSet.getString("id"), product);
+				}
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
