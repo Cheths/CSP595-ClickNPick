@@ -47,7 +47,7 @@
 				<div class="caption">
 				  <h5>Payment Methods</h5>
 				</div>
-	</div></div>
+		</div>
 	</div>
 <!-- Sidebar end=============================================== -->
 

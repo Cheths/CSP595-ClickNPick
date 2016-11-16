@@ -204,7 +204,7 @@
 								</div>
 								<button id="PayButton" class="btn btn-block btn-success submit-button" type="submit" >
 									<span class="submit-button-lock"></span>
-									<span class="align-middle-payment">Pay</span>
+									<span class="align-middle-payment">Pay $<%=checkoutAmount%></span>
 								</button>
 							</form>
 						</div>
