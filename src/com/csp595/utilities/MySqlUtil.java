@@ -88,16 +88,31 @@ public class MySqlUtil {
 		return result;
 	}
 	
-	public static void insertQueryForUserTable(String username, String password, String role) {
+	public static void insertQueryForUserTable(String title, String first_name, String last_name,String email_id,String password,String date_of_birth,String username,
+			String role,String address_1,String address_2,String city,String state, String zip, String country, String phone) {
+		
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ USERTABLE +"(username,password,role) VALUES (?,?,?)";
+			String sql = "INSERT into "+ USERTABLE +"(title,first_name,last_name,email_id,password,date_of_birth,username,role,address_1,address_2,"
+					+ "city,state,zip,country,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				preparedStatement.setString(1, username);
-				preparedStatement.setString(2, password);
-				preparedStatement.setString(3, role);
+				preparedStatement.setString(1, title);
+				preparedStatement.setString(2, first_name);
+				preparedStatement.setString(3, last_name);
+				preparedStatement.setString(4, email_id);
+				preparedStatement.setString(5, password);
+				preparedStatement.setString(6, date_of_birth);
+				preparedStatement.setString(7, username);
+				preparedStatement.setString(8, role);
+				preparedStatement.setString(9, address_1);
+				preparedStatement.setString(10, address_2);
+				preparedStatement.setString(11, city);
+				preparedStatement.setString(12, state);
+				preparedStatement.setString(13, zip);
+				preparedStatement.setString(14, country);
+				preparedStatement.setString(15, phone);
 				//preparedStatement.setInt(4, 11);
 				
 				preparedStatement.execute();
