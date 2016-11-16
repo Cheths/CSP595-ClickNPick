@@ -30,7 +30,8 @@
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
   </head>
-<body>
+<body onload="init()">
+<script type="text/javascript" src="themes/js/autoComplete.js"></script>
 	<% String userName = (String) session.getAttribute("userName");
 	String user = "User";
 	 	if(userName != null){
@@ -61,10 +62,13 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
+    <a class="brand" href="index.jsp"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
+		<form class="form-inline navbar-search">
+		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
+		<div id="auto-row">
+			<table id="complete-table" style="position:absolute;width:315px;"></table>
+		</div>
+		 <!-- <select class="srchTxt">
 			<option>All</option>
 			<option>CLOTHES </option>
 			<option>FOOD AND BEVERAGES </option>
@@ -72,7 +76,8 @@
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
 		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>--> 
+		
     </form>
     <ul id="topMenu" class="nav pull-right">
 	<!--  <li class=""><a href="special_offer.html">Specials Offer</a></li> -->

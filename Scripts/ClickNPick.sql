@@ -1,10 +1,11 @@
---create database db_clicknpick;-->
+/*create database db_clicknpick;*/
+
+use db_clicknpick;
 
 drop table user;
 drop table product;
 drop table orders;
 
-use db_clicknpick;
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,7 +32,7 @@ CREATE TABLE `orders` (
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
-  'description' varchar(255)
+  `description` varchar(255),
   `category` varchar(45) NOT NULL,
   `type` varchar(45) NOT NULL,
   `price` double NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
   `title` varchar(5) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
@@ -58,12 +59,10 @@ CREATE TABLE `user` (
   `country` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `role` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---Sample Product Data--
+/*Sample Product Data*/
 INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (1,'Round Neck','Shirt','0',10,'Wrangler',1,'0',NULL,NULL);
 INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (2,'V Neck','Shirt','0',12,'Wrangler',2,'0',NULL,NULL);
 INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (3,'Slim Fit','Jeans','0',28,'Wrangler',2,'0',NULL,NULL);

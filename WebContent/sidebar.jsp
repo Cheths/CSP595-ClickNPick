@@ -42,6 +42,7 @@
 			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
+<<<<<<< HEAD
 		  <div class="thumbnail">
 			<img src="themes/images/products/shirts1.jpg" alt="Clicknpick men's casual"/>
 			<div class="caption">
@@ -62,6 +63,9 @@
 				  <h5>Payment Methods</h5>
 				</div>
 	</div></div>
+=======
+	</div>
+>>>>>>> 2d477b5679bdf5f4914f81904c51760410fedd8a
 <!-- Sidebar end=============================================== -->
 
 </body>

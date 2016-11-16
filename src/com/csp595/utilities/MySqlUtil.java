@@ -3,6 +3,7 @@ package com.csp595.utilities;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,17 +62,24 @@ public class MySqlUtil {
 	 * @param role
 	 * @return 1: Exists, 0: User doesn't exist, -1: Sql connection error 
 	 */
-	public static int checkIfUserExists(String username, String role){
+	public static int checkIfUserExists(String username, String role,String password){
 		Connection connection = getConnection();
 		int result = 0;
 		if(connection != null){
+
 			String sql = "SELECT u.username FROM "+ USERTABLE +" u WHERE u.username = ? AND u.role = ?";
+			if(password != null){
+				sql =  sql+"AND u.password = ?"; 
+			}
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, username);
 				preparedStatement.setString(2, role);
-				
+				if(password != null){
+					preparedStatement.setString(3, password);
+				}
+
 				ResultSet rs = preparedStatement.executeQuery();
 				if(rs.next()){
 					result = 1;
@@ -88,16 +96,31 @@ public class MySqlUtil {
 		return result;
 	}
 	
-	public static void insertQueryForUserTable(String username, String password, String role) {
+	public static void insertQueryForUserTable(String title, String first_name, String last_name,String email_id,String password,String date_of_birth,String username,
+			String role,String address_1,String address_2,String city,String state, String zip, String country, String phone) {
+		
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ USERTABLE +"(username,password,role) VALUES (?,?,?)";
+			String sql = "INSERT into "+ USERTABLE +"(title,first_name,last_name,email_id,password,date_of_birth,username,role,address_1,address_2,"
+					+ "city,state,zip,country,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				preparedStatement.setString(1, username);
-				preparedStatement.setString(2, password);
-				preparedStatement.setString(3, role);
+				preparedStatement.setString(1, title);
+				preparedStatement.setString(2, first_name);
+				preparedStatement.setString(3, last_name);
+				preparedStatement.setString(4, email_id);
+				preparedStatement.setString(5, password);
+				preparedStatement.setString(6, date_of_birth);
+				preparedStatement.setString(7, username);
+				preparedStatement.setString(8, role);
+				preparedStatement.setString(9, address_1);
+				preparedStatement.setString(10, address_2);
+				preparedStatement.setString(11, city);
+				preparedStatement.setString(12, state);
+				preparedStatement.setString(13, zip);
+				preparedStatement.setString(14, country);
+				preparedStatement.setString(15, phone);
 				//preparedStatement.setInt(4, 11);
 				
 				preparedStatement.execute();
@@ -123,6 +146,35 @@ public class MySqlUtil {
 							resultSet.getInt(P_DISCOUNT_COL), resultSet.getString(P_MFG_COL), resultSet.getString(P_COND_COL), resultSet.getString(P_DESC_COL), resultSet.getString(P_IMAGE_COL));
 					productHashMap.put(resultSet.getString(P_ID_COL), product);
 				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return productHashMap;
+	}
+	
+	/**
+	 * Function to get ProductHashMap to match the product with auto completion listed string
+	 * @return
+	 */
+	public static HashMap<String, Product> getProductHashMap(){
+		HashMap<String, Product> productHashMap = new HashMap<String,Product>();
+		Connection connection = getConnection();
+		
+		if (connection != null) {
+			String sql = "SELECT * FROM PRODUCT";
+			try {
+				Statement statement = (Statement) connection.createStatement();
+			
+				ResultSet resultSet = statement.executeQuery(sql);
+				while (resultSet.next()){
+					Product product = new Product();
+					product.setId(resultSet.getString("id"));
+					product.setName(resultSet.getString("name"));
+					product.setPrice(resultSet.getDouble("price"));
+					productHashMap.put(resultSet.getString("id"), product);
+				}
+				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
