@@ -13,6 +13,9 @@
 	 		<div>Invalid Credentials!</div>
 	 	<% }}
 	 %>
+	 <div id="mainBody">
+	<div class="container">
+	<div class="row">
 <div class="span9">
 			<div class="well well-small">
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
@@ -208,11 +211,10 @@
 			%>
 		</ul>	
 
-		</div>
-		
-		<!-- === -->
+		</div>		
 		</div>
 	</div>
 </div>
+		<!-- === -->
 </body>
 </html>

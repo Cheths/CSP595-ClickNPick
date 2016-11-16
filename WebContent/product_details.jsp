@@ -19,7 +19,7 @@
     </ul>	
 	<div class="row">	  
 			<div id="gallery" class="span3">
-            <a href="themes/images/products/large/f1.jpg" title=<%=product.getName()%>>>
+            <a href="product_summary.jsp?shoppingItemId=<%=product.getId()%>" title=<%=product.getName()%>>
 				<img src="themes/images/products/large/3.jpg" style="width:100%" alt=<%=product.getName()%>/>
             </a>
 			<div id="differentview" class="moreOptopm carousel slide">
@@ -56,7 +56,7 @@
 					<label class="control-label"><span><%=product.getPrice()%></span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
-					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+					<a class="btn btn-large btn-primary pull-right" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to cart </a>
 					</div>
 				  </div>
 				</form>

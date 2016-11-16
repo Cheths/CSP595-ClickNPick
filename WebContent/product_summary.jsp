@@ -1,12 +1,38 @@
 <!DOCTYPE html>
+<%@page import="javax.sql.rowset.serial.SerialArray"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
+<%@page import="com.csp595.beans.Product"%>
 <html lang="en">
 <body>
+<%@include file="header.jsp" %>
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<%@include file="sidebar.jsp" %>
 <script type="text/javascript">
 	function addQty() {
 		document.getElementById("appendedInputButtons");
 	}
 </script>
 <!-- Header End====================================================================== -->
+<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
+<% String shoppingItemId = request.getParameter("shoppingItemId");
+	final int tax = 15;
+	String existingShoppingItemId = (String) session.getAttribute("shoppingItemId");
+	String[] csvProductIds = new String[100];
+	if(shoppingItemId != null){
+		existingShoppingItemId += ","+shoppingItemId;
+		
+		if(existingShoppingItemId.startsWith(",")){
+			existingShoppingItemId = existingShoppingItemId.substring(1);
+		}
+		session.setAttribute("shoppingItemId", existingShoppingItemId);
+		csvProductIds = existingShoppingItemId.split(",");
+	}
+	
+	%>
+	
 <div id="mainBody">
 
 	<div class="span9">
@@ -14,7 +40,7 @@
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
     </ul>
-	<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
+	<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="index.jsp" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 	<hr class="soft"/>
 	<table class="table table-bordered">
 		<tr><th> I AM ALREADY REGISTERED  </th></tr>
@@ -61,55 +87,52 @@
 				</tr>
               </thead>
               <tbody>
-                <tr>
-                  <td> <img width="60" src="themes/images/products/4.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
-				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button" onclick="addQty()"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-				  </td>
-                  <td>$120.00</td>
-                  <td>$25.00</td>
-                  <td>$15.00</td>
-                  <td>$110.00</td>
-                </tr>
-				<tr>
-                  <td> <img width="60" src="themes/images/products/8.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
-				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-				  </td>
-                  <td>$7.00</td>
-                  <td>--</td>
-                  <td>$1.00</td>
-                  <td>$8.00</td>
-                </tr>
-				<tr>
-                  <td> <img width="60" src="themes/images/products/3.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
-				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-				  </td>
-                  <td>$120.00</td>
-                  <td>$25.00</td>
-                  <td>$15.00</td>
-                  <td>$110.00</td>
-                </tr>
+              <%
+              double checkoutAmount = 0;
+              double totalPrice = 0;
+              double totalDiscount = 0;
+              double totalTax = 0;
+              if(csvProductIds != null){
+              for(int i=0;i<csvProductIds.length;i++){
+            	  Product product = productHashMap.get(csvProductIds[i]);
+	            	  if (product != null){
+		            	  double price = product.getPrice();
+		            	  totalPrice += price; 
+		            	  double discount = product.getDiscount();
+		            	  totalDiscount += discount;
+		            	  totalTax += tax;
+		            	  double individualProductTotal = price - discount + tax;
+		            	  checkoutAmount += individualProductTotal;%>
+		            	  <tr>
+		                  <td> <img width="60" src="themes/images/products/4.jpg" alt=""/></td>
+		                  <td><%=product.getName()%><br/>Color : black, Material : metal</td>
+						  <td>
+							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button" onclick="addQty()"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+						  </td>
+		                  <td>$<%=product.getPrice()%></td>
+		                  <td>$<%=product.getDiscount()%></td>
+		                  <td>$<%=tax %></td>
+		                  <td>$<%=individualProductTotal %></td>
+		                </tr>
+             <% } } }
+//             	session.setAttribute("checkoutAmount", arg1)
+%>
 				
                 <tr>
                   <td colspan="6" style="text-align:right">Total Price:	</td>
-                  <td> $228.00</td>
+                  <td><%=totalPrice%></td>
                 </tr>
 				 <tr>
                   <td colspan="6" style="text-align:right">Total Discount:	</td>
-                  <td> $50.00</td>
+                  <td><%=totalDiscount%></td>
                 </tr>
                  <tr>
                   <td colspan="6" style="text-align:right">Total Tax:	</td>
-                  <td> $31.00</td>
+                  <td> $<%=totalTax%></td>
                 </tr>
 				 <tr>
-                  <td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
-                  <td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
+                  <td colspan="6" style="text-align:right"><strong>TOTAL ($<%=totalPrice%> - $<%=totalDiscount%> + $<%=totalTax%>) =</strong></td>
+                  <td class="label label-important" style="display:block"> <strong> $<%=checkoutAmount%> </strong></td>
                 </tr>
 				</tbody>
             </table>
@@ -133,40 +156,14 @@
 				
 			</tbody>
 			</table>
-			
-			<table class="table table-bordered">
-			 <tr><th>ESTIMATE YOUR SHIPPING </th></tr>
-			 <tr> 
-			 <td>
-				<form class="form-horizontal">
-				  <div class="control-group">
-					<label class="control-label" for="inputCountry">Country </label>
-					<div class="controls">
-					  <input type="text" id="inputCountry" placeholder="Country">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="inputPost">Post Code/ Zipcode </label>
-					<div class="controls">
-					  <input type="text" id="inputPost" placeholder="Postcode">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<div class="controls">
-					  <button type="submit" class="btn">ESTIMATE </button>
-					</div>
-				  </div>
-				</form>				  
-			  </td>
-			  </tr>
-            </table>		
-	<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-	<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+		
+	<a href="index.jsp" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+	<a href="shipping_info.jsp?checkoutAmount=<%=checkoutAmount %>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 	
 </div>
 </div></div>
-</div>
+</div></div>
 <!-- MainBody End ============================= -->
-
+<%@include file="footer.jsp" %>
 </body>
 </html>

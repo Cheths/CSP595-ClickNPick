@@ -21,6 +21,10 @@ public class LoginServlet extends HttpServlet {
 		session.removeAttribute("userCreationStatus");
 		session.removeAttribute("sqlError");
 		session.removeAttribute("loginError");
+		session.removeAttribute("shoppingItemId");
+		session.removeAttribute("totalAmount");
+		session.removeAttribute("shippingInfoMap");
+		session.removeAttribute("loginError");
 		response.sendRedirect("HomeServlet");
 	}
 
