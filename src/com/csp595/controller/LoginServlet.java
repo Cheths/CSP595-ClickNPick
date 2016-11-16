@@ -27,9 +27,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String role = request.getParameter("role");
+		String password =  request.getParameter("password");
 		HttpSession session = request.getSession(true);
 		
-		int flagUserExists = MySqlUtil.checkIfUserExists(username, role);
+		int flagUserExists = MySqlUtil.checkIfUserExists(username, role,password);
 		if (flagUserExists == 1) {
 			session.setAttribute("userName", username);
 			session.setAttribute("userRole", role);

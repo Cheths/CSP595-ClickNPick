@@ -61,17 +61,24 @@ public class MySqlUtil {
 	 * @param role
 	 * @return 1: Exists, 0: User doesn't exist, -1: Sql connection error 
 	 */
-	public static int checkIfUserExists(String username, String role){
+	public static int checkIfUserExists(String username, String role,String password){
 		Connection connection = getConnection();
 		int result = 0;
 		if(connection != null){
+
 			String sql = "SELECT u.username FROM "+ USERTABLE +" u WHERE u.username = ? AND u.role = ?";
+			if(password != null){
+				sql =  sql+"AND u.password = ?"; 
+			}
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, username);
 				preparedStatement.setString(2, role);
-				
+				if(password != null){
+					preparedStatement.setString(3, password);
+				}
+
 				ResultSet rs = preparedStatement.executeQuery();
 				if(rs.next()){
 					result = 1;

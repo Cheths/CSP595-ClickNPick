@@ -508,7 +508,7 @@
 				<div class="control-group">
 					<label class="control-label" for="mobile">Mobile Phone *</label>
 					<div class="controls">
-						<input type="number" "phone" id="phone" required="required"
+						<input type="number" name="phone" id="phone" required="required"
 							placeholder="Mobile Phone" />
 					</div>
 				</div>
