@@ -48,10 +48,10 @@
 					<label class="control-label">Title <sup>*</sup></label>
 					<div class="controls">
 						<select class="span1" id="title" name="title" required="required">
-							<option value="1">Mr.</option>
-							<option value="2">Mrs.</option>
-							<option value="3">Miss.</option>
-							<option value="1">Dr.</option>
+							<option value="Mr">Mr.</option>
+							<option value="Mrs">Mrs</option>
+							<option value="Miss">Miss</option>
+							<option value="Dr">Dr</option>
 						</select>
 					</div>
 				</div>
@@ -115,9 +115,9 @@
 					<div class="controls">
 						<select class="span1" name="role" id="role" required="required"
 							style="width: 220px;">
-							<option value="1">Customer.</option>
-							<option value="2">Store Manager.</option>
-							<option value="3">Salesman</option>
+							<option value="Customer">Customer.</option>
+							<option value="Store Manager">Store Manager</option>
+							<option value="Salesman">Salesman</option>
 						</select>
 					</div>
 				</div>

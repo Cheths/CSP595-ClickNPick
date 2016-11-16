@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 		session.removeAttribute("userCreationStatus");
 		session.removeAttribute("sqlError");
 		session.removeAttribute("loginError");
-		response.sendRedirect("HomeServlet");
+		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		if (flagUserExists == 1) {
 			session.setAttribute("userName", username);
 			session.setAttribute("userRole", role);
-			response.sendRedirect("HomeServlet");
+			response.sendRedirect("index.jsp");
 		} else if (flagUserExists == -1){
 			session.setAttribute("sqlError", "true");
 			response.sendRedirect(request.getHeader("Referer"));
