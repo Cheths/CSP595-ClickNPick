@@ -1,13 +1,30 @@
 <!DOCTYPE html>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Enumeration"%>
 <html>
+<%@include file="header.jsp" %>
+<%@include file="sidebar.jsp" %>
 <head>
 		<meta charset="UTF-8"/>
 		<title>Payment Form</title>
 		<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'/>
 		<link rel="stylesheet" href="themes/css/style.css"/>
-	</head>
-	<body>
-	<%Double checkoutAmount = (Double) session.getAttribute("checkOutAmount"); %>
+</head>
+<body>
+	<%
+	String checkoutAmount = (String) session.getAttribute("checkoutAmount");
+	Enumeration<String> shippingInfoParam = request.getParameterNames();
+	Map<String,String> shippingInfoMap = new HashMap<String,String>();
+	while(shippingInfoParam.hasMoreElements()){
+		String key = shippingInfoParam.nextElement();
+		String value = request.getParameter(key);
+		shippingInfoMap.put(key,value);
+	}
+	if(shippingInfoMap.isEmpty()){
+		session.setAttribute("shippingInfoMap", shippingInfoMap);
+	}
+	%>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'/>
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 				<div class="span9">
@@ -74,5 +91,6 @@
 					<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 					<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 					<script src="themes/js/index.js"></script>
+					<%-- <%@include file="footer.jsp" %> --%>
 				</body>
 </html>

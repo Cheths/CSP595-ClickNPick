@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<div id="mainBody">
-	<div class="container">
-	<div class="row">
+
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
 		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
@@ -44,7 +42,30 @@
 			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
+<<<<<<< HEAD
+		  <div class="thumbnail">
+			<img src="themes/images/products/shirts1.jpg" alt="Clicknpick men's casual"/>
+			<div class="caption">
+			  <h5>Casual white slim fit</h5>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		  </div><br/>
+			<div class="thumbnail">
+				<img src="themes/images/products/women5.jpg" title="Clicknpick single piece" alt="Clicknpick dress">
+				<div class="caption">
+				  <h5>Women's dress</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+				</div>
+			  </div><br/>
+			<div class="thumbnail">
+				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+				<div class="caption">
+				  <h5>Payment Methods</h5>
+				</div>
+	</div></div>
+=======
 	</div>
+>>>>>>> 2d477b5679bdf5f4914f81904c51760410fedd8a
 <!-- Sidebar end=============================================== -->
 
 </body>
