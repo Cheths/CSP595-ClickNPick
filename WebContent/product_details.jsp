@@ -59,7 +59,7 @@
 					<% if(session.getAttribute("userName") != null){%>
 						<a class="btn btn-large btn-primary pull-right" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to cart </a>
 					 <%} else{ %>
-					 	<a class="btn btn-large btn-primary pull-right" href="register.jsp"> Add to cart</a>
+					 	<a class="btn btn-large btn-primary pull-right" href="login.jsp"> Add to cart</a>
 					 <%} %>	
 					</div>
 				  </div>
