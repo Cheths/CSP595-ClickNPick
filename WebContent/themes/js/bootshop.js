@@ -18,16 +18,14 @@ $(document).ready(function(){
 		var li = $(this).parents('li');
 		var subMenus = $('#sidebar li.subMenu ul');
 		var subMenus_parents = $('#sidebar li.subMenu');
-		if(li.hasClass('open'))
-		{
+		if(li.hasClass('open')){
 			if(($(window).width() > 768) || ($(window).width() < 479)) {
 				subMenu.slideUp();
 			} else {
 				subMenu.fadeOut(250);
 			}
 			li.removeClass('open');
-		} else 
-		{
+		} else{
 			if(($(window).width() > 768) || ($(window).width() < 479)) {
 				subMenus.slideUp();			
 				subMenu.slideDown();
@@ -42,6 +40,9 @@ $(document).ready(function(){
 	var ul = $('#sidebar > ul');
 	$('#sidebar > a').click(function(e)
 	{
+		if(this.tagName == "A"){
+			return true;
+		}else{
 		e.preventDefault();
 		var sidebar = $('#sidebar');
 		if(sidebar.hasClass('open'))
@@ -53,6 +54,7 @@ $(document).ready(function(){
 			sidebar.addClass('open');
 			ul.slideDown(250);
 		}
+	   }	
 	});
 
 });

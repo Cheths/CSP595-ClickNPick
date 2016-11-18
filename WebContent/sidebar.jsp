@@ -42,12 +42,16 @@
 			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
-			<div class="thumbnail">
-				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-				<div class="caption">
-				  <h5>Payment Methods</h5>
-				</div>
+		<div class="thumbnail">
+			<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+			<div class="caption">
+			  <h5>Payment Methods</h5>
+			</div>
 		</div>
+		<a href="trending_products.jsp">
+					<img style="width: 250px; height: 75px;"
+					src="themes/images/trendingnow.png" alt="">
+		</a>
 	</div>
 <!-- Sidebar end=============================================== -->
 
