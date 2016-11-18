@@ -195,7 +195,7 @@
 			<li class="span3">
 				<div class="thumbnail">
 					<a href="product_details.jsp?productId=<%=product.getId()%>"><img
-						src="themes/images/products/shirts4.jpg" alt="" /></a>
+						src=<%= product.getImage() %> alt="" /></a>
 					<div class="caption">
 						<h5><%=product.getName() %></h5>
 						<h4 style="text-align: center">
