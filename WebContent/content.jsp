@@ -201,8 +201,8 @@
 						<h4 style="text-align: center">
 							<a class="btn" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a> 
 							<a class="btn btn-primary" href="#"><%=product.getPrice() %></a>
-							<a class="btn btn-primary" href="#" style="width:130px">Write Review</a>
-						<a class="btn btn-primary" href="#"  style="width:130px">View Reviews</a>
+							<a class="btn btn-primary" href="write_product_reviews.jsp" style="width:130px">Write Review</a>
+						<a class="btn btn-primary" href="read_product_reviews.jsp"  style="width:130px">View Reviews</a>
 						</h4>
 					</div>
 				</div>
