@@ -46,5 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /build/
-build/
+
 .classpath
+.classpath
+build/classes/com/csp595/utilities/MySqlUtil.class

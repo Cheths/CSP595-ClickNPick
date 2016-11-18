@@ -8,9 +8,9 @@ drop table orders;
 
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(30) NOT NULL AUTO_INCREMENT,
   `fk_product_ids` varchar(45) NOT NULL,
-  `fk_userid` int(11) DEFAULT NULL,
+  `fk_user_name` VARCHAR(45) DEFAULT NULL,
   `shipping_address_1` varchar(100) DEFAULT NULL,
   `shipping_address_2` varchar(100) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,

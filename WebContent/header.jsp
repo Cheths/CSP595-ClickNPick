@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.csp595.beans.Product"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -32,11 +35,31 @@
   </head>
 <body onload="init()">
 <script type="text/javascript" src="themes/js/autoComplete.js"></script>
-	<% String userName = (String) session.getAttribute("userName");
-	String user = "User";
-	 	if(userName != null){
-	 		user = userName;
-	 	}
+<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
+	<% 
+		String userName = (String) session.getAttribute("userName");
+		//String myCartShoppingItemId = (String)session.getAttribute("shoppingItemId");
+		String user = "User";
+		int myCartCount = 0;
+		if(userName != null){
+			user = userName;
+		}
+	 	
+	 	String shoppingItemId = request.getParameter("shoppingItemId");
+		String sessionShoppingItemId = (String) session.getAttribute("shoppingItemId");
+		String existingShoppingItemId = (sessionShoppingItemId == null)?"":sessionShoppingItemId;
+		String[] csvProductIds = new String[100];
+		if(existingShoppingItemId != null && userName != null){
+			if(shoppingItemId != null){
+				existingShoppingItemId += ","+shoppingItemId;
+				if(existingShoppingItemId.startsWith(",")){
+					existingShoppingItemId = existingShoppingItemId.substring(1);
+				}
+				session.setAttribute("shoppingItemId", existingShoppingItemId);
+			}
+			csvProductIds = existingShoppingItemId.split(",");
+	 		myCartCount = csvProductIds.length;
+		}
 	 %>
 <div id="header">
 <div class="container">
@@ -44,13 +67,13 @@
 	<div class="span6">Welcome!<strong> <%=user%></strong></div>
 	<div class="span6">
 	<div class="pull-right">
-		<a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Items in your cart </span> </a> 
+		<a href="product_summary.jsp?myCart=true"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> 
+		<%if(myCartCount != 0){%>
+			My Cart[<%=myCartCount %>]
+		<%} else {%>
+		My Cart
+		<%} %>
+		</span> </a> 
 	</div>
 	</div>
 </div>

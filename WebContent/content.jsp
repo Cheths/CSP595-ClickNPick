@@ -194,13 +194,15 @@
 			%>
 			<li class="span3">
 				<div class="thumbnail">
-					<a href="product_details.html"><img
+					<a href="product_details.jsp?productId=<%=product.getId()%>"><img
 						src="themes/images/products/shirts4.jpg" alt="" /></a>
 					<div class="caption">
 						<h5><%=product.getName() %></h5>
 						<h4 style="text-align: center">
-							<a class="btn" href="product_details.jsp?productId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a> 
+							<a class="btn" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a> 
 							<a class="btn btn-primary" href="#"><%=product.getPrice() %></a>
+							<a class="btn btn-primary" href="#" style="width:130px">Write Review</a>
+						<a class="btn btn-primary" href="#"  style="width:130px">View Reviews</a>
 						</h4>
 					</div>
 				</div>

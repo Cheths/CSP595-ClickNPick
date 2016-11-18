@@ -38,9 +38,14 @@
 <body onload="init()">
 <script type="text/javascript" src="themes/js/autoComplete.js"></script>
 	<% String userName = (String) session.getAttribute("userName");
+	String myCartShoppingItemId = (String)session.getAttribute("shoppingItemId");
 	String user = "User";
+	int myCartCount = 0;
 	 	if(userName != null){
 	 		user = userName;
+	 	}
+	 	if (myCartShoppingItemId != null){
+	 		myCartCount = myCartShoppingItemId.length();
 	 	}
 	 %>
 <div id="header">
@@ -49,8 +54,13 @@
 	<div class="span6">Welcome!<strong> <%=user%></strong></div>
 	<div class="span6">
 	<div class="pull-right">
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary" style="font-size: 10px;">
-		<i class="icon-shopping-cart icon-white"></i> My Cart[ 3 ] </span> </a> 
+		<a href="product_summary.jsp"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> 
+		<%if(myCartCount != 0){%>
+			My Cart[<%=myCartCount %>]
+		<%} else {%>
+		My Cart
+		<%} %>
+		</span> </a> 
 	</div>
 	</div>
 </div>
@@ -139,13 +149,13 @@
 		String value = request.getParameter(key);
 		shippingInfoMap.put(key,value);
 	}
-	if(shippingInfoMap.isEmpty()){
+	if(!shippingInfoMap.isEmpty()){
 		session.setAttribute("shippingInfoMap", shippingInfoMap);
 	}
 	%>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'/>
-			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
-				<div id="mainBody">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'/>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+	<div id="mainBody">
 	<div class="checkoutContainer">
 	<div class="row">
 				<div class="span9">
@@ -157,7 +167,7 @@
 							<span class="amex"></span>
 							<span class="discover"></span>
 						</div>
-						<form action="index.jsp" method="POST">
+						<form action="HomeServlet" method="POST">
 							<div class="form-group">
 								<label for="PaymentAmount">Payment amount</label>
 								<div class="amount-placeholder">
@@ -165,7 +175,6 @@
 									<span>$</span>
 									<span><%=checkoutAmount%></span>
 									<% } %>
-									<!-- <span>$</span> <span>500.00</span> -->
 								</div>
 							</div>
 							<div class="form-group">
@@ -175,7 +184,7 @@
 							</div>
 							<div class="form-group">
 								<label for="CreditCardNumber">Card number</label>
-								<input id="CreditCardNumber" name="creditCardNumber" class="null card-image form-control" type="text" required="required" maxlength="16" min="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+								<input id="CreditCardNumber" name="cardNumber" class="null card-image form-control" type="text" required="required" maxlength="16" min="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
 								</div>
 								<div class="expiry-date-group form-group">
 									<label for="ExpiryDate">Expiry date</label>
@@ -184,7 +193,7 @@
 								<div class="security-code-group form-group">
 									<label for="SecurityCode">Security code</label>
 									<div class="input-container">
-										<input id="SecurityCode" name="securityCode" class="form-control" type="text" min="1" required="required" maxlength="3"/>
+										<input id="SecurityCode" name="cvv" class="form-control" type="text" min="1" required="required" maxlength="3"/>
 										<i id="cvc" class="fa fa-question-circle"></i>
 									</div>
 									<div class="cvc-preview-container two-card hide">
