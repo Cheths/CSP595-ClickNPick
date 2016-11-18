@@ -19,7 +19,7 @@
 	<div class="row">	  
 			<div id="gallery" class="span3">
             <a href="product_summary.jsp?shoppingItemId=<%=product.getId()%>" title=<%=product.getName()%>>
-				<img src="themes/images/products/large/3.jpg" style="width:100%" alt=<%=product.getName()%>/>
+				<img src=<%= product.getImage() %> style="width:100%" alt=<%=product.getName()%>/>
             </a>
 			<div id="differentview" class="moreOptopm carousel slide">
                 <div class="carousel-inner">

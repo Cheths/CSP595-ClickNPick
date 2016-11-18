@@ -57,8 +57,10 @@
 				}
 				session.setAttribute("shoppingItemId", existingShoppingItemId);
 			}
-			csvProductIds = existingShoppingItemId.split(",");
-	 		myCartCount = csvProductIds.length;
+			if(!existingShoppingItemId.equals("")){
+				csvProductIds = existingShoppingItemId.split(",");
+		 		myCartCount = csvProductIds.length;
+			}
 		}
 	 %>
 <div id="header">
