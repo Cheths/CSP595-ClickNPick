@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@page import="com.csp595.beans.TrendingProduct"%>
 <%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
 <%@page import="com.csp595.beans.Product"%>
