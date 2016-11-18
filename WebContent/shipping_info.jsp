@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<div id="mainBody">
-	<div class="container">
+<%@include file="header.jsp" %>
+<%@include file="sidebar.jsp" %>
+<% session.setAttribute("checkoutAmount", request.getParameter("checkoutAmount")); %>
 	<div class="row">
 	<div class="span9">
     <ul class="breadcrumb">
@@ -10,7 +11,7 @@
     </ul>
 	<h3> Shipping information</h3>	
 	<div class="well">
-	<form action="index.jsp" class="form-horizontal" >
+	<form action="payment_gateway.jsp" class="form-horizontal" >
 		<h4>Your address</h4>
 		<div class="control-group">
 			<label class="control-label" for="inputFname">First name <sup>*</sup></label>
@@ -29,7 +30,7 @@
 		<div class="control-group">
 			<label class="control-label" for="address">Address<sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" name="address" id="address" placeholder="Adress" required="required"/> <span>Street address, P.O. box, company name, c/o</span>
+			  <input type="text" name="address" id="address" placeholder="Address" required="required"/> <span>Street address, P.O. box, company name, c/o</span>
 			</div>
 		</div>
 		
@@ -91,5 +92,6 @@
 </div>
 </div>
 <!-- MainBody End ============================= -->
+<%@include file="footer.jsp" %>
 </body>
 </html>
