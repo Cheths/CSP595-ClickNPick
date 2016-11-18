@@ -18,7 +18,7 @@
 						<table>
 							<tbody>
 								<tr>
-									<th><label for="{#review.form.fields.productName.id}">Product
+									<th><label class="write-review-label" for="{#review.form.fields.productName.id}">Product
 											Model Name <em>*</em>
 									</label></th>
 									<td><input readonly name="productName"
@@ -26,17 +26,17 @@
 										class="form-control" type="text" maxlength="255"></input></td>
 								</tr>
 
-								<label hidden for="{#review.form.fields.productId.id}">Product
+								<tr hidden="hidden"><th>
+								<label class="write-review-label" for="{#review.form.fields.productId.id}">Product
 									Id<em>*</em>
-								</label>
-								</th>
+								</label></th>
 								<td hidden><input name="productId"
 									value="<%=product.getId()%>" id="productId"
 									class="form-control" type="text" maxlength="255"></input></td>
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.productCategory.id}">Product
+									<th><label class="write-review-label" for="{#review.form.fields.productCategory.id}">Product
 											Category <em>*</em>
 									</label></th>
 									<td><input readonly name="productCategory"
@@ -45,7 +45,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.productPrice.id}">Product
+									<th><label class="write-review-label" for="{#review.form.fields.productPrice.id}">Product
 											Price <em>*</em>
 									</label></th>
 									<td><input readonly name="productPrice"
@@ -53,17 +53,8 @@
 										class="form-control" type="text" maxlength="255"></input></td>
 								</tr>
 
-								<%-- 						<tr>
-									<th><label for="{#review.form.fields.retailerName.id}">Retailer
-											Name<em>*</em>
-									</label></th>
-									<td><input readonly name="retailerName"
-										value="<%=product.getRetailer()%>" id="retailerName"
-										class="form-control" type="text" maxlength="255"></input></td>
-								</tr> --%>
-
 								<tr>
-									<th><label for="{#review.form.fields.retailerZip.id}">Retailer
+									<th><label class="write-review-label" for="{#review.form.fields.retailerZip.id}">Retailer
 											Zip<em>*</em>
 									</label></th>
 									<td><input name="retailerZip" required="required"
@@ -72,7 +63,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.retailerCity.id}">Retailer
+									<th><label class="write-review-label" for="{#review.form.fields.retailerCity.id}">Retailer
 											City<em>*</em>
 									</label></th>
 									<td><input name="retailerCity" required="required"
@@ -90,17 +81,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.productOnSale.id}">Product
-											On Sale<em>*</em>
-									</label></th>
-									<td><select name="productOnSale" id="productOnSale">
-											<option value="Yes">Yes</option>
-											<option value="No">No</option>
-									</select></td>
-								</tr>
-
-								<tr>
-									<th><label for="{#review.form.fields.manufacturerName.id}">Manufacturer
+									<th><label class="write-review-label" for="{#review.form.fields.manufacturerName.id}">Manufacturer
 											Name<em>*</em>
 									</label></th>
 									<td><input name="manufacturerName" required="required"
@@ -109,29 +90,17 @@
 								</tr>
 
 								<tr>
-									<th><label
-										for="{#review.form.fields.manufacturerRebate.id}">Manufacturer
-											Rebate<em>*</em>
-									</label></th>
-									<td><select name="manufacturerRebate"
-										id="manufacturerRebate">
-											<option value="Yes">Yes</option>
-											<option value="No">No</option>
-									</select></td>
-								</tr>
-
-								<tr>
-									<th><label for="{#review.form.fields.userId.id}">User
+									<th><label class="write-review-label" for="{#review.form.fields.userId.id}">User
 											ID<em>*</em>
 									</label></th>
 									<td><input readonly name="userId" id="userId"
-										value="<%=(String) session.getAttribute("username")%>"
+										value="<%=(String) session.getAttribute("userName")%>"
 										required="required" class="form-control" type="text"
 										maxlength="255"></input></td>
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.userAge.id}">User
+									<th><label class="write-review-label" for="{#review.form.fields.userAge.id}">User
 											Age<em>*</em>
 									</label></th>
 									<td><input name="userAge" required="required" id="userAge"
@@ -139,7 +108,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.userGender.id}">UserGender<em>*</em></label></th>
+									<th><label class="write-review-label" for="{#review.form.fields.userGender.id}">UserGender<em>*</em></label></th>
 									<td><select name="userGender" id="userGender">
 											<option value="Male">Male</option>
 											<option value="Female">Female</option>
@@ -148,7 +117,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.userOccupation.id}">User
+									<th><label class="write-review-label" for="{#review.form.fields.userOccupation.id}">User
 											Occupation<em>*</em>
 									</label></th>
 									<td><input name="userOccupation" required="required"
@@ -157,7 +126,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.reviewRating.id}">Review
+									<th><label class="write-review-label" for="{#review.form.fields.reviewRating.id}">Review
 											Rating<em>*</em>
 									</label></th>
 									<td><select name="reviewRating" id="reviewRating">
@@ -170,7 +139,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.reviewDate.id}">Review
+									<th><label class="write-review-label" for="{#review.form.fields.reviewDate.id}">Review
 											Date<em>*</em>
 									</label></th>
 									<td><input name="reviewDate" required="required"
@@ -179,7 +148,7 @@
 								</tr>
 
 								<tr>
-									<th><label for="{#review.form.fields.reviewText.id}">Review
+									<th><label class="write-review-label" for="{#review.form.fields.reviewText.id}">Review
 											Text:<em>*</em>
 									</label></th>
 									<td><input name="reviewText" required="required"
@@ -187,7 +156,8 @@
 										maxlength="255"></input></td>
 								</tr>
 								<tr>
-									<td class="noborder"><input type="submit" class="checkout"
+									<td class="noborder">
+									<input class="btn btn-primary" type="submit" class="checkout"
 										id="submit" value="Submit Review" /></td>
 								</tr>
 							</tbody>
@@ -196,6 +166,8 @@
 					</form>
 
 					<%
+						}else{
+							response.sendRedirect("login.jsp");
 						}
 					%>
 				</div>
