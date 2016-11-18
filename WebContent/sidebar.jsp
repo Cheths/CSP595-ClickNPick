@@ -49,8 +49,7 @@
 			</div>
 		</div>
 		<a href="trending_products.jsp">
-					<img style="width: 250px; height: 75px;"
-					src="themes/images/trendingnow.png" alt="">
+		<img style="width: 250px; height: 75px;" src="themes/images/trendingnow.png" alt="">
 		</a>
 	</div>
 <!-- Sidebar end=============================================== -->
