@@ -8,7 +8,6 @@
 <title>Best Deals</title>
 </head>
 <body>
-<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
 <%@include file="header.jsp" %>
 <%-- <%@include file="carousel.jsp" %> --%>
 <%@include file="sidebar.jsp" %>

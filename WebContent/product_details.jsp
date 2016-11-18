@@ -6,7 +6,6 @@
 <%@include file="header.jsp" %>
 <%@include file="sidebar.jsp" %>
 <body>
-<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
 <% String productId = request.getParameter("productId");
 	Product product = productHashMap.get(productId);
 	%>

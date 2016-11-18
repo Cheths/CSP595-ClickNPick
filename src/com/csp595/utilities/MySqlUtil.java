@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.csp595.beans.Product;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -180,5 +182,46 @@ public class MySqlUtil {
 			}
 		}
 		return productHashMap;
+	}
+	
+	public static void insertQueryForOrderTable(String orderId, String productIds, String userName, Double orderAmount, String oDate, String dDate, String shipAddress1, 
+			String shipAddress2, String city, String state, String country,String zipCode, String cardNo, String nameOnCard, String cvv, String cardExpDate, 
+			String phone, HttpSession session) {
+		
+		Connection connection = getConnection();
+		if (connection != null) {
+			String sql = "INSERT into "+ORDERTABLE+"("+Constants.Orders.ID_COL+","+Constants.Orders.FK_PROD_ID_COL+","+Constants.Orders.FK_USERID_COL+
+					","+Constants.Orders.ORDER_AMT_COL+","+Constants.Orders.ORDER_DT_COL+","+Constants.Orders.EXP_DEL_DT_COL+","+Constants.Orders.SHIP_ADDR_1_COL+
+					","+Constants.Orders.SHIP_ADDR_2_COL+","+Constants.Orders.CITY_COL+","+Constants.Orders.STATE_COL+","+Constants.Orders.COUNTRY_COL+
+					","+Constants.Orders.ZIP_COL+","+Constants.Orders.CARD_NO_COL+","+Constants.Orders.NAME_ON_CARD_COL+","+Constants.Orders.CVV_COL+
+					","+Constants.Orders.CARD_EXP_DT_COL+","+Constants.Orders.PHONE_COL+") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, orderId);
+				preparedStatement.setString(2, productIds);
+				preparedStatement.setString(3, userName);
+				preparedStatement.setDouble(4, orderAmount);
+				preparedStatement.setString(5, oDate);
+				preparedStatement.setString(6, dDate);
+				preparedStatement.setString(7, shipAddress1);
+				preparedStatement.setString(8, shipAddress2);
+				preparedStatement.setString(9, city);
+				preparedStatement.setString(10, state);
+				preparedStatement.setString(11, country);
+				preparedStatement.setString(12, zipCode);
+				preparedStatement.setString(13, cardNo);
+				preparedStatement.setString(14, nameOnCard);
+				preparedStatement.setString(15, cvv);
+				preparedStatement.setString(16, cardExpDate);
+				preparedStatement.setString(17, phone);
+				
+				preparedStatement.execute();
+				session.removeAttribute("shoppingItemId");
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
