@@ -234,3 +234,11 @@ input:focus {
 }
 
 /*----------------------End Of Payment Gateway css--------------------------------------*/
+.write-review-label{
+	width: 200px !important;
+	text-align: left !important;
+}
+
+.noborder {
+	border: none;
+}
