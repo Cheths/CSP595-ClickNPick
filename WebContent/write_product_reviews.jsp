@@ -14,7 +14,7 @@
 						if ((String) session.getAttribute("userName") != null) {
 					%>
 					<h3>Please Enter Review</h3>
-					<form action="index.jsp" method="POST">
+					<form action="HomeServlet" method="POST">
 						<table>
 							<tbody>
 								<tr>

@@ -4,6 +4,30 @@
 <%@page import="com.csp595.beans.Product"%>
 <%@page import="java.util.Map.Entry"%>
 <html lang="en">
+<head>
+<!-- Style -->
+<style>
+.alert {
+    padding: 20px;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+</style>
+</head>
 <body>
 <% String userCreationStatus = (String) session.getAttribute("userCreationStatus"); 
 		if(userCreationStatus != null){
@@ -16,7 +40,19 @@
 	 <div id="mainBody">
 	<div class="container">
 	<div class="row">
-<div class="span9">
+	<div class="span9">
+		<% if(request.getParameter("writeReview") != null){
+		%>
+		<div class="alert" style="background-color: #5bb75b;">
+		 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		 <strong>Success!</strong> Review Successfully Submitted
+		</div>
+		<%}else if(request.getAttribute("mongoConnectionError") != null){ %>
+		<div class="alert" style="background-color: #f44336;">
+		 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		 <strong>Failure!</strong>Unable to submit review as Mongo Db is not connected
+		</div>
+		<%} %>
 			<div class="well well-small">
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
 			<div class="row-fluid">
@@ -202,7 +238,7 @@
 							<a class="btn" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a> 
 							<a class="btn btn-primary" href="#"><%=product.getPrice() %></a>
 							<a class="btn btn-primary" href="write_product_reviews.jsp?showReviewSection=<%=product.getId()%>" style="width:130px">Write Review</a>
-						<a class="btn btn-primary" href="read_product_reviews.jsp"  style="width:130px">View Reviews</a>
+						<a class="btn btn-primary" href="read_product_reviews.jsp?readProductReview=<%=product.getId()%>"  style="width:130px">View Reviews</a>
 						</h4>
 					</div>
 				</div>

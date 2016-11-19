@@ -170,17 +170,16 @@ public class MongoUtil {
 		return productNameAndReviewMap;
 	}
 	
-	public static void insertProductReview(String manufacturerName, String manufacturerRebate, String productCategory,
-			String productName, String productOnSale, String productId, String productPrice, String retailerCity,
+	public static void insertProductReview(String manufacturerName, String productCategory,
+			String productName,String productId, String productPrice, String retailerCity,
 			String retailerName, String retailerState, String retailerZip, String reviewRating, String reviewDate,
 			String reviewText, String userAge, String userName, String userGender, String userOccupation)
 			throws Exception {
 
 		getConnection();
 		BasicDBObject doc = new BasicDBObject("title", "productReviews").append("userName", userName)
-				.append("manufacturerName", manufacturerName).append("manufacturerRebate", manufacturerRebate)
-				.append("productCategory", productCategory).append("productName", productName)
-				.append("productId", productId).append("productOnSale", productOnSale)
+				.append("manufacturerName", manufacturerName).append("productCategory", productCategory)
+				.append("productName", productName).append("productId", productId)
 				.append("productPrice", productPrice).append("retailerCity", retailerCity)
 				.append("retailerName", retailerName).append("retailerState", retailerState)
 				.append("retailerZip", retailerZip).append("reviewRating", reviewRating)

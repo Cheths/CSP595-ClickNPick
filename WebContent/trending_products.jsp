@@ -40,7 +40,7 @@
 																class="pull-right">$<%=product.getPrice() %></span>
 														</h4>
 													</div>
-													h5> Purchase Count:
+													<h5> Purchase Count:
 													<%=topSoldProduct.values().toArray()[0]%></h5>
 												</div>
 											</li>
@@ -77,7 +77,7 @@
 										</ul>
 										
 										<!-- Top five zip-codes where maximum number of products sold -->
-										<ul class="thumbnails">
+										 <ul class="thumbnails">
 										<h4>Top five zip-codes where maximum number of products sold</h4>
 										<%	
 										List<Map<String, String>> zipCodeReviewCountMapList = MongoUtil.getMostReviewsInZipCode();
@@ -102,7 +102,7 @@
 											</tbody>
 										</table>
 										<%} %>
-									</ul>
+									 </ul>
 									
 								</div>
 							</div>
