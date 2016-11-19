@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Order {
 
-	private int orderId;
+	private String orderId;
 	private String shippingAddress1;
 	private String shippingAddress2;
 	private Timestamp orderDate;
@@ -17,13 +17,31 @@ public class Order {
 	private String zipCode;
 	private String country;
 	private String phone;
+	private Double orderAmount;
 	
 	private Product product;
 	private User user;
-	public int getOrderId() {
+	
+	public Order(String orderId, Timestamp orderDate, Timestamp expectedDeliveryDate, Double orderAmount, Product product) {
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.expectedDeliveryDate = expectedDeliveryDate;
+		this.orderAmount = orderAmount;
+		this.product = product;
+	}
+	
+	public Double getOrderAmount() {
+		return orderAmount;
+	}
+	
+	public void setOrderAmount(Double orderAmount) {
+		this.orderAmount = orderAmount;
+	}
+	
+	public String getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	public String getShippingAddress1() {

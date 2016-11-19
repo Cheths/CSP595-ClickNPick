@@ -109,9 +109,11 @@
 	 <li class=""><a href="contact.html">Contact</a></li> -->
 	 <li style="display: -webkit-box;">
 	 <%if(userName != null){
-		 %><a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
+		 %><a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
 	 <%} else {
 		 %>
+		 <a href="login.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
 		 <a href="register.jsp"><span class="btn btn-large btn-success">Sign Up</span></a> 
 		 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
 	 <% } %>
