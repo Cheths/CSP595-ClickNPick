@@ -5,7 +5,7 @@ public class Constants {
 	public interface Orders{
 		public static String ID_COL = "id";
 		public static String FK_PROD_ID_COL = "fk_product_ids";
-		public static String FK_USERID_COL = "fk_user_name";
+		public static String FK_USER_NAME_COL = "fk_user_name";
 		public static String SHIP_ADDR_2_COL = "shipping_address_1";
 		public static String SHIP_ADDR_1_COL = "shipping_address_2";
 		public static String CITY_COL = "city";

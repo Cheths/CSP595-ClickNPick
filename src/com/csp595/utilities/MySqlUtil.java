@@ -11,7 +11,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.csp595.beans.Order;
 import com.csp595.beans.Product;
+import com.csp595.utilities.Constants.Orders;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -39,6 +41,7 @@ public class MySqlUtil {
 	static final String P_PRICE_COL = "price";
 	
 	private static List<Product> productList = new ArrayList<Product>();
+	private static HashMap<String, Product> productHashMap;
 	
 	/**
 	 * Method to return a MySql Connection
@@ -134,7 +137,7 @@ public class MySqlUtil {
 	}
 	
 	public static Map<String, Product> getAllProductMap(){
-		Map<String, Product> productHashMap = new HashMap<String, Product>();
+		productHashMap = new HashMap<String, Product>();
 		Product product;
 		Connection connection = getConnection();
 		if(connection != null){
@@ -160,10 +163,10 @@ public class MySqlUtil {
 	 * @return
 	 */
 	public static HashMap<String, Product> getProductHashMap(){
-		HashMap<String, Product> productHashMap = new HashMap<String,Product>();
+		productHashMap = new HashMap<String,Product>();
 		Connection connection = getConnection();
 		
-		if (connection != null) {
+		if (connection != null && productHashMap.isEmpty()) {
 			String sql = "SELECT * FROM PRODUCT";
 			try {
 				Statement statement = (Statement) connection.createStatement();
@@ -190,7 +193,7 @@ public class MySqlUtil {
 		
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ORDERTABLE+"("+Constants.Orders.ID_COL+","+Constants.Orders.FK_PROD_ID_COL+","+Constants.Orders.FK_USERID_COL+
+			String sql = "INSERT into "+ORDERTABLE+"("+Constants.Orders.ID_COL+","+Constants.Orders.FK_PROD_ID_COL+","+Constants.Orders.FK_USER_NAME_COL+
 					","+Constants.Orders.ORDER_AMT_COL+","+Constants.Orders.ORDER_DT_COL+","+Constants.Orders.EXP_DEL_DT_COL+","+Constants.Orders.SHIP_ADDR_1_COL+
 					","+Constants.Orders.SHIP_ADDR_2_COL+","+Constants.Orders.CITY_COL+","+Constants.Orders.STATE_COL+","+Constants.Orders.COUNTRY_COL+
 					","+Constants.Orders.ZIP_COL+","+Constants.Orders.CARD_NO_COL+","+Constants.Orders.NAME_ON_CARD_COL+","+Constants.Orders.CVV_COL+
@@ -218,6 +221,53 @@ public class MySqlUtil {
 				
 				preparedStatement.execute();
 				session.removeAttribute("shoppingItemId");
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Method to get user order list.
+	 */
+	public static Map<String, Order> getUserOrderList(String userName){
+		Connection connection = getConnection();
+		Map<String, Order> orderHashMap = new HashMap<String, Order>();
+		if (connection != null && userName != null) {
+			String sql = "SELECT * FROM "+ORDERTABLE+" WHERE "+Constants.Orders.FK_USER_NAME_COL+" = ?";
+			//String sql = "SELECT * FROM ORDERS WHERE fk_user_name = 'b'";
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, userName);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next()){
+					Product product = productHashMap.get(resultSet.getString(Constants.Orders.FK_PROD_ID_COL));
+					Order order = new Order(resultSet.getString(Constants.Orders.ID_COL), resultSet.getTimestamp(Constants.Orders.ORDER_DT_COL), 
+							resultSet.getTimestamp(Constants.Orders.EXP_DEL_DT_COL),resultSet.getDouble(Constants.Orders.ORDER_AMT_COL), product);
+					orderHashMap.put(resultSet.getString(Constants.Orders.ID_COL), order);
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return orderHashMap;
+	}
+	
+	/**
+	 * Method to delete a placed order. 
+	 * @param orderId
+	 */
+	public static void deleteOrder(String orderId){
+		Connection connection = getConnection();
+		String sql;
+		if(connection != null){
+			sql = "DELETE FROM "+ ORDERTABLE +" WHERE "+Constants.Orders.ID_COL+" = ?";
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, orderId);
+				preparedStatement.executeUpdate();
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
