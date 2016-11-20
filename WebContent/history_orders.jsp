@@ -76,7 +76,7 @@ Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName);%>
 								
 							</tbody>
 						</table> 					
-						<a href="HomeServlet" class="btn btn-large"> <i class="icon-arrow-left"></i> Continue Shopping </a> 					
+						<a href="UtilityServlet" class="btn btn-large"> <i class="icon-arrow-left"></i> Continue Shopping </a> 					
 					</div>
 				</div>
 			</div>

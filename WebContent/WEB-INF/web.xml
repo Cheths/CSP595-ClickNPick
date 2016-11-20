@@ -17,12 +17,12 @@
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true" version="3.0">
   <servlet>
-    <servlet-name>HomeServlet</servlet-name>
-    <servlet-class>com.csp595.controller.HomeServlet</servlet-class>
+    <servlet-name>UtilityServlet</servlet-name>
+    <servlet-class>com.csp595.controller.UtilityServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HomeServlet</servlet-name>
-    <url-pattern>/HomeServlet</url-pattern>
+    <servlet-name>UtilityServlet</servlet-name>
+    <url-pattern>/UtilityServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
