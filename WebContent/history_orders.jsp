@@ -24,7 +24,10 @@ Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName);%>
 					<li class="active">SHOPPING CART</li>
 				</ul>
 				<% if(deleteOrderId != null){%>
-					<div>Order Deleted Successfully!</div>
+					<div class="alert" style="background-color: #5bb75b;">
+					 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		 			 <strong>Success!</strong> Order removed Successfully.
+					</div>
 				<%}%>
 				<h3>						SHOPPING CART </h3>
 				<hr class="soft">
