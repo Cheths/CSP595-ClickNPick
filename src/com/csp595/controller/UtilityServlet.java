@@ -18,7 +18,7 @@ import com.csp595.utilities.ProductHelper;
 import com.mongodb.MongoTimeoutException;
 
 
-public class HomeServlet extends HttpServlet {
+public class UtilityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
