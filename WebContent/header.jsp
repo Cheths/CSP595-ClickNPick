@@ -32,6 +32,29 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	
+	<!-- Style -->
+	<style>
+	.alert {
+	    padding: 20px;
+	    color: white;
+	}
+	
+	.closebtn {
+	    margin-left: 15px;
+	    color: white;
+	    font-weight: bold;
+	    float: right;
+	    font-size: 22px;
+	    line-height: 20px;
+	    cursor: pointer;
+	    transition: 0.3s;
+	}
+	
+	.closebtn:hover {
+	    color: black;
+	}
+	</style>
   </head>
 <body onload="init()">
 <script type="text/javascript" src="themes/js/autoComplete.js"></script>

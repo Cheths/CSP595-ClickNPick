@@ -4,30 +4,7 @@
 <%@page import="com.csp595.beans.Product"%>
 <%@page import="java.util.Map.Entry"%>
 <html lang="en">
-<head>
-<!-- Style -->
-<style>
-.alert {
-    padding: 20px;
-    color: white;
-}
 
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.closebtn:hover {
-    color: black;
-}
-</style>
-</head>
 <body>
 <% String userCreationStatus = (String) session.getAttribute("userCreationStatus"); 
 		if(userCreationStatus != null){
@@ -37,7 +14,7 @@
 	 		<div>Invalid Credentials!</div>
 	 	<% }}
 	 %>
-	 <div id="mainBody">
+	<div id="mainBody">
 	<div class="container">
 	<div class="row">
 	<div class="span9">

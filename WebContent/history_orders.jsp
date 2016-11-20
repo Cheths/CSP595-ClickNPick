@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="com.csp595.utilities.MySqlUtil"%>
 <%@page import="com.csp595.beans.Order"%>
@@ -10,7 +11,7 @@
 if(deleteOrderId != null){
 	MySqlUtil.deleteOrder(deleteOrderId);
 }
-Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName); %>
+Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName);%>
 <div id="mainBody">
 	<div class="container">
 		<div class="row">
@@ -42,10 +43,16 @@ Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName); %>
 						<% if(!orderHashMap.isEmpty()){
 							for(Entry<String, Order> orderObj : orderHashMap.entrySet()){
 								Order order = orderObj.getValue();
-								Product orderedProduct = order.getProduct();%>
+								List<Product> orderedProductList= order.getProductList();
+								String productNameCsv = "";
+								for(Product product: orderedProductList){
+									productNameCsv += ", "+product.getName();
+								}
+								productNameCsv = productNameCsv.replaceFirst(", ", "");
+								%>
 							<tr>
 							<td><%= order.getOrderId() %></td>
-							<td><%= orderedProduct.getName() %></td>
+							<td><%= productNameCsv %></td>
 							<td><%= order.getOrderDate() %></td>
 							<td><%= order.getExpectedDeliveryDate() %></td>
 							<td><%= order.getOrderAmount() %></td>
