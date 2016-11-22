@@ -8,7 +8,7 @@ drop table orders;
 
 
 CREATE TABLE `orders` (
-  `id` VARCHAR(30) NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(30) NOT NULL,
   `fk_product_ids` varchar(45) NOT NULL,
   `fk_user_name` VARCHAR(45) DEFAULT NULL,
   `shipping_address_1` varchar(100) DEFAULT NULL,
@@ -25,6 +25,7 @@ CREATE TABLE `orders` (
   `CVV` varchar(45) DEFAULT NULL,
   `name_on_card` varchar(45) DEFAULT NULL,
   `order_amount` double DEFAULT NULL,
+  `flag_donated` varchar(1) DEFAULT `0`,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,6 +41,7 @@ CREATE TABLE `product` (
   `discount` int(11) DEFAULT NULL,
   `condition` varchar(45) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
