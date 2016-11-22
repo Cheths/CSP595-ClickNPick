@@ -1,6 +1,8 @@
 package com.csp595.beans;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
@@ -19,15 +21,15 @@ public class Order {
 	private String phone;
 	private Double orderAmount;
 	
-	private Product product;
+	private List<Product> productList = new ArrayList<Product>();
 	private User user;
 	
-	public Order(String orderId, Timestamp orderDate, Timestamp expectedDeliveryDate, Double orderAmount, Product product) {
+	public Order(String orderId, Timestamp orderDate, Timestamp expectedDeliveryDate, Double orderAmount, List<Product> productList) {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.expectedDeliveryDate = expectedDeliveryDate;
 		this.orderAmount = orderAmount;
-		this.product = product;
+		this.productList.addAll(productList);
 	}
 	
 	public Double getOrderAmount() {
@@ -116,17 +118,20 @@ public class Order {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+	
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
 	}
 	
 }

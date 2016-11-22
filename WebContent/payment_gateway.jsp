@@ -167,7 +167,7 @@
 							<span class="amex"></span>
 							<span class="discover"></span>
 						</div>
-						<form action="HomeServlet" method="POST">
+						<form action="UtilityServlet" method="POST">
 							<div class="form-group">
 								<label for="PaymentAmount">Payment amount</label>
 								<div class="amount-placeholder">

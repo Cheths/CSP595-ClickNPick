@@ -25,6 +25,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="span9">
+				<%if(orderId!= null && !orderId.equals("")){%>
+					<div class="alert" style="background-color: #5bb75b;">
+					 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		 			 <strong>Success!</strong> Order created Successfully.
+					</div>
+				<% }%>
 					<ul class="breadcrumb">
 						<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 						<li class="active">Order Summary</li>

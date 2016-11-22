@@ -76,7 +76,7 @@ function appendProduct(productName,productId) {
 	cell.className = "popupCell";
 	linkElement = document.createElement("a");
 	linkElement.className = "popupItem";
-	linkElement.setAttribute("href", "HomeServlet?id=" + productId);
+	linkElement.setAttribute("href", "UtilityServlet?id=" + productId);
 	linkElement.setAttribute("style","color: aliceblue;");
 	linkElement.appendChild(document.createTextNode(productName));
 	cell.appendChild(linkElement);

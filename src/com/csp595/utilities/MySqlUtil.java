@@ -242,10 +242,17 @@ public class MySqlUtil {
 				preparedStatement.setString(1, userName);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
-					Product product = productHashMap.get(resultSet.getString(Constants.Orders.FK_PROD_ID_COL));
-					Order order = new Order(resultSet.getString(Constants.Orders.ID_COL), resultSet.getTimestamp(Constants.Orders.ORDER_DT_COL), 
-							resultSet.getTimestamp(Constants.Orders.EXP_DEL_DT_COL),resultSet.getDouble(Constants.Orders.ORDER_AMT_COL), product);
-					orderHashMap.put(resultSet.getString(Constants.Orders.ID_COL), order);
+					List<Product> productList = new ArrayList<Product>();
+					String[] productCsv = resultSet.getString(Constants.Orders.FK_PROD_ID_COL).split(",");
+					if(productCsv != null && productCsv.length > 0){
+						for(int i=0;i<productCsv.length;i++){
+							Product product = productHashMap.get(productCsv[i]);
+							productList.add(product);
+						}
+						Order order = new Order(resultSet.getString(Constants.Orders.ID_COL), resultSet.getTimestamp(Constants.Orders.ORDER_DT_COL), 
+								resultSet.getTimestamp(Constants.Orders.EXP_DEL_DT_COL),resultSet.getDouble(Constants.Orders.ORDER_AMT_COL), productList);
+						orderHashMap.put(resultSet.getString(Constants.Orders.ID_COL), order);
+					}
 				}
 				connection.close();
 			} catch (SQLException e) {
