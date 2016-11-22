@@ -1,10 +1,12 @@
 package com.csp595.beans;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
-	private int orderId;
+	private String orderId;
 	private String shippingAddress1;
 	private String shippingAddress2;
 	private Timestamp orderDate;
@@ -17,13 +19,31 @@ public class Order {
 	private String zipCode;
 	private String country;
 	private String phone;
+	private Double orderAmount;
 	
-	private Product product;
+	private List<Product> productList = new ArrayList<Product>();
 	private User user;
-	public int getOrderId() {
+	
+	public Order(String orderId, Timestamp orderDate, Timestamp expectedDeliveryDate, Double orderAmount, List<Product> productList) {
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.expectedDeliveryDate = expectedDeliveryDate;
+		this.orderAmount = orderAmount;
+		this.productList.addAll(productList);
+	}
+	
+	public Double getOrderAmount() {
+		return orderAmount;
+	}
+	
+	public void setOrderAmount(Double orderAmount) {
+		this.orderAmount = orderAmount;
+	}
+	
+	public String getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	public String getShippingAddress1() {
@@ -98,17 +118,20 @@ public class Order {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+	
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
 	}
 	
 }

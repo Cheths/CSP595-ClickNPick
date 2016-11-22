@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -22,7 +23,6 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 	private static List<Product> productList = new ArrayList<Product>();
 	private String elementValueRead;
 	private static Map<String, Product> productHashMap = new HashMap<String, Product>();
-		
 
 	public Product getProduct() {
 		return product;
@@ -37,12 +37,25 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 	}
 
 	public SaxParserProductXMLdataStore(String xmlFileName) {
-		if(productList.isEmpty()){
-			ParseDocument(xmlFileName);
+		if(productHashMap.isEmpty()){
+			//ParseDocument(xmlFileName);
 			//MySqlUtil.insertRecordstoProductTable();
+			productHashMap = MySqlUtil.getAllProductMap();
 		}
 	}
 
+	public static Product getProductByID(String productID) {
+		Product product = new Product();
+		Map<String, Product> tempProductIdProductMap = SaxParserProductXMLdataStore.getProductHashMap();
+		for (Entry<String, Product> entry : tempProductIdProductMap.entrySet()) {
+			if (entry.getValue().getId().equals(productID)) {
+				return entry.getValue();
+			}
+		}
+		return product;
+	}
+
+	
 	private void ParseDocument(String xmlFileName) {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
@@ -107,4 +120,15 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
     public void characters(char[] content, int begin, int end) throws SAXException {
         elementValueRead = new String(content, begin, end);
     }
+    
+	public static Product getProductByName(String productName) {
+		Product product = new Product();
+		Map<String, Product> tempProductIdProductMap = SaxParserProductXMLdataStore.getProductHashMap();
+		for (Entry<String, Product> entry : tempProductIdProductMap.entrySet()) {
+			if (entry.getValue().getName().equals(productName)) {
+				return entry.getValue();
+			}
+		}
+		return product;
+	}
 }
