@@ -11,7 +11,7 @@
 if(deleteOrderId != null){
 	MySqlUtil.deleteOrder(deleteOrderId);
 }
-Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName);%>
+Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName, userRole);%>
 <div id="mainBody">
 	<div class="container">
 		<div class="row">
