@@ -25,7 +25,7 @@ CREATE TABLE `orders` (
   `CVV` varchar(45) DEFAULT NULL,
   `name_on_card` varchar(45) DEFAULT NULL,
   `order_amount` double DEFAULT NULL,
-  `flag_donated` varchar(1) DEFAULT `0`,
+  `flag_donated` varchar(1) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
