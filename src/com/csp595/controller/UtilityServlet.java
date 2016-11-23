@@ -38,6 +38,8 @@ public class UtilityServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String shoppingItemIds = (String) session.getAttribute("shoppingItemId");
 		String removeItem = request.getParameter("removeItem");
+		String couponCode = request.getParameter("couponCode");
+		
 		if(removeItem != null){
 			List<String> shoppingItemIdsList = new ArrayList<>(Arrays.asList(shoppingItemIds.split(",")));
 			List<String> tempshoppingItemIdsList = shoppingItemIdsList;
@@ -51,8 +53,14 @@ public class UtilityServlet extends HttpServlet {
 				String str = shoppingItemIdsList.toString();
 				session.setAttribute("shoppingItemId", str.substring(1, str.length()-1));
 			}
+			response.sendRedirect("product_summary.jsp");
+		} else if(couponCode != null){
+			MySqlUtil.insertQueryForCouponTable(request.getParameter("couponCode"), request.getParameter("userBase"), request.getParameter("discount"));
+			request.setAttribute("addCouponSuccess", true);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_operations.jsp");
+			dispatcher.forward(request, response);
 		}
-		response.sendRedirect("product_summary.jsp");
+		//response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

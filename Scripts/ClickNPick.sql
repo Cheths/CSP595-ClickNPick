@@ -5,7 +5,7 @@ use db_clicknpick;
 drop table user;
 drop table product;
 drop table orders;
-
+DROP TABLE COUPONS;
 
 CREATE TABLE `orders` (
   `id` VARCHAR(30) NOT NULL,
@@ -63,6 +63,12 @@ CREATE TABLE `user` (
   `role` varchar(45) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE COUPONS (
+    coupon_code VARCHAR(10) NOT NULL primary key,
+    discount VARCHAR(5) NOT NULL,
+    user_name VARCHAR(100) NOT NULL
+);
 
 /*Sample Product Data*/
 INSERT INTO `product` (`id`,`name`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (1,'Round Neck','Shirt','0',10,'Wrangler',1,'0',NULL,NULL);
