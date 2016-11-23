@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.csp595.beans.Coupon;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
 import com.csp595.utilities.Constants.Orders;
@@ -24,6 +25,7 @@ public class MySqlUtil {
 	static final String USERTABLE = "USER";
 	static final String ORDERTABLE = "ORDERS";
 	static final String PRODUCTTABLE = "PRODUCT";
+	static final String COUPONTABLE = "COUPONS";
 	
 	static final String ROLE_CUSTOMER = "Customer";
 	static final String ROLE_SALESMAN = "Salesman";
@@ -286,5 +288,63 @@ public class MySqlUtil {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static void insertQueryForCouponTable(String couponCode, String userName, String discount) {
+		Connection connection = getConnection();
+		if (connection != null) {
+			String sql = "INSERT into "+ COUPONTABLE +"(coupon_code,discount,user_name) VALUES (?,?,?)";
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, couponCode);
+				preparedStatement.setString(2, discount);
+				preparedStatement.setString(3, userName);
+				
+				preparedStatement.execute();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static Map<String, Coupon> getCouponHashMap(){
+		Connection connection = getConnection();
+		Map<String, Coupon> couponHashMap = new HashMap<String, Coupon>();
+		if (connection != null) {
+			String sql = "SELECT * FROM "+COUPONTABLE;
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next()){
+					String couponCode = resultSet.getString(Constants.Coupon.COUPON_CODE_COL);
+					Coupon coupon = new Coupon(couponCode, resultSet.getString(Constants.Coupon.DISCOUNT_COL),
+							resultSet.getString(Constants.Coupon.USER_NAME_COL));
+						couponHashMap.put(couponCode, coupon);
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return couponHashMap;
+	}
+	
+	public static ArrayList<String> getUserList(){
+		Connection connection = getConnection();
+ 		ArrayList<String> userList = new ArrayList<String>();
+			String sql = "SELECT "+Constants.User.USERNAME_COL+" FROM "+USERTABLE;
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next()){
+					userList.add(resultSet.getString(1));
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return userList;
 	}
 }

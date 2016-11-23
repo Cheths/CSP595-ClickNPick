@@ -22,4 +22,15 @@ public class Constants {
 		public static String ORDER_AMT_COL = "order_amount";
 	}
 
+	public interface Coupon{
+		public static String COUPON_CODE_COL = "coupon_code";
+		public static String DISCOUNT_COL = "discount";
+		public static String USER_NAME_COL = "user_name";
+	}
+	
+	public interface User{
+		public static String ID_COL = "id";
+		public static String USERNAME_COL = "username";
+		public static String ROLE_COL = "role";
+	}
 }
