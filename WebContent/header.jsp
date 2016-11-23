@@ -135,11 +135,11 @@
 	 <%if(userName != null){
 		 if(userRole.equals("Store Manager")){%>
 			 <a href="admin_operations.jsp"><span class="btn btn-large btn-success">Admin</span></a>
-		 <%}
-		 %><a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+	 	<%} %>
+		 <a href="deal_matches.jsp"><span class="btn btn-large btn-success">Deal Matcher</span></a>
+		 <a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
 		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
-	 <%} else {
-		 %>
+	  } else { %>
 		 <a href="login.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
 		 <a href="register.jsp"><span class="btn btn-large btn-success">Sign Up</span></a> 
 		 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>

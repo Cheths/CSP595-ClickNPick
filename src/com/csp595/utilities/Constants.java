@@ -33,4 +33,6 @@ public class Constants {
 		public static String USERNAME_COL = "username";
 		public static String ROLE_COL = "role";
 	}
+	
+	public static String TOMCAT_HOME = System.getProperty("catalina.home").replace("\\", "/");
 }
