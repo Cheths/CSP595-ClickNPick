@@ -21,5 +21,5 @@ public class Constants {
 		public static String NAME_ON_CARD_COL = "name_on_card";
 		public static String ORDER_AMT_COL = "order_amount";
 	}
-
+	public static String TOMCAT_HOME = System.getProperty("catalina.home").replace("\\", "/");
 }
