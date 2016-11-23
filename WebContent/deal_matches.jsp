@@ -24,7 +24,7 @@
 			productIdAndProductMap = SaxParserProductXMLdataStore.getProductHashMap();
 			String line=null; %>
 			<h2>Welcome to Click N Pick</h2><br>
-			<h2>Price-Match Guaranteed</h2>
+			<h2>We beat our competitors in all aspects. Price-Match Guaranteed</h2>
 
 			<%
 			  for(Map.Entry<String, Product> entry : productIdAndProductMap.entrySet()) {
