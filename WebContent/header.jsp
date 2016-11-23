@@ -132,8 +132,10 @@
 	 <li class=""><a href="contact.html">Contact</a></li> -->
 	 <li style="display: -webkit-box;">
 	 <%if(userName != null){
-		 %><a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
-		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
+	 %>
+	 	<a href="deal_matches.jsp"><span class="btn btn-large btn-success">Deal Matcher</span></a>
+	 	<a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+		<a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
 	 <%} else {
 		 %>
 		 <a href="login.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
