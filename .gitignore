@@ -50,3 +50,5 @@ Temporary Items
 .classpath
 .classpath
 build/classes/com/csp595/utilities/MySqlUtil.class
+.classpath
+*.class

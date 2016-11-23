@@ -231,15 +231,21 @@ public class MySqlUtil {
 	/**
 	 * Method to get user order list.
 	 */
-	public static Map<String, Order> getUserOrderList(String userName){
+	public static Map<String, Order> getUserOrderList(String userName, String role){
 		Connection connection = getConnection();
 		Map<String, Order> orderHashMap = new HashMap<String, Order>();
 		if (connection != null && userName != null) {
-			String sql = "SELECT * FROM "+ORDERTABLE+" WHERE "+Constants.Orders.FK_USER_NAME_COL+" = ?";
-			//String sql = "SELECT * FROM ORDERS WHERE fk_user_name = 'b'";
+			String sql;
+			if (role.equals(ROLE_CUSTOMER)){
+				sql = "SELECT * FROM "+ORDERTABLE+" WHERE "+Constants.Orders.FK_USER_NAME_COL+" = ?";
+			} else {
+				sql = "SELECT * FROM "+ORDERTABLE;
+			}
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				preparedStatement.setString(1, userName);
+				if(role.equals(ROLE_CUSTOMER)){
+					preparedStatement.setString(1, userName);
+				}
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
 					List<Product> productList = new ArrayList<Product>();
