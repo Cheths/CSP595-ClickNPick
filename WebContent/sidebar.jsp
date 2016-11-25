@@ -49,7 +49,7 @@ if(myCartCount == 0){
 			</li>
 			<li><a href="products.html">MEN [18]</a></li>
 			<li><a href="products.html">WOMEN [14]</a></li>
-			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
+			<li><a href="Donation.jsp"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
 		<div class="thumbnail">
