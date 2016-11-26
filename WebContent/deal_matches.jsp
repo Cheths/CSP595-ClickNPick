@@ -33,30 +33,30 @@
 					reader = new BufferedReader(new FileReader(new File(Constants.TOMCAT_HOME+"/webapps/ClickNPick/DealMatches.txt")));
 					line=reader.readLine();
 					if(line==null) { 
-				%>
-				<h2 align='center'>No Offers Found</h2>
-				<%	
-				}else{ 
-					  do {
+						%>
+						<h2 align='center'>No Offers Found</h2>
+						<%	
+					}else{ 
+					   do {
 							if(line.toLowerCase().contains(entry.getValue().getName().toLowerCase())) {
 								dealMatchedProducts.add(entry.getValue());
-				%>
-				<h5><%=line.substring(0, line.indexOf("http"))%></h5>
-					<a href=<%=line.substring(line.indexOf("http"),line.length())%>>
-					<%=line.substring(line.indexOf("http"), line.length())%></a>
-					<br>
-					<%		selectedproducts.put(entry.getKey(),entry.getValue()); 
-						   } 
-						} while((line = reader.readLine()) != null); 
+								%>
+								<h5><%=line.substring(0, line.indexOf("http"))%></h5>
+								<a href=<%=line.substring(line.indexOf("http"),line.length())%>>
+								<%=line.substring(line.indexOf("http"), line.length())%></a>
+								<br>
+								<%		
+								selectedproducts.put(entry.getKey(),entry.getValue()); 
+							} 
+					    } while((line = reader.readLine()) != null); 
 					}
 				}
 			}
-			%>
-			<%for(Product product : dealMatchedProducts) {%>
+			for(Product product : dealMatchedProducts) {%>
 			<li class="span3">
 			<div class="thumbnail">
 				<a href="product_details.jsp?productId=<%=product.getId()%>"><img
-					src=<%= product.getImage() %> alt="" /></a>
+					src="themes/images/products/new/<%= product.getImage() %>" alt="" /></a>
 				<div class="caption">
 					<h5><%=product.getName() %></h5>
 					<h4 style="text-align: center">
