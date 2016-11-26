@@ -24,32 +24,35 @@ if(myCartCount == 0){
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li> -->
-			<li class="subMenu"><a> CLOTHES </a>
+			<li class="subMenu"><a> WOMEN  </a>
 			<ul style="display:none">
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing </a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes </a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Hand Bags </a></li>	
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Clothings </a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Shoes </a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Clothing </a></li>												
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes </a></li>												
+				<li><a href="products.jsp?gender=female&category=tops"><i class="icon-chevron-right"></i>Tops,T-Shirts & Shirts </a></li>
+				<li><a href="products.jsp?gender=female&category=jeans"><i class="icon-chevron-right"></i>Jeans </a></li>												
+				<li><a href="products.jsp?gender=female&category=sweaters"><i class="icon-chevron-right"></i>Sweaters</a></li>	
+				<li><a href="products.jsp?gender=female&category=jackets"><i class="icon-chevron-right"></i>Jackets</a></li>
+				<li><a href="products.jsp?gender=female&category=blazers"><i class="icon-chevron-right"></i>Blazers</a></li>												
 			</ul>
+			</li>
+			<li class="subMenu"><a>MEN</a>
+				<ul style="display:none">
+					<li><a href="products.jsp?gender=male&category=tshirt"><i class="icon-chevron-right"></i>T Shirts</a></li>
+					<li><a href="products.jsp?gender=male&category=casual"><i class="icon-chevron-right"></i>Casual Shirts and Trousers</a></li>												
+					<li><a href="products.jsp?gender=male&category=formal"><i class="icon-chevron-right"></i>Formal Shirts and Trousers</a></li>	
+					<li><a href="products.jsp?gender=male&category=jeans"><i class="icon-chevron-right"></i>Jeans</a></li>
+					<li><a href="products.jsp?gender=male&category=sweater"><i class="icon-chevron-right"></i>Sweaters</a></li>												
+					<li><a href="products.jsp?gender=male&category=jacket"><i class="icon-chevron-right"></i>Jackets</a></li>												
+				</ul>
 			</li>
 			<li class="subMenu"><a>KIDS</a>
 				<ul style="display:none">
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  </a></li>
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils </a></li>												
-					<li><a href="products.html"><i class="icon-chevron-right"></i>French Rabbit </a></li>	
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Louis Bernard  </a></li>
-					<li><a href="products.html"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) </a></li>												
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Other Liquors & Wine </a></li>												
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Garden </a></li>												
-					<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong </a></li>												
-				</ul>
+					<li><a href="products.jsp?gender=kids&category=clothingsets"><i class="icon-chevron-right"></i>Clothing Sets</a></li>
+					<li><a href="products.jsp?gender=kids&category=boys"><i class="icon-chevron-right"></i>Boys T-Shirts</a></li>												
+					<li><a href="products.jsp?gender=kids&category=girls"><i class="icon-chevron-right"></i>Girls Tops</a></li>	
+					<li><a href="products.jsp?gender=kids&category=dresses"><i class="icon-chevron-right"></i>Girls Dresses</a></li>
+			    </ul>
 			</li>
-			<li><a href="products.html">MEN </a></li>
-			<li><a href="products.html">WOMEN </a></li>
-			<li><a href="products.html"><blink>DONATE A SMILE :) </blink></a></li>			
+			
+			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
 		<div class="thumbnail">

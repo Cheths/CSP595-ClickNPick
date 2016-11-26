@@ -45,10 +45,4 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-/build/
-
-.classpath
-.classpath
-build/classes/com/csp595/utilities/MySqlUtil.class
-.classpath
 *.class
