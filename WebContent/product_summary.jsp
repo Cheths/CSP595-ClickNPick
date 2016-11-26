@@ -67,7 +67,7 @@
 											checkoutAmount += individualProductTotal;
 							%>
 							<tr>
-								<td><img width="60" src=<%= product.getImage() %>
+								<td><img width="60" src="themes/images/products/new/<%= product.getImage() %>"
 									alt="" /></td>
 								<td><%=product.getName()%><br />Color : black, Material :
 									metal</td>

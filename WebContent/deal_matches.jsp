@@ -54,7 +54,7 @@
 				}
 			}
 			for(Product product : dealMatchedProducts) {%>
-			<li class="span3">
+			<li class="span3" style="display:block">
 			<div class="thumbnail">
 				<a href="product_details.jsp?productId=<%=product.getId()%>"><img
 					src="themes/images/products/new/<%= product.getImage() %>" alt="" /></a>
