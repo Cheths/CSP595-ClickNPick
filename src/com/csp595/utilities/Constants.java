@@ -2,7 +2,27 @@ package com.csp595.utilities;
 
 public class Constants {
 	
+	static final String ROLE_CUSTOMER = "Customer";
+	static final String ROLE_SALESMAN = "Salesman";
+	static final String ROLE_STORE_MANAGER = "Store Manager";
+	
+	public interface Product{
+		static final String PRODUCTTABLE = "PRODUCT";
+		static final String ID_COL = "id";
+		static final String GEN_COL = "gender";
+		static final String CAT_COL = "category";
+		static final String DESC_COL = "description";
+		static final String TYPE_COL = "type";
+		static final String NAME_COL = "name";
+		static final String COND_COL = "condition";
+		static final String MFG_COL = "manufacturer";
+		static final String IMAGE_COL = "image";
+		static final String DISCOUNT_COL = "discount";
+		static final String PRICE_COL = "price";
+	}
+	
 	public interface Orders{
+		static final String ORDERTABLE = "ORDERS";
 		public static String ID_COL = "id";
 		public static String FK_PROD_ID_COL = "fk_product_ids";
 		public static String FK_USER_NAME_COL = "fk_user_name";
@@ -23,15 +43,18 @@ public class Constants {
 	}
 
 	public interface Coupon{
+		static final String COUPONTABLE = "COUPONS";
 		public static String COUPON_CODE_COL = "coupon_code";
 		public static String DISCOUNT_COL = "discount";
 		public static String USER_NAME_COL = "user_name";
 	}
 	
 	public interface User{
+		static final String USERTABLE = "USER";
 		public static String ID_COL = "id";
 		public static String USERNAME_COL = "username";
 		public static String ROLE_COL = "role";
+		public static String PWD_COL = "password";
 	}
 	
 	public static String TOMCAT_HOME = System.getProperty("catalina.home").replace("\\", "/");
