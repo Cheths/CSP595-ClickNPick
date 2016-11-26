@@ -61,6 +61,7 @@
 <% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
 	<% 
 		String userName = (String) session.getAttribute("userName");
+	    String userRole = (String) session.getAttribute("userRole");
 		//String myCartShoppingItemId = (String)session.getAttribute("shoppingItemId");
 		String user = "User";
 		int myCartCount = 0;
@@ -132,7 +133,11 @@
 	 <li class=""><a href="contact.html">Contact</a></li> -->
 	 <li style="display: -webkit-box;">
 	 <%if(userName != null){
-		 %><a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+		 if(userRole.equals("Store Manager")){%>
+			 <a href="admin_operations.jsp"><span class="btn btn-large btn-success">Admin</span></a>
+	 	<%} %>
+		 <a href="deal_matches.jsp"><span class="btn btn-large btn-success">Deal Matcher</span></a>
+		 <a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
 		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
 	 <%} else {
 		 %>

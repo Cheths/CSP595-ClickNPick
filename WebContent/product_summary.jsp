@@ -10,7 +10,10 @@
 	<script type="text/javascript">
 		function addQty() {
 			document.getElementById("appendedInputButtons");
-		}
+		};
+		function removeItem() {
+			alert("inside Remove fn");
+		};
 	</script>
 	<!-- Header End====================================================================== -->
 	<%
@@ -29,7 +32,7 @@
 
 					<%
 						double checkoutAmount = 0;
-						if (shoppingItemId != null) {
+						if ((shoppingItemId != null) && !(shoppingItemId.equals(""))) {
 					%>
 					<table class="table table-bordered">
 						<thead>
@@ -39,7 +42,7 @@
 								<th>Quantity/Update</th>
 								<th>Price</th>
 								<th>Discount</th>
-								<th>Tax</th>
+								<!-- <th>Tax</th> -->
 								<th>Total</th>
 							</tr>
 						</thead>
@@ -60,12 +63,11 @@
 											totalPrice += price;
 											double discount = product.getDiscount();
 											totalDiscount += discount;
-											totalTax += tax;
-											double individualProductTotal = price - discount + tax;
+											double individualProductTotal = price - discount;
 											checkoutAmount += individualProductTotal;
 							%>
 							<tr>
-								<td><img width="60" src=<%= product.getImage() %>
+								<td><img width="60" src="themes/images/products/new/<%= product.getImage() %>"
 									alt="" /></td>
 								<td><%=product.getName()%><br />Color : black, Material :
 									metal</td>
@@ -78,19 +80,22 @@
 										<button class="btn" type="button">
 											<i class="icon-plus"></i>
 										</button>
-										<button class="btn btn-danger" type="button">
+										<a href="UtilityServlet?removeItem=<%=product.getId()%>" class="btn btn-danger" ><i class="icon-remove icon-white"></i></a>
+										<!-- <button class="btn btn-danger" type="button">
 											<i class="icon-remove icon-white"></i>
-										</button>
+										</button> -->
 									</div>
 								</td>
 								<td>$<%=product.getPrice()%></td>
 								<td>$<%=product.getDiscount()%></td>
-								<td>$<%=tax%></td>
+								<%-- <td>$<%=tax%></td> --%>
 								<td>$<%=individualProductTotal%></td>
 							</tr>
 							<%
 								}
 									}
+									totalTax = checkoutAmount * (0.05);
+									checkoutAmount = Math.floor(checkoutAmount + totalTax);
 							%>
 
 							<tr>
@@ -103,7 +108,7 @@
 							</tr>
 							<tr>
 								<td colspan="6" style="text-align: right">Total Tax:</td>
-								<td>$<%=totalTax%></td>
+								<td>5%</td>
 							</tr>
 							<tr>
 								<td colspan="6" style="text-align: right"><strong>TOTAL
@@ -125,7 +130,7 @@
 											<label class="control-label"><strong>
 													VOUCHERS CODE: </strong> </label>
 											<div class="controls">
-												<input type="text" class="input-medium" placeholder="CODE">
+												<input type="text" name="couponCode" class="input-medium" placeholder="CODE">
 												<button type="submit" class="btn">ADD</button>
 											</div>
 										</div>
@@ -143,11 +148,10 @@
 						}
 					%>
 
-
 					<a href="index.jsp" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a> 
 					<% if (shoppingItemId != null) {%>
 						<a href="shipping_info.jsp?checkoutAmount=<%=checkoutAmount%>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
-<% } %>
+					<% } %>
 				</div>
 			</div>
 		</div>

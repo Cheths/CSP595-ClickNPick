@@ -5,6 +5,21 @@
 <!-- Style -->
 <div class="row">
 	<div class="span9">
+		<%
+			String userCreationStatus = (String) session.getAttribute("userCreationStatus");
+			if (userCreationStatus != null) {
+				if (userCreationStatus.equals("Failure")) {
+					session.removeAttribute("userCreationStatus");
+		%>
+		<div class="alert" style="background-color: #f44336;">
+			<span class="closebtn"
+				onclick="this.parentElement.style.display='none';">&times;</span> <strong>User
+				Already Exists!</strong>
+		</div>
+		<%
+			}
+			}
+		%>
 		<ul class="breadcrumb">
 			<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 			<li class="active">Registration</li>
@@ -31,8 +46,10 @@
 
 				function validatePasswordFields() {
 					var password = document.getElementById("password").value;
-					var confirmPassword = document.getElementById("confirmPassword").value;
-					if (password != null && confirmPassword != null	&& password == confirmPassword) {
+					var confirmPassword = document
+							.getElementById("confirmPassword").value;
+					if (password != null && confirmPassword != null
+							&& password == confirmPassword) {
 						return true;
 					} else {
 						alert("Passwords must match");
@@ -128,9 +145,9 @@
 						1)<sup>*</sup>
 					</label>
 					<div class="controls">
-						<input type="text" required="required" id="address_1" name="address_1"
-							placeholder="Address line 1" /> <span>Street address,
-							P.O. box, company name, c/o</span>
+						<input type="text" required="required" id="address_1"
+							name="address_1" placeholder="Address line 1" /> <span>Street
+							address, P.O. box, company name, c/o</span>
 					</div>
 				</div>
 
@@ -139,9 +156,9 @@
 						2)<sup>*</sup>
 					</label>
 					<div class="controls">
-						<input type="text" required="required" id="address_2s" name="address_2"
-							placeholder="Address line 2" /> <span>Apartment, suite,
-							unit, building, floor, etc.</span>
+						<input type="text" required="required" id="address_2s"
+							name="address_2" placeholder="Address line 2" /> <span>Apartment,
+							suite, unit, building, floor, etc.</span>
 					</div>
 				</div>
 				<div class="control-group">
