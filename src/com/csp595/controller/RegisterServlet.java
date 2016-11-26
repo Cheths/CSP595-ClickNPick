@@ -20,11 +20,11 @@ public class RegisterServlet extends HttpServlet {
 		String role = request.getParameter("role");
 		HttpSession session = request.getSession(true);
 
-		int flagUserExists = MySqlUtil.checkIfUserExists(username, role);
+		int flagUserExists = MySqlUtil.checkIfUserExists(username, role,null);
 		if (flagUserExists == 1) {
 			session.setAttribute("userCreationStatus", "Failure");
 			System.out.println("Username Already Exists!");
-			response.sendRedirect("HomeServlet");
+			response.sendRedirect("register.jsp");
 		} else {
 			createUserAccount(username, password, role, request, response);
 		}
@@ -32,13 +32,15 @@ public class RegisterServlet extends HttpServlet {
 
 	private void createUserAccount(String username, String password, String role, HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
-		MySqlUtil.insertQueryForUserTable(username, password, role);
+		MySqlUtil.insertQueryForUserTable(request.getParameter("title"),request.getParameter("first_name"),request.getParameter("last_name"),request.getParameter("email_id"),
+				password,request.getParameter("date_of_birth"),username,role,request.getParameter("address_1"),request.getParameter("address_2"),
+				request.getParameter("city"),request.getParameter("state"),request.getParameter("zip"),	request.getParameter("country"),request.getParameter("phone"));
 		
 		session.setAttribute("userName", username);
 		session.setAttribute("userRole", role);
 		session.setAttribute("userCreationStatus", "Success");
 		try {
-			response.sendRedirect("HomeServlet");
+			response.sendRedirect("index.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -11,12 +11,41 @@ public class Product {
 	private String condition;
 	private String description;
 	private String image;
+	private String gender;
+	
+	public Product() {
+	}
+	
+	public Product(String id, String name, String gender,String category, double price, double discount, String manufacturer,String condition, String description, String image) {
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.discount = discount;
+		this.manufacturer = manufacturer;
+		this.condition = condition;
+		this.description = description;
+		this.image = image;
+		this.gender=gender;
+	}
+
+
+
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
 	public String getName() {
 		return name;
 	}

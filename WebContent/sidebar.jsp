@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<div id="mainBody">
-	<div class="container">
-	<div class="row">
+<% String display = "";
+String checkOutAmount = (String) session.getAttribute("checkoutAmount");
+if(myCartCount == 0){
+	display = "No Items in Cart";	
+} else {
+	display = myCartCount+" Items in your cart";
+} %>
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="product_summary.jsp?myCart=true"><img src="themes/images/ico-cart.png" alt="cart"><%=display %> 
+		<% if(checkOutAmount != null){%>
+			<span class="badge badge-warning pull-right">$ <%=checkOutAmount %></span>			
+		<%} %>
+		</a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<!-- <li class="subMenu open"><a> ELECTRONICS [230]</a>
 				<ul>
@@ -41,29 +49,18 @@
 			</li>
 			<li><a href="products.html">MEN [18]</a></li>
 			<li><a href="products.html">WOMEN [14]</a></li>
-			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
+			<li><a href="Donation.jsp"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
-		  <div class="thumbnail">
-			<img src="themes/images/products/shirts1.jpg" alt="Clicknpick men's casual"/>
+		<div class="thumbnail">
+			<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
 			<div class="caption">
-			  <h5>Casual white slim fit</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			  <h5>Payment Methods</h5>
 			</div>
-		  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/products/women5.jpg" title="Clicknpick single piece" alt="Clicknpick dress">
-				<div class="caption">
-				  <h5>Women's dress</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-				</div>
-			  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-				<div class="caption">
-				  <h5>Payment Methods</h5>
-				</div>
-			  </div>
+		</div>
+		<a href="trending_products.jsp">
+		<img style="width: 250px; height: 75px;" src="themes/images/trendingnow.png" alt="">
+		</a>
 	</div>
 <!-- Sidebar end=============================================== -->
 

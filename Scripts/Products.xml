@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Products>
+	<product id="001" category="Smart Phones">
+		<name>Htc One M9</name>
+		<retailer>HTC</retailer>
+		<price>329</price>
+		<discount>5</discount>
+		<image>themes/images/products/htc/htcM9.jpg</image>
+		<description>Smartphone with 5.00-inch 1080x1920 display powered by 1.5GHz processor alongside 3GB RAM and 20-megapixel rear camera</description>
+	</product>
+	<product id="002" category="Smart Phones">
+		<name>iphone 7</name>
+		<retailer>Apple</retailer>
+		<price>850</price>
+		<discount>10</discount>
+		<image>themes/images/products/iphone/iphone6s-1.png</image>
+		<description>Features 3G, 4.7″ LED-backlit IPS LCD display, 12 MP camera, Wi-Fi, GPS, Bluetooth.</description>
+	</product>
+	<product id="003" category="Smart Phones">
+		<name>One Plus One</name>
+		<retailer>One Plus</retailer>
+		<price>175</price>
+		<discount>5</discount>
+		<image>themes/images/products/oneplus/OnePlusOne.png</image>
+		<description> Mobile with 5.50-inch 1080x1920 display powered by 2.5GHz processor alongside 3GB RAM and 13-megapixel rear camera</description>
+	</product>
+	<product id="004" category="Tablets">
+		<name>Microsoft Surface 3 - Silver</name>
+		<retailer>Microsoft</retailer>
+		<price>559</price>
+		<discount>10</discount>
+		<image>themes/images/products/microsoft.jpg</image>
+		<description>Tablet with 12.00-inch 2160x1440 display alongside 4GB RAM and 5-megapixel rear camera</description>
+	</product>
+	<product id="005" category="Tablets">
+		<name>Samsung Galaxy Tab E (8.0 inches) in Black</name>
+		<retailer>Samsung</retailer>
+		<price>225</price>
+		<discount>10</discount>
+		<image>themes/images/products/samsung.jpg</image>
+		<description>Features a 8-inch display with resolution of 800 ... 12.67 oz (359 g) the average is 20.8 oz (594 g)</description>
+	</product>
+	<product id="006" category="Tablets">
+		<name>Acer - Iconia - 8" - Intel Atom - 32gb - Slate (Grey)</name>
+		<retailer>Acer</retailer>
+		<price>110</price>
+		<discount>15</discount>
+		<image>themes/images/products/acer.jpg</image>
+		<description>Size: 32 GB. Product Description. Acer Iconia W4-820-2894 Tablet comes ... Windows 8.1, 8-Inch Display; Intel Atom Quad-Core Z3740 1.33 GHz Processor; 32 GB Flash Memory, 2 GB RAM</description>
+	</product>
+	<product id="007" category="Laptop">
+		<name>Dell XPS 13 Non-Touch Laptops - DNCWT5154S, 13.3 inch</name>
+		<retailer>Dell</retailer>
+		<price>799</price>
+		<discount>30</discount>
+		<image>themes/images/products/dell.jpg</image>
+		<description>(Core i3, 4GB, 128GB) Features 8.0 ... 2015 with its newly redesigned XPS 13 laptop, which squeezed a 13-inch laptop into ... Display size/resolution, 13.3-inch 1,920 x 1,080 screen</description>
+	</product>
+	<product id="008" category="Laptop">
+		<name>Hp - 14" Chromebook - Intel Celeron Turbo Silver/snow White</name>
+		<retailer>Hp</retailer>
+		<price>270</price>
+		<discount>5</discount>
+		<image>themes/images/products/hp.jpg</image>
+		<description> Style: Chromebook. Product Description. HP 14-x010nr Chrome book ... HP Chromebook 14-ak010nr 14-Inch (Intel Celeron, 2 GB RAM, 16 GB SSD)</description>
+	</product>
+	<product id="009" category="Laptop">
+		<name>Apple MacBook Pro with Retina Display 13.3"</name>
+		<retailer>Apple</retailer>
+		<price>1300</price>
+		<discount>10</discount>
+		<image>themes/images/products/mac.jpg</image>
+		<description>Apple MacBook Pro with Retina display 2015 (13-inch, 128GB) ... Features 9.0 ... Display size/resolution, 13.3-inch 2,560x1,600 screen</description>
+	</product>
+	<product id="0010" category="TV">
+		<name>Toshiba - 32" Class (31.5" Diag.) - Led - 720p - Hdtv - Black</name>
+		<retailer>Toshiba</retailer>
+		<price>115</price>
+		<discount>5</discount>
+		<image>themes/images/products/toshiba.jpg</image>
+		<description>Toshiba 32" Class (31.5" Diag.) - LED - 720p - Google Cast - HDTV: 720p resolution; 60Hz refresh rate; ... Model: 32L221U; SKU: 4809501 ... LED - 720p </description>
+	</product>
+	<product id="0011" category="TV">
+		<name>Lg - 50" Class - (49.6" Diag.) - Led - 1080p - Smart - Hdtv - Black</name>
+		<retailer>Lg</retailer>
+		<price>379</price>
+		<discount>15</discount>
+		<image>themes/images/products/lg.jpg</image>
+		<description>LG 50" Class - LED - 1080p - Smart - HDTV: 3 HDMI inputs; 3 USB 2.0 ports; 1080p resolution; TruMotion 120; Triple XD Engine</description>
+	</product>
+	<product id="0012" category="TV">
+		<name>Haier 55" 4K Ultra HD TV</name>
+		<retailer>Haier</retailer>
+		<price>645</price>
+		<discount>20</discount>
+		<image>themes/images/products/haier.jpg</image>
+		<description>Features. 55" 4k Ultra HD TV w/ HDCP 2.2; Optical Output; 3840 X 2160 Resolution; 60hz Refresh Rate</description>
+	</product>
+</Products>
