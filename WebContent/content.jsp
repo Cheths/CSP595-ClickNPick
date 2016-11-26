@@ -198,7 +198,7 @@
 			  </div>
 			  </div>
 		</div>
-		<h4>Latest Products </h4>
+	<!--  	<h4>Latest Products </h4>
 			  <ul class="thumbnails">
 			<%
 				if (!productHashMap.isEmpty()) {
@@ -208,7 +208,7 @@
 			<li class="span3">
 				<div class="thumbnail">
 					<a href="product_details.jsp?productId=<%=product.getId()%>"><img
-						src=<%= product.getImage() %> alt="" /></a>
+						src="themes/images/products/<%= product.getImage() %>" alt="" /></a>
 					<div class="caption">
 						<h5><%=product.getName() %></h5>
 						<h4 style="text-align: center">
@@ -228,7 +228,7 @@
 				}
 				}
 			%>
-		</ul>	
+		</ul>   -->	
 
 		</div>		
 		</div>

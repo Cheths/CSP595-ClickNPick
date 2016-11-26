@@ -32,6 +32,7 @@ public class MySqlUtil {
 	static final String ROLE_STORE_MANAGER = "Store Manager";
 	
 	static final String P_ID_COL = "id";
+	static final String P_GEN_COL = "gender";
 	static final String P_CAT_COL = "category";
 	static final String P_DESC_COL = "description";
 	static final String P_TYPE_COL = "type";
@@ -149,7 +150,7 @@ public class MySqlUtil {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
-					product = new Product(resultSet.getString(P_ID_COL), resultSet.getString(P_NAME_COL), resultSet.getString(P_CAT_COL), resultSet.getInt(P_PRICE_COL), 
+					product = new Product(resultSet.getString(P_ID_COL), resultSet.getString(P_NAME_COL),resultSet.getString(P_GEN_COL), resultSet.getString(P_CAT_COL), resultSet.getInt(P_PRICE_COL), 
 							resultSet.getInt(P_DISCOUNT_COL), resultSet.getString(P_MFG_COL), resultSet.getString(P_COND_COL), resultSet.getString(P_DESC_COL), resultSet.getString(P_IMAGE_COL));
 					productHashMap.put(resultSet.getString(P_ID_COL), product);
 				}
@@ -179,6 +180,10 @@ public class MySqlUtil {
 					product.setId(resultSet.getString("id"));
 					product.setName(resultSet.getString("name"));
 					product.setPrice(resultSet.getDouble("price"));
+					product.setImage(resultSet.getString("image"));
+					product.setGender(resultSet.getString("gender"));
+					product.setCategory(resultSet.getString("category"));
+					product.setDescription(resultSet.getString("description"));
 					productHashMap.put(resultSet.getString("id"), product);
 				}
 				connection.close();
