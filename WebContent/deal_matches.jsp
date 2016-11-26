@@ -35,7 +35,8 @@
 					if(line==null) { 
 						%>
 						<h2 align='center'>No Offers Found</h2>
-						<%	
+						<%
+					  break;	
 					}else{ 
 					   do {
 							if(line.toLowerCase().contains(entry.getValue().getName().toLowerCase())) {
