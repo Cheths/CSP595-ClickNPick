@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import com.csp595.beans.Coupon;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
-import com.csp595.utilities.Constants.Orders;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -22,26 +21,6 @@ public class MySqlUtil {
 
 	static final String DB_URL = "jdbc:mysql://localhost:3306/db_clicknpick";
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String USERTABLE = "USER";
-	static final String ORDERTABLE = "ORDERS";
-	static final String PRODUCTTABLE = "PRODUCT";
-	static final String COUPONTABLE = "COUPONS";
-	
-	static final String ROLE_CUSTOMER = "Customer";
-	static final String ROLE_SALESMAN = "Salesman";
-	static final String ROLE_STORE_MANAGER = "Store Manager";
-	
-	static final String P_ID_COL = "id";
-	static final String P_GEN_COL = "gender";
-	static final String P_CAT_COL = "category";
-	static final String P_DESC_COL = "description";
-	static final String P_TYPE_COL = "type";
-	static final String P_NAME_COL = "name";
-	static final String P_COND_COL = "condition";
-	static final String P_MFG_COL = "manufacturer";
-	static final String P_IMAGE_COL = "image";
-	static final String P_DISCOUNT_COL = "discount";
-	static final String P_PRICE_COL = "price";
 	
 	private static List<Product> productList = new ArrayList<Product>();
 	private static HashMap<String, Product> productHashMap;
@@ -75,9 +54,9 @@ public class MySqlUtil {
 		int result = 0;
 		if(connection != null){
 
-			String sql = "SELECT u.username FROM "+ USERTABLE +" u WHERE u.username = ? AND u.role = ?";
+			String sql = "SELECT u."+Constants.User.USERNAME_COL+" FROM "+ Constants.User.USERTABLE +" u WHERE u."+Constants.User.USERNAME_COL+" = ? AND u."+Constants.User.ROLE_COL+" = ?";
 			if(password != null){
-				sql=sql+" AND u.password = ?"; 
+				sql=sql+" AND u."+Constants.User.PWD_COL+" = ?"; 
 			}
 			PreparedStatement preparedStatement;
 			try {
@@ -109,7 +88,7 @@ public class MySqlUtil {
 		
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ USERTABLE +"(title,first_name,last_name,email_id,password,date_of_birth,username,role,address_1,address_2,"
+			String sql = "INSERT into "+ Constants.User.USERTABLE +"(title,first_name,last_name,email_id,password,date_of_birth,username,role,address_1,address_2,"
 					+ "city,state,zip,country,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
@@ -144,15 +123,16 @@ public class MySqlUtil {
 		Product product;
 		Connection connection = getConnection();
 		if(connection != null){
-			String sql = "SELECT * FROM "+PRODUCTTABLE;
+			String sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE;
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
-					product = new Product(resultSet.getString(P_ID_COL), resultSet.getString(P_NAME_COL),resultSet.getString(P_GEN_COL), resultSet.getString(P_CAT_COL), resultSet.getInt(P_PRICE_COL), 
-							resultSet.getInt(P_DISCOUNT_COL), resultSet.getString(P_MFG_COL), resultSet.getString(P_COND_COL), resultSet.getString(P_DESC_COL), resultSet.getString(P_IMAGE_COL));
-					productHashMap.put(resultSet.getString(P_ID_COL), product);
+					product = new Product(resultSet.getString(Constants.Product.ID_COL), resultSet.getString(Constants.Product.NAME_COL),resultSet.getString(Constants.Product.GEN_COL), resultSet.getString(Constants.Product.CAT_COL), 
+							resultSet.getInt(Constants.Product.PRICE_COL), resultSet.getInt(Constants.Product.DISCOUNT_COL), resultSet.getString(Constants.Product.MFG_COL), resultSet.getString(Constants.Product.COND_COL), 
+							resultSet.getString(Constants.Product.DESC_COL), resultSet.getString(Constants.Product.IMAGE_COL));
+					productHashMap.put(resultSet.getString(Constants.Product.ID_COL), product);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -170,21 +150,21 @@ public class MySqlUtil {
 		Connection connection = getConnection();
 		
 		if (connection != null && productHashMap.isEmpty()) {
-			String sql = "SELECT * FROM PRODUCT";
+			String sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE+"";
 			try {
 				Statement statement = (Statement) connection.createStatement();
 			
 				ResultSet resultSet = statement.executeQuery(sql);
 				while (resultSet.next()){
 					Product product = new Product();
-					product.setId(resultSet.getString("id"));
-					product.setName(resultSet.getString("name"));
-					product.setPrice(resultSet.getDouble("price"));
-					product.setImage(resultSet.getString("image"));
-					product.setGender(resultSet.getString("gender"));
-					product.setCategory(resultSet.getString("category"));
-					product.setDescription(resultSet.getString("description"));
-					productHashMap.put(resultSet.getString("id"), product);
+					product.setId(resultSet.getString(Constants.Product.ID_COL));
+					product.setName(resultSet.getString(Constants.Product.NAME_COL));
+					product.setPrice(resultSet.getDouble(Constants.Product.PRICE_COL));
+					product.setImage(resultSet.getString(Constants.Product.IMAGE_COL));
+					product.setGender(resultSet.getString(Constants.Product.GEN_COL));
+					product.setCategory(resultSet.getString(Constants.Product.CAT_COL));
+					product.setDescription(resultSet.getString(Constants.Product.DESC_COL));
+					productHashMap.put(resultSet.getString(Constants.Product.ID_COL), product);
 				}
 				connection.close();
 			} catch (SQLException e) {
@@ -200,7 +180,7 @@ public class MySqlUtil {
 		
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ORDERTABLE+"("+Constants.Orders.ID_COL+","+Constants.Orders.FK_PROD_ID_COL+","+Constants.Orders.FK_USER_NAME_COL+
+			String sql = "INSERT into "+Constants.Orders.ORDERTABLE+"("+Constants.Orders.ID_COL+","+Constants.Orders.FK_PROD_ID_COL+","+Constants.Orders.FK_USER_NAME_COL+
 					","+Constants.Orders.ORDER_AMT_COL+","+Constants.Orders.ORDER_DT_COL+","+Constants.Orders.EXP_DEL_DT_COL+","+Constants.Orders.SHIP_ADDR_1_COL+
 					","+Constants.Orders.SHIP_ADDR_2_COL+","+Constants.Orders.CITY_COL+","+Constants.Orders.STATE_COL+","+Constants.Orders.COUNTRY_COL+
 					","+Constants.Orders.ZIP_COL+","+Constants.Orders.CARD_NO_COL+","+Constants.Orders.NAME_ON_CARD_COL+","+Constants.Orders.CVV_COL+
@@ -243,14 +223,14 @@ public class MySqlUtil {
 		Map<String, Order> orderHashMap = new HashMap<String, Order>();
 		if (connection != null && userName != null) {
 			String sql;
-			if (role.equals(ROLE_CUSTOMER)){
-				sql = "SELECT * FROM "+ORDERTABLE+" WHERE "+Constants.Orders.FK_USER_NAME_COL+" = ?";
+			if (role.equals(Constants.ROLE_CUSTOMER)){
+				sql = "SELECT * FROM "+Constants.Orders.ORDERTABLE+" WHERE "+Constants.Orders.FK_USER_NAME_COL+" = ?";
 			} else {
-				sql = "SELECT * FROM "+ORDERTABLE;
+				sql = "SELECT * FROM "+Constants.Orders.ORDERTABLE;
 			}
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				if(role.equals(ROLE_CUSTOMER)){
+				if(role.equals(Constants.ROLE_CUSTOMER)){
 					preparedStatement.setString(1, userName);
 				}
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -283,7 +263,7 @@ public class MySqlUtil {
 		Connection connection = getConnection();
 		String sql;
 		if(connection != null){
-			sql = "DELETE FROM "+ ORDERTABLE +" WHERE "+Constants.Orders.ID_COL+" = ?";
+			sql = "DELETE FROM "+ Constants.Orders.ORDERTABLE +" WHERE "+Constants.Orders.ID_COL+" = ?";
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, orderId);
@@ -298,7 +278,7 @@ public class MySqlUtil {
 	public static void insertQueryForCouponTable(String couponCode, String userName, String discount) {
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ COUPONTABLE +"(coupon_code,discount,user_name) VALUES (?,?,?)";
+			String sql = "INSERT into "+ Constants.Coupon.COUPONTABLE +"("+Constants.Coupon.COUPON_CODE_COL+","+Constants.Coupon.DISCOUNT_COL+","+Constants.Coupon.USER_NAME_COL+") VALUES (?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
@@ -318,7 +298,7 @@ public class MySqlUtil {
 		Connection connection = getConnection();
 		Map<String, Coupon> couponHashMap = new HashMap<String, Coupon>();
 		if (connection != null) {
-			String sql = "SELECT * FROM "+COUPONTABLE;
+			String sql = "SELECT * FROM "+Constants.Coupon.COUPONTABLE;
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -339,7 +319,7 @@ public class MySqlUtil {
 	public static ArrayList<String> getUserList(){
 		Connection connection = getConnection();
  		ArrayList<String> userList = new ArrayList<String>();
-			String sql = "SELECT "+Constants.User.USERNAME_COL+" FROM "+USERTABLE;
+			String sql = "SELECT "+Constants.User.USERNAME_COL+" FROM "+Constants.User.USERTABLE;
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				ResultSet resultSet = preparedStatement.executeQuery();
