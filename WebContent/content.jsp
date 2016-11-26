@@ -6,14 +6,6 @@
 <html lang="en">
 
 <body>
-<% String userCreationStatus = (String) session.getAttribute("userCreationStatus"); 
-		if(userCreationStatus != null){
-			if(userCreationStatus.equals("Success")){%>
-	 		<div>User created successfully!</div>
-	 	<%} else {%>
-	 		<div>Invalid Credentials!</div>
-	 	<% }}
-	 %>
 	<div id="mainBody">
 	<div class="container">
 	<div class="row">

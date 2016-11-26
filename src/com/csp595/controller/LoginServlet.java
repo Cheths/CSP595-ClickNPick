@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getHeader("Referer"));
 		} else {
 			session.setAttribute("loginError", "true");
-			response.sendRedirect(request.getHeader("Referer"));
+			response.sendRedirect("login.jsp");
 		}
 	}
 
