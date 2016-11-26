@@ -35,7 +35,8 @@
 					if(line==null) { 
 						%>
 						<h2 align='center'>No Offers Found</h2>
-						<%	
+						<%
+					  break;	
 					}else{ 
 					   do {
 							if(line.toLowerCase().contains(entry.getValue().getName().toLowerCase())) {
@@ -53,7 +54,7 @@
 				}
 			}
 			for(Product product : dealMatchedProducts) {%>
-			<li class="span3" style="display: block;">
+			<li class="span3" style="display:block">
 			<div class="thumbnail">
 				<a href="product_details.jsp?productId=<%=product.getId()%>"><img
 					src="themes/images/products/new/<%= product.getImage() %>" alt="" /></a>
