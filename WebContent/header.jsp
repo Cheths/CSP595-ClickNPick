@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.csp595.beans.Product"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -29,21 +32,74 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	
+	<!-- Style -->
+	<style>
+	.alert {
+	    padding: 20px;
+	    color: white;
+	}
+	
+	.closebtn {
+	    margin-left: 15px;
+	    color: white;
+	    font-weight: bold;
+	    float: right;
+	    font-size: 22px;
+	    line-height: 20px;
+	    cursor: pointer;
+	    transition: 0.3s;
+	}
+	
+	.closebtn:hover {
+	    color: black;
+	}
+	</style>
   </head>
-<body>
+<body onload="init()">
+<script type="text/javascript" src="themes/js/autoComplete.js"></script>
+<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
+	<% 
+		String userName = (String) session.getAttribute("userName");
+	    String userRole = (String) session.getAttribute("userRole");
+		//String myCartShoppingItemId = (String)session.getAttribute("shoppingItemId");
+		String user = "User";
+		int myCartCount = 0;
+		if(userName != null){
+			user = userName;
+		}
+	 	
+	 	String shoppingItemId = request.getParameter("shoppingItemId");
+		String sessionShoppingItemId = (String) session.getAttribute("shoppingItemId");
+		String existingShoppingItemId = (sessionShoppingItemId == null)?"":sessionShoppingItemId;
+		String[] csvProductIds = new String[100];
+		if(existingShoppingItemId != null && userName != null){
+			if(shoppingItemId != null){
+				existingShoppingItemId += ","+shoppingItemId;
+				if(existingShoppingItemId.startsWith(",")){
+					existingShoppingItemId = existingShoppingItemId.substring(1);
+				}
+				session.setAttribute("shoppingItemId", existingShoppingItemId);
+			}
+			if(!existingShoppingItemId.equals("")){
+				csvProductIds = existingShoppingItemId.split(",");
+		 		myCartCount = csvProductIds.length;
+			}
+		}
+	 %>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	<div class="span6">Welcome!<strong> <%=user%></strong></div>
 	<div class="span6">
 	<div class="pull-right">
-		<a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<a href="product_summary.jsp?myCart=true"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> 
+		<%if(myCartCount != 0){%>
+			My Cart[<%=myCartCount %>]
+		<%} else {%>
+		My Cart
+		<%} %>
+		</span> </a> 
 	</div>
 	</div>
 </div>
@@ -55,25 +111,41 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
+    <a class="brand" href="index.jsp"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
+		<form class="form-inline navbar-search">
+		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
+		<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		<div id="auto-row">
+			<table id="complete-table" style="position:absolute;width:220px;"></table>
+		</div>
+		 <!-- <select class="srchTxt">
 			<option>All</option>
 			<option>CLOTHES </option>
 			<option>FOOD AND BEVERAGES </option>
 			<option>HEALTH & BEAUTY </option>
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		</select> --> 
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
-	 <li class=""><a href="normal.html">Delivery</a></li>
-	 <li class=""><a href="contact.html">Contact</a></li>
-	 <li class="">
-	 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
+	<!--  <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
+	 <!-- <li class=""><a href="normal.html">Delivery</a></li>
+	 <li class=""><a href="contact.html">Contact</a></li> -->
+	 <li style="display: -webkit-box;">
+	 <%if(userName != null){
+		 if(userRole.equals("Store Manager")){%>
+			 <a href="admin_operations.jsp"><span class="btn btn-large btn-success">Admin</span></a>
+	 	<%} %>
+		 <a href="deal_matches.jsp"><span class="btn btn-large btn-success">Deal Matcher</span></a>
+		 <a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
+	 <%} else {
+		 %>
+		 <a href="login.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
+		 <a href="register.jsp"><span class="btn btn-large btn-success">Sign Up</span></a> 
+		 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
+	 <% } %>
+	 
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -104,70 +176,5 @@
 </div>
 </div>
 <!-- Header End====================================================================== -->
-
-<div id="carouselBlk">
-	<div id="myCarousel" class="carousel slide">
-		<div class="carousel-inner">
-		  <div class="item active">
-		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/1.png" alt="special offers"/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			</div>
-		  </div>
-		  </div>
-		  <div class="item">
-		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="themes/images/carousel/13.png" alt=""/></a>
-				<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		  </div>
-		  </div>
-		  <div class="item">
-		  <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/11.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-			
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/12.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		   
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/1.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			</div>
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="themes/images/carousel/13.png" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		  </div>
-		  </div>
-		</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	  </div> 
-</div>
 </body>
 </html>

@@ -17,12 +17,12 @@
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true" version="3.0">
   <servlet>
-    <servlet-name>HomeServlet</servlet-name>
-    <servlet-class>com.csp595.controller.HomeServlet</servlet-class>
+    <servlet-name>UtilityServlet</servlet-name>
+    <servlet-class>com.csp595.controller.UtilityServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HomeServlet</servlet-name>
-    <url-pattern>/HomeServlet</url-pattern>
+    <servlet-name>UtilityServlet</servlet-name>
+    <url-pattern>/UtilityServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -41,8 +41,17 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AutoCompleteServlet</servlet-name>
+    <servlet-class>com.csp595.controller.AutoCompleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoCompleteServlet</servlet-name>
+    <url-pattern>/autoComplete</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>com.csp595.controller.HomeServlet</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
