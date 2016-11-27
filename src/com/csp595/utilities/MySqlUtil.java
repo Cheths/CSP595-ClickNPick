@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.csp595.beans.Coupon;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
+import com.csp595.beans.User;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -332,4 +333,27 @@ public class MySqlUtil {
 			}
 		return userList;
 	}
+	
+	public static User getUserBasedOnMailId(String mailId){
+		Connection connection = getConnection();
+		User user = new User();
+		if (connection != null) {
+			String sql = "SELECT "+Constants.User.FIRST_NAME+","+Constants.User.PWD_COL+" FROM "+Constants.User.USERTABLE+" WHERE "+Constants.User.MAIL_ID_COL+"= ?";
+			try {
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, mailId);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()){
+					user = new User(resultSet.getString(Constants.User.FIRST_NAME), resultSet.getString(Constants.User.PWD_COL), mailId);
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		return user;
+		}
+		return null;
+	}
+	
 }

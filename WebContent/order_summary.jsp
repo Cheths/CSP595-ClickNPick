@@ -59,7 +59,7 @@
 								Product product = productHashMap.get(shoppingItemIdArray[i]);
 								if(product != null){%>
 							<tr>
-							<td><img width="60" src=<%=product.getImage() %> alt=""></td>
+							<td><img width="60" src="themes/images/products/new/<%= product.getImage()%>" alt=""></td>
 							<td><%=product.getName() %></td>
 							<td>1</td>
 							<td><%=product.getPrice() %></td>

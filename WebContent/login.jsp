@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.csp595.utilities.ProductHelper"%>
+<%@page import="com.csp595.controller.UtilityServlet"%>
+<%@page import="com.csp595.utilities.MySqlUtil"%>
 <html lang="en">
 <body>
 	<%@include file="header.jsp"%>
@@ -13,6 +16,7 @@
 				<div class="span9">
 					<%
 						String loginError = (String) session.getAttribute("loginError");
+						String mailId = (String) request.getParameter("mailId");
 						if (loginError != null) {
 							if (loginError.equals("true")) {
 								session.removeAttribute("loginError");
@@ -24,6 +28,15 @@
 					</div>
 					<%
 						}
+						} else if(mailId != null){
+							ProductHelper.sendPasswordThroughMail(mailId);
+							%>
+							<div class="alert" style="background-color: #5bb75b;">
+								<span class="closebtn"
+									onclick="this.parentElement.style.display='none';">&times;</span>
+								<strong>An email has been sent to your mail id with the password.</strong>
+							</div>
+							<%
 						}
 					%>
 					<ul class="breadcrumb">
@@ -60,7 +73,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<button type="submit" class="btn">Sign in</button>
-										<a href="forgetpass.html">Forget password?</a>
+										<a href="forget_password.jsp">Forget password?</a>
 									</div>
 								</div>
 							</form>
