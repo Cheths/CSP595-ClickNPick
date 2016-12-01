@@ -24,35 +24,32 @@ if(myCartCount == 0){
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li> -->
-			<li class="subMenu"><a> WOMEN  </a>
+			<li class="subMenu"><a> CLOTHES [840] </a>
 			<ul style="display:none">
-				<li><a href="products.jsp?gender=female&category=tops"><i class="icon-chevron-right"></i>Tops,T-Shirts & Shirts </a></li>
-				<li><a href="products.jsp?gender=female&category=jeans"><i class="icon-chevron-right"></i>Jeans </a></li>												
-				<li><a href="products.jsp?gender=female&category=sweaters"><i class="icon-chevron-right"></i>Sweaters</a></li>	
-				<li><a href="products.jsp?gender=female&category=jackets"><i class="icon-chevron-right"></i>Jackets</a></li>
-				<li><a href="products.jsp?gender=female&category=blazers"><i class="icon-chevron-right"></i>Blazers</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
 			</ul>
-			</li>
-			<li class="subMenu"><a>MEN</a>
-				<ul style="display:none">
-					<li><a href="products.jsp?gender=male&category=tshirt"><i class="icon-chevron-right"></i>T Shirts</a></li>
-					<li><a href="products.jsp?gender=male&category=casual"><i class="icon-chevron-right"></i>Casual Shirts and Trousers</a></li>												
-					<li><a href="products.jsp?gender=male&category=formal"><i class="icon-chevron-right"></i>Formal Shirts and Trousers</a></li>	
-					<li><a href="products.jsp?gender=male&category=jeans"><i class="icon-chevron-right"></i>Jeans</a></li>
-					<li><a href="products.jsp?gender=male&category=sweater"><i class="icon-chevron-right"></i>Sweaters</a></li>												
-					<li><a href="products.jsp?gender=male&category=jacket"><i class="icon-chevron-right"></i>Jackets</a></li>												
-				</ul>
 			</li>
 			<li class="subMenu"><a>KIDS</a>
 				<ul style="display:none">
-					<li><a href="products.jsp?gender=kids&category=clothingsets"><i class="icon-chevron-right"></i>Clothing Sets</a></li>
-					<li><a href="products.jsp?gender=kids&category=boys"><i class="icon-chevron-right"></i>Boys T-Shirts</a></li>												
-					<li><a href="products.jsp?gender=kids&category=girls"><i class="icon-chevron-right"></i>Girls Tops</a></li>	
-					<li><a href="products.jsp?gender=kids&category=dresses"><i class="icon-chevron-right"></i>Girls Dresses</a></li>
-			    </ul>
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
+					<li><a href="products.html"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
+					<li><a href="products.html"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
+					<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
+				</ul>
 			</li>
-			
-			<li><a href="products.html"><blink>DONATE A SMILE :) [58]</blink></a></li>			
+			<li><a href="products.html">MEN [18]</a></li>
+			<li><a href="products.html">WOMEN [14]</a></li>
+			<li><a href="Donation.jsp"><blink>DONATE A SMILE :) [58]</blink></a></li>			
 		</ul>
 		<br/>
 		<div class="thumbnail">

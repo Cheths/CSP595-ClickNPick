@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
 <%@page import="com.csp595.beans.Product"%>
 <%@page import="java.util.Map"%>
-<%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -111,7 +111,7 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.jsp"><img src="themes/images/cnplogoImg.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
+    <a class="brand" href="index.jsp"><img src="themes/images/logo.jpg" alt="Clicknpick" style="width:220px; height:40px"/></a>
 		<form class="form-inline navbar-search">
 		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
 		<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
