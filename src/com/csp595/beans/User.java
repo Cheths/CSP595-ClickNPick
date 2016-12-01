@@ -1,5 +1,7 @@
 package com.csp595.beans;
 
+import javax.jws.soap.SOAPBinding.Use;
+
 public class User {
 
 	private int id;
@@ -18,6 +20,16 @@ public class User {
 	private String phone;
 	private String role;
 	private String userName;
+	
+	public User() {
+	}
+	
+	public User(String firstName, String password, String emailId){
+		this.firstName = firstName;
+		this.password = password;
+		this.emailId = emailId;
+	}
+	
 	public int getId() {
 		return id;
 	}

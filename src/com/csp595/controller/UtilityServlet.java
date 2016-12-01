@@ -81,6 +81,7 @@ public class UtilityServlet extends HttpServlet {
 		String zipCode = null;
 		String country = null;
 		String phone = null;
+		String mailId = null;
 
 		String cardNo = request.getParameter("cardNumber");
 		String nameOnCard = request.getParameter("name");
@@ -101,6 +102,7 @@ public class UtilityServlet extends HttpServlet {
 			zipCode = shippingInfoMap.get("postcode");
 			country = shippingInfoMap.get("country");
 			phone = shippingInfoMap.get("phone");
+			mailId = shippingInfoMap.get("emailId");
 		}
 
 		try {
@@ -113,7 +115,13 @@ public class UtilityServlet extends HttpServlet {
 				orderedDate, expectedDeliveryDate, shippingAddress, "shipAddress2", city, state, country, zipCode,
 				cardNo, nameOnCard, cvv, cardExpDate, phone, session);
 
-		//sendMail();
+		StringBuilder mailBody = new StringBuilder();
+		mailBody.append("Order Summary:\n");
+		mailBody.append("Ordered date - "+orderedDate+"\n");
+		mailBody.append("Expected Delivery date - "+expectedDeliveryDate+"\n");
+		mailBody.append("Order Amount - $"+checkOutAmount+"\t");
+		
+		ProductHelper.sendOrderConfirmationMail(mailId, orderId, mailBody.toString());
 		request.setAttribute("shoppingItemIds", shoppingItemIds);
 		request.setAttribute("orderedDate", orderedDate);
 		request.setAttribute("expectedDeliveryDate", expectedDeliveryDate);
@@ -123,38 +131,32 @@ public class UtilityServlet extends HttpServlet {
 
 	}
 
-	private void sendMail() {
-		String toAddress = "cheths6242@gmail.com";
-		String fromAddress = "admin@ClickNPick.com";
-		String host = "mail.google.com";
-		String userName = "cheths6242@gmail.com";
-		String password = "xxxxxxxx";
+	private void sendOrderConfirmationMail(String mailId, String orderId, String mailBody) {
+		String fromAddress = "clicknpickapp@gmail.com";
+		String host = "smtp.gmail.com";
+		String password = "Qwerty@12";
 		
 		Properties properties = System.getProperties();
-		/*properties.setProperty("mail.smtp.host", host);
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.setProperty("mail.smtp.auth", "true");
-		properties.put("mail.smtp.port", "587");*/
 		
-		properties.put("mail.smtp.host", "smtp.mail.com");
+		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.socketFactory.port", "465");
-		properties.put("mail.smtp.socketFactory.class",
-				"javax.net.ssl.SSLSocketFactory");
-		properties.put("mail.smtp.auth", "false");
+		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.port", "465");
 		
 		Session session = Session.getDefaultInstance(properties, new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication(){
-				return new PasswordAuthentication(null,null);
+				return new PasswordAuthentication(fromAddress, password);
 			}
 		});
 		
+		
 		MimeMessage message = new MimeMessage(session);
 		try {
-			message.setFrom(new InternetAddress(fromAddress));
-			message.setRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
-			message.setSubject("Test Mail");
-			message.setText("This is a Test mail");
+			message.setFrom(new InternetAddress("system@ClickNPick.com"));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailId));
+			message.setSubject("Order Placed Successfully #"+orderId+"");
+			message.setText(mailBody);
 			
 			Transport.send(message);
 		} catch (MessagingException e) {

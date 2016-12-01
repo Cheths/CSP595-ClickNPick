@@ -9,6 +9,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import com.csp595.beans.User;
 
 public class ProductHelper {
 
@@ -63,4 +75,64 @@ public class ProductHelper {
             }
         return hash;
     }
+    
+    public static void sendOrderConfirmationMail(String mailId, String orderId, String mailBody) {
+		Session session = getSessionForMailConfig();
+		
+		MimeMessage message = new MimeMessage(session);
+		try {
+			message.setFrom(new InternetAddress("system@ClickNPick.com"));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailId));
+			message.setSubject("Order Placed Successfully #"+orderId+"");
+			message.setText(mailBody);
+			
+			Transport.send(message);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static Session getSessionForMailConfig() {
+		String fromAddress = "clicknpickapp@gmail.com";
+		String host = "smtp.gmail.com";
+		String password = "Qwerty@12";
+		
+		Properties properties = System.getProperties();
+		
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.socketFactory.port", "465");
+		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.port", "465");
+		
+		Session session = Session.getDefaultInstance(properties, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication(){
+				return new PasswordAuthentication(fromAddress, password);
+			}
+		});
+		return session;
+	}
+	
+	public static void sendPasswordThroughMail(String mailId){
+		Session session = getSessionForMailConfig();
+		User user = MySqlUtil.getUserBasedOnMailId(mailId);
+
+		if(user != null){
+			MimeMessage message = new MimeMessage(session);
+			try {
+				StringBuilder mailBody = new StringBuilder();
+				mailBody.append("Hi "+user.getFirstName()+",");
+				mailBody.append("\nYour Password is "+user.getPassword());
+
+				message.setFrom(new InternetAddress("system@ClickNPick.com"));
+				message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailId));
+				message.setSubject("Password for your account. ");
+				message.setText(mailBody.toString());
+
+				Transport.send(message);
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

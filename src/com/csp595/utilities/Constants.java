@@ -51,10 +51,12 @@ public class Constants {
 	
 	public interface User{
 		static final String USERTABLE = "USER";
+		static final String FIRST_NAME = "first_name";
 		public static String ID_COL = "id";
 		public static String USERNAME_COL = "username";
 		public static String ROLE_COL = "role";
 		public static String PWD_COL = "password";
+		public static String MAIL_ID_COL = "email_id";
 	}
 	
 	public static String TOMCAT_HOME = System.getProperty("catalina.home").replace("\\", "/");

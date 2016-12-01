@@ -68,13 +68,13 @@
 		<div class="control-group">
 			<label class="control-label" for="mobile"> Phone No.</label>
 			<div class="controls">
-			  <input type="text" id="mobile" placeholder="Mobile Phone"/> 
+			  <input type="text" name="mobile" id="mobile" placeholder="Mobile Phone"/> 
 			</div>
 		</div>
 		<div class="control-group">
-		<label class="control-label" for="input_email">Email </label>
+		<label class="control-label" for="input_email">Email<sup>*</sup></label>
 		<div class="controls">
-		  <input type="text" id="input_email" placeholder="Email">
+		  <input type="text" name="emailId" id="input_email" placeholder="Email" required>
 		</div>
 	  	</div>
 	<p><sup>*</sup>Required field	</p>
