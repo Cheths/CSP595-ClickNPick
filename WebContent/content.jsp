@@ -165,9 +165,7 @@
 			  <ul class="thumbnails">
 			<%
 				if (!productHashMap.isEmpty()) {
-					for (Entry<String, Product> productEntry :productHashMap
-							
-							.entrySet()) {
+					for (Entry<String, Product> productEntry : productHashMap.entrySet()) {
 						Product product = productEntry.getValue();
 			%>
 			<li class="span3">
