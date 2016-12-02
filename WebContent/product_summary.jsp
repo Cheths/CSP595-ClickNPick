@@ -73,7 +73,7 @@
 									metal</td>
 								<td>
 									<div class="input-append">
-										<input class="span1" style="max-width: 34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
+										<input class="span1" style="max-width: 34px" disabled="disabled" placeholder="1" id="appendedInputButtons" size="16" type="text">
 										<a href="UtilityServlet?removeItem=<%=product.getId()%>" class="btn btn-danger" ><i class="icon-remove icon-white"></i></a>
 										<!-- <button class="btn btn-danger" type="button">
 											<i class="icon-remove icon-white"></i>
