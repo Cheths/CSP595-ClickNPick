@@ -109,6 +109,10 @@ public class UtilityServlet extends HttpServlet {
 		String expectedDeliveryDate = ProductHelper.getExpectedDeliveryDate();
 		String userName = (String) session.getAttribute("userName");
 
+		if(expectedDeliveryDate != null){
+			expectedDeliveryDate = expectedDeliveryDate.split(" ")[0];
+		}
+		
 		Map<String, String> shippingInfoMap = (Map<String, String>) session.getAttribute("shippingInfoMap");
 		if (shippingInfoMap != null) {
 			shippingAddress = shippingInfoMap.get("address");
@@ -131,10 +135,11 @@ public class UtilityServlet extends HttpServlet {
 				cardNo, nameOnCard, cvv, cardExpDate, phone, session);
 
 		StringBuilder mailBody = new StringBuilder();
-		mailBody.append("Order Summary:\n");
-		mailBody.append("Ordered date - " + orderedDate + "\n");
-		mailBody.append("Expected Delivery date - " + expectedDeliveryDate + "\n");
-		mailBody.append("Order Amount - $" + checkOutAmount + "\t");
+		mailBody.append("Hi <strong>"+userName+"<strong>,\r\n\n");
+		mailBody.append("<strong>Your Order Summary:</strong>\r\n");
+		mailBody.append("Ordered date - " + orderedDate + "\r\n");
+		mailBody.append("Expected Delivery date - " + expectedDeliveryDate + "\r\n");
+		mailBody.append("Order Amount - <strong>$" + checkOutAmount + "<strong>\r\t");
 
 		ProductHelper.sendOrderConfirmationMail(mailId, orderId, mailBody.toString());
 		request.setAttribute("shoppingItemIds", shoppingItemIds);
