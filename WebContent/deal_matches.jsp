@@ -49,12 +49,16 @@
 			for(Product product : dealMatchedProducts) {%>
 			<li class="span3" style="display:block">
 			<div class="thumbnail">
-				<a href="product_details.jsp?productId=<%=product.getId()%>"><img
-					src="themes/images/products/new/<%= product.getImage() %>" alt="" /></a>
+				<a href="product_details.jsp?productId=<%=product.getId()%>">
+				<img src="themes/images/products/new/<%= product.getImage() %>" alt="" /></a>
 				<div class="caption">
 					<h5><%=product.getName() %></h5>
 					<h4 style="text-align: center">
-						<a class="btn" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a> 
+						<%if(userName != null){%>
+							<a class="btn" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to <i class="icon-shopping-cart"></i></a>
+						<%} else {%>
+							<a class="btn" href="login.jsp"> Add to <i class="icon-shopping-cart"></i></a>
+						<%}%> 
 						<a class="btn btn-primary" href="#"><%=product.getPrice() %></a>
 						<a class="btn btn-primary" href="write_product_reviews.jsp?showReviewSection=<%=product.getId()%>" style="width:130px">Write Review</a>
 					<a class="btn btn-primary" href="read_product_reviews.jsp?readProductReview=<%=product.getId()%>"  style="width:130px">View Reviews</a>

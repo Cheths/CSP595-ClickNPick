@@ -137,7 +137,24 @@
 					<%
 						} else {
 					%>
-					<div>No Items in Cart</div>
+						<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Description</th>
+								<th>Quantity/Update</th>
+								<th>Price</th>
+								<th>Discount</th>
+								<!-- <th>Tax</th> -->
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+						<td colspan="6"> No Items Found</td>
+						</tr>
+						</tbody>
+					</table>
 					<%
 						}
 					%>
