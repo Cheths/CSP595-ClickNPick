@@ -62,5 +62,15 @@ public class Constants {
 		public static String MAIL_ID_COL = "email_id";
 	}
 	
+	public interface Donations{
+		static final String DONATIONS_TABLE = "Donations";
+		static final String ID = "id";
+		public static String USERNAME = "username";
+		public static String ORGANIZATION = "organization";
+		public static String UNIT = "quantity";
+		public static String PICKUP_LOCATION = "pickup_location";
+		public static String PICKUP_DATE = "pickup_date";
+	}
+	
 	public static String TOMCAT_HOME = System.getProperty("catalina.home").replace("\\", "/");
 }
