@@ -22,10 +22,16 @@ import javax.mail.internet.MimeMessage;
 
 import com.csp595.beans.User;
 
+/*
+ * Contains helper methods for product functional capabilities. 
+ */
 public class ProductHelper {
 
 	private static String orderedDate = "";
 
+	/*
+	 * Method to get ordered date.
+	 */
 	public static String getOrderedDate() {
 		DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
 		Date date = new Date();
@@ -34,6 +40,9 @@ public class ProductHelper {
 		return timestamp.toString();
 	}
 
+	/*
+	 * Method to compute expected delivery date.
+	 */
 	public static String getExpectedDeliveryDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
 		Date date = null;
@@ -52,6 +61,9 @@ public class ProductHelper {
 		return timestamp.toString();
 	}
 	
+	/*
+	 * Method to generate order id for a product.
+	 */
 	public static String generateProductOrderId(Date orderDate) throws NoSuchAlgorithmException {
         DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         String datestring = df.format(orderDate).toString();
@@ -61,6 +73,9 @@ public class ProductHelper {
         return ordernum;
     }
 
+	/*
+	 * Method to generate Hash value to prepare order id.
+	 */
     private static String generateHashValue(String plain) throws NoSuchAlgorithmException {
         final int MD_PASSWORD_LENGTH = 16;
         final String HASH_ALGORITHM = "SHA1";
@@ -76,6 +91,9 @@ public class ProductHelper {
         return hash;
     }
     
+    /*
+     * Method to send confirmation mail on order transaction completion.
+     */
     public static void sendOrderConfirmationMail(String mailId, String orderId, String mailBody) {
 		Session session = getSessionForMailConfig();
 		
@@ -92,6 +110,9 @@ public class ProductHelper {
 		}
 	}
 
+    /*
+     * Helper method to get session for mail configuration
+     */
 	private static Session getSessionForMailConfig() {
 		String fromAddress = "clicknpickapp@gmail.com";
 		String host = "smtp.gmail.com";
@@ -113,6 +134,9 @@ public class ProductHelper {
 		return session;
 	}
 	
+	/*
+	 * Method to send password through mail when user forgets password.
+	 */
 	public static void sendPasswordThroughMail(String mailId){
 		Session session = getSessionForMailConfig();
 		User user = MySqlUtil.getUserBasedOnMailId(mailId);

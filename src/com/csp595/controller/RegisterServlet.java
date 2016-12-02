@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import com.csp595.utilities.MySqlUtil;
 
+/*
+ * Register Servlet to handle registering new user functionalities. 
+ */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

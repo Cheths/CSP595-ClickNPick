@@ -12,6 +12,9 @@ public class AjaxUtility {
 		return productHashMap;
 	}
 	
+	/*
+	 * Helper method to get search results. 
+	 */
 	public static StringBuffer readData(String searchValue){
 		HashMap<String, Product> productHashMap = MySqlUtil.getProductHashMap();
 		StringBuffer buffer = new StringBuffer();

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.csp595.utilities.AjaxUtility;
 
+/*
+ * Servlet that handles auto completion feature for search bar. 
+ */
 public class AutoCompleteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
