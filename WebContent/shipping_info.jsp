@@ -6,7 +6,7 @@
 	<div class="row">
 	<div class="span9">
     <ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
 		<li class="active">Shipping information</li>
     </ul>
 	<h3> Shipping information</h3>	
