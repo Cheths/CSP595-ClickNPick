@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="javax.swing.text.Document"%>
 <%@page import="javax.sql.rowset.serial.SerialArray"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
@@ -19,6 +20,10 @@
 	<%
 		final int tax = 15;
 		shoppingItemId = (String) session.getAttribute("shoppingItemId");
+		boolean isValid = request.getParameter("isValid")!=null && request.getParameter("isValid").equals("yes") ? true : false;
+		int discountPercentage = 0;
+		if(isValid)
+			discountPercentage =  (request.getParameter("disc")!=null && !request.getParameter("disc").isEmpty()) ? Integer.parseInt(request.getParameter("disc")) : 0 ;  
 	%>
 	<div id="mainBody">
 		<div class="container">
@@ -32,7 +37,8 @@
 
 					<%
 						double checkoutAmount = 0;
-						if ((shoppingItemId != null) && !(shoppingItemId.equals(""))) {
+						if ((shoppingItemId != null && !shoppingItemId.equals("")) || !fromCouponValidation.isEmpty()) {
+							
 					%>
 					<table class="table table-bordered">
 						<thead>
@@ -83,7 +89,7 @@
 								<td>$<%=product.getPrice()%></td>
 								<td>$<%=product.getDiscount()%></td>
 								<%-- <td>$<%=tax%></td> --%>
-								<td>$<%=individualProductTotal%></td>
+								<td colspan="2">$<%=individualProductTotal%></td>
 							</tr>
 							<%
 								}
@@ -94,6 +100,13 @@
 
 							<tr>
 								<td colspan="6" style="text-align: right">Total Price:</td>
+								<%
+								if(isValid == true && discountPercentage > 0){
+// 									totalDiscount = totalPrice *  ((double)discountPercentage/100);
+// 									totalPrice -= totalPrice *  ((double)discountPercentage/100);
+									checkoutAmount = checkoutAmount - ( checkoutAmount *  ((double)discountPercentage/100));
+								}
+								%>
 								<td>$<%=totalPrice%></td>
 							</tr>
 							<tr>
@@ -106,7 +119,7 @@
 							</tr>
 							<tr>
 								<td colspan="6" style="text-align: right"><strong>TOTAL
-										($<%=totalPrice%> - $<%=totalDiscount%> + $<%=totalTax%>) =
+										($<%=totalPrice%> - $<%=totalDiscount%> + $<%=totalTax%>) - <%=discountPercentage%>% =
 								</strong></td>
 								<td class="label label-important" style="display: block"><strong>
 										$<%=checkoutAmount%>
@@ -119,13 +132,31 @@
 						<tbody>
 							<tr>
 								<td>
-									<form class="form-horizontal">
+									
+									<form class="form-horizontal" action="ValidateCouponServlet">
 										<div class="control-group">
 											<label class="control-label"><strong>
 													VOUCHERS CODE: </strong> </label>
 											<div class="controls">
-												<input type="text" name="couponCode" class="input-medium" placeholder="CODE">
-												<button type="submit" class="btn">ADD</button>
+											<%
+											if(request.getParameter("isValid")!=null && request.getParameter("isValid").equalsIgnoreCase("yes")){
+											%>
+												<input type="hidden" name="shopItemId" value="<%=shoppingItemId %>>">
+												<input type="text" name="couponCode" disabled="disabled"  class="input-medium" />
+												<button id="addCoupon_button" type="submit"  disabled="disabled" class="btn">ADD</button>												
+											<%}else{ %>
+												<input type="hidden" name="shopItemId" value="<%=shoppingItemId %>>">
+												<input type="text" name="couponCode" id="couponCode_text"  class="input-medium" />
+												<button id="addCoupon_button" type="submit"   class="btn">ADD</button>												
+											<%} 
+											
+											if(request.getParameter("isValid")!=null && request.getParameter("isValid").equalsIgnoreCase("no")){%>
+													<div class="alert" style="width:220px;background-color: #f44336;">
+													<span class="closebtn"
+													onclick="this.parentElement.style.display='none';">&times;</span>
+													<strong>Invalid coupon for this user!</strong>
+													</div>
+											<%}%>
 											</div>
 										</div>
 									</form>
@@ -137,24 +168,7 @@
 					<%
 						} else {
 					%>
-						<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Product</th>
-								<th>Description</th>
-								<th>Quantity/Update</th>
-								<th>Price</th>
-								<th>Discount</th>
-								<!-- <th>Tax</th> -->
-								<th>Total</th>
-							</tr>
-						</thead>
-						<tbody>
-						<tr>
-						<td colspan="6"> No Items Found</td>
-						</tr>
-						</tbody>
-					</table>
+					<div>No Items in Cart</div>
 					<%
 						}
 					%>

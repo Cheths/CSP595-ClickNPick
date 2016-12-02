@@ -8,19 +8,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.sql.*;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import com.csp595.beans.Coupon;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
 import com.csp595.beans.User;
+import com.csp595.utilities.Constants.Orders;
+import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 public class MySqlUtil {
 
-	static final String DB_URL = "jdbc:mysql://localhost:3306/db_clicknpick";
+	static final String DB_URL = "jdbc:mysql://localhost:3306/db_clicknpick?autoReconnect=true&useSSL=false";
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	
 	private static List<Product> productList = new ArrayList<Product>();
@@ -119,15 +125,26 @@ public class MySqlUtil {
 		}
 	}
 	
-	public static Map<String, Product> getAllProductMap(){
+	public static HashMap<String, Product> getAllProductMap(HttpServletRequest request){
 		productHashMap = new HashMap<String, Product>();
+		HttpSession session = request.getSession(true);
 		Product product;
 		Connection connection = getConnection();
 		if(connection != null){
-			String sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE;
+			String sql = "";
+				if(session.getAttribute("clothing_type") != null && !session.getAttribute("clothing_type").toString().isEmpty()){
+					sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE+ " WHERE type = ?";
+				
+				}				
+				else
+			sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE;
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				if(session.getAttribute("clothing_type") != null){
+					preparedStatement.setString(1, session.getAttribute("clothing_type").toString());
+					session.removeAttribute("clothing_type");
+				}
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
 					product = new Product(resultSet.getString(Constants.Product.ID_COL), resultSet.getString(Constants.Product.NAME_COL),resultSet.getString(Constants.Product.GEN_COL), resultSet.getString(Constants.Product.CAT_COL), 
@@ -320,9 +337,10 @@ public class MySqlUtil {
 	public static ArrayList<String> getUserList(){
 		Connection connection = getConnection();
  		ArrayList<String> userList = new ArrayList<String>();
-			String sql = "SELECT "+Constants.User.USERNAME_COL+" FROM "+Constants.User.USERTABLE;
+			String sql = "SELECT "+Constants.User.USERNAME_COL+" FROM "+Constants.User.USERTABLE+ " WHERE "+Constants.User.ROLE_COL+" = ?"; //because coupons are craeted only by admins and only for customers. So it should be customers for whom the coupons must be created and the maping should be recorded.
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, "customer");
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
 					userList.add(resultSet.getString(1));
@@ -354,6 +372,96 @@ public class MySqlUtil {
 		return user;
 		}
 		return null;
+	}
+	
+		public static String getUserRegion(String username, String role, String password){
+		String region = " ";
+		Connection conn = getConnection();
+		
+		if(conn != null){
+
+			String sql = "SELECT T1.REGION FROM GEOLOCATION T1 INNER JOIN USER T2 ON T2.ZIP = T1.ZIPCODE WHERE T2.USERNAME = ? AND T2.PASSWORD = ?";
+			
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = (PreparedStatement) conn.prepareStatement(sql);
+				preparedStatement.setString(1, username);
+				preparedStatement.setString(2, password);
+				/*if(password != null){
+					preparedStatement.setString(3, password);
+				}*/
+
+				ResultSet rs = preparedStatement.executeQuery();
+				while(rs.next()){
+					region = rs.getString("region");
+					if(!region.isEmpty()){
+						break;
+					}
+				}
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return region;
+	}
+	
+	public static HashMap<String, User> fetchAllUsers(){
+		Connection conn = getConnection();
+		HashMap<String, User> users = null;
+		if(conn != null){
+			String sql = "SELECT username, first_name, last_name FROM USER WHERE role = 'Customer' ";
+			PreparedStatement prep;
+			
+			try{
+				users = new HashMap<String, User>();
+				prep = (PreparedStatement) conn.prepareStatement(sql);
+				ResultSet rs = prep.executeQuery();
+				while(rs.next()){
+					User us = new User();
+					us.setUserName(rs.getString("username"));
+					us.setFirstName(rs.getString("first_name"));
+					us.setLastName(rs.getString("last_name"));
+					users.put(rs.getString("username"), us);
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		if(!users.isEmpty() && users.size()>0)
+			return users;
+		else
+			return null;
+	}
+	
+	public static HashMap<String, String> validateCoupon(String couponcode, HttpServletRequest request) throws SQLException{
+		Connection conn = getConnection();
+		HttpSession session = request.getSession(true);
+		
+		boolean isValid = false;
+		HashMap<String, String> coupon = new HashMap<String, String>(); 
+		String userName = (String) session.getAttribute("userName");
+		if(conn!=null){
+			String sql = "SELECT * FROM coupons WHERE coupon_code = ? AND user_name = ?";
+			PreparedStatement prep = (PreparedStatement) conn.prepareStatement(sql);
+			try {
+				prep.setString(1, couponcode);
+				prep.setString(2, userName);
+				ResultSet rs = prep.executeQuery();
+				while(rs.next()){
+					coupon.put("couponcode",rs.getString("coupon_code"));
+					coupon.put("discount", rs.getString("discount"));
+					coupon.put("user_name", rs.getString("user_name"));
+					isValid = true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		return coupon;
 	}
 	
 }

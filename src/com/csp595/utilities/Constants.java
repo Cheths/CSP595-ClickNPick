@@ -1,5 +1,8 @@
 package com.csp595.utilities;
 
+/*
+ * Constants used across the application are declared here.
+ */
 public class Constants {
 	
 	static final String ROLE_CUSTOMER = "Customer";

@@ -58,8 +58,10 @@
   </head>
 <body onload="init()">
 <script type="text/javascript" src="themes/js/autoComplete.js"></script>
-<% Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap(); %>
-	<% 
+	<%
+		Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap();
+	%>
+	<%
 		String userName = (String) session.getAttribute("userName");
 	    String userRole = (String) session.getAttribute("userRole");
 		//String myCartShoppingItemId = (String)session.getAttribute("shoppingItemId");
@@ -68,8 +70,9 @@
 		if(userName != null){
 			user = userName;
 		}
-	 	
-	 	String shoppingItemId = request.getParameter("shoppingItemId");
+		//from couponvalidation servlet
+		String fromCouponValidation = request.getParameter("fromCouponValidation") != null ? request.getParameter("fromCouponValidation") : " "; 
+		String shoppingItemId = request.getParameter("shoppingItemId");
 		String sessionShoppingItemId = (String) session.getAttribute("shoppingItemId");
 		String existingShoppingItemId = (sessionShoppingItemId == null)?"":sessionShoppingItemId;
 		String[] csvProductIds = new String[100];
@@ -90,9 +93,41 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row" style="display: flex;"> 
-	<div class="span6">Welcome!<strong> <%=user%></strong></div>
-	<div class="span6">
-	<div class="pull-right">
+				<%
+					if (userRole != null) {
+				%>
+				<div class="span6">
+					Welcome!<strong> <%=user%> &nbsp &nbsp <%=userRole%> View
+					</strong> <img alt="" src="themes/images/view.png"
+						style="width: 30px; height: 30px;">
+				</div>
+				<%
+					} else {
+				%>
+
+				<div class="span6">
+					Welcome!<strong> <%=user%>
+				</div>
+				<%
+					}
+				%>
+				<%-- 	<div class="span6"><strong> <%=userRole%> View</strong></div> --%>
+				<div class="span6">
+					<div class="pull-right">
+
+
+						<%
+							if (session.getAttribute("userRegion") != null) {
+						%>
+						User Logged in region: <strong> <%=session.getAttribute("userRegion").toString()%>
+							US
+						</strong>
+						<%
+							}
+						%>
+
+					</div>
+					<div class="pull-right">
 		<a href="product_summary.jsp?myCart=true"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> 
 		<%if(myCartCount != 0){%>
 			My Cart[<%=myCartCount %>]
@@ -113,8 +148,8 @@
   <div class="navbar-inner">
     <a class="brand" href="index.jsp"><img src="themes/images/logo.png" alt="Clicknpick" style="width:220px; height:40px"/></a>
 		<form class="form-inline navbar-search">
-		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()" placeholder="Search here"/>
-		<!-- <button type="submit" id="submitButton" class="btn btn-primary">Go</button> -->
+		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
+		<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 		<div id="auto-row">
 			<table id="complete-table" style="position:absolute;z-index=1;width:220px;"></table>
 		</div>
@@ -129,18 +164,33 @@
     </form>
     <ul id="topMenu" class="nav pull-right">
 	 <li style="display: -webkit-box;">
-	 <%if(userName != null){
-		 if(userRole.equals("Store Manager")){%>
-			 <a href="admin_operations.jsp"><span class="btn btn-large btn-success">Admin</span></a>
-	 	<%} %>
-		 <a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
-		 <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a>
-	 <%} else {
-		 %>
-		 <a href="login.jsp"><span class="btn btn-large btn-success">My Orders</span></a>
-		 <a href="register.jsp"><span class="btn btn-large btn-success">Sign Up</span></a> 
-		 <a href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
-	 <% } %>
+					<ul id="topMenu" class="nav pull-right">
+						<li style="display: -webkit-box;">
+							<%if (userName != null) {
+									if (userRole.equals("Store Manager")) {%>
+									<a href="admin_operations.jsp"><span class="btn btn-large btn-success">Admin</span></a> 
+							<%} else if (userRole.equals("Salesman")) {
+ %>
+							<a href="register.jsp"><span
+								class="btn btn-large btn-success">Create User</span></a> <a
+							href="salesman_operations.jsp"><span
+								class="btn btn-large btn-success">Create Order</span></a> <%
+ 	}
+ %> <a
+							href="deal_matches.jsp"><span
+								class="btn btn-large btn-success">Deal Matcher</span></a> <a
+							href="history_orders.jsp"><span
+								class="btn btn-large btn-success">My Orders</span></a> <a
+							href="LoginServlet"><span class="btn btn-large btn-success">Log
+									Out</span></a> <%
+ 	} else {
+ %> <a href="login.jsp"><span class="btn btn-large btn-success">My
+									Orders</span></a> <a href="register.jsp"><span
+								class="btn btn-large btn-success">Sign Up</span></a> <a
+							href="login.jsp"><span class="btn btn-large btn-success">Login</span></a>
+							<%
+								}
+							%>
 	 
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
