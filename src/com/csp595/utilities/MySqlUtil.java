@@ -491,12 +491,17 @@ public class MySqlUtil {
 		}
 	}
 	
-	public static List<Donation> readDonations(){
+	public static List<Donation> readDonations(String username){
 		List<Donation> donationList = new ArrayList<>();
 		Connection connection = getConnection();
 		
 		if (connection != null) {
-			String sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+"";
+			String sql = "";
+			if(username != null){
+				sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+ " where "+ Constants.Donations.USERNAME +"= ?";
+			}else{
+				sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE;
+			}
 			try {
 				Statement statement = (Statement) connection.createStatement();
 			

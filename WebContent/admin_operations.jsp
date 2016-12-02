@@ -1,4 +1,6 @@
 <!DOCTYPE html">
+<%@page import="com.csp595.beans.Donation"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="com.csp595.utilities.MySqlUtil"%>
@@ -14,6 +16,7 @@
 				ArrayList<String> userList = MySqlUtil.getUserList();
 				String addCoupons = request.getParameter("addCoupons");
 				String viewCoupons = request.getParameter("viewCoupons");
+				String viewDonations = request.getParameter("viewDonations");
 				Boolean isCouponAdded = (Boolean) request.getAttribute("addCouponSuccess");
 				if (isCouponAdded != null) {
 					if (isCouponAdded) {
@@ -30,8 +33,12 @@
 			<br />
 			<div style="padding-bottom: 20px;">
 				<a href="admin_operations.jsp?addCoupons=true" class="btn btn-large">Add
-					Coupon</a> <a href="admin_operations.jsp?viewCoupons=true"
+					Coupon</a> 
+				<a href="admin_operations.jsp?viewCoupons=true"
 					class="btn btn-large">View Coupons</a>
+				<a href="admin_operations.jsp?showDonations=true"
+					class="btn btn-large">View Donations</a>
+			</div>	
 			</div>
 			<%
 				if (addCoupons != null) {
@@ -119,7 +126,49 @@
 				</table>
 			</div>
 			<%
-				} else {
+			}else if(viewDonations != null){
+				List<Donation> donationList = MySqlUtil.readDonations(null);
+				%>
+				<div class="span9">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Organization</th>
+								<th>Pieces of Clothes</th>
+								<th>Pick Up Location</th>
+								<th>Pick Up Date</th>
+							</tr>
+						</thead>
+						<%
+							for (Donation donation : donationList) {
+									if (donation != null) {
+						%>
+						<tbody>
+							<tr>
+								<td><%=donation.getOrganization()%></td>
+								<td><%=donation.getQuantity()%></td>
+								<td><%=donation.getPickUpLocation()%></td>
+								<td><%=donation.getPickUpDate()%></td>
+							</tr>
+						</tbody>
+						<%
+							}
+								}
+								if (donationList.isEmpty()) {
+						%>
+						<tbody>
+							<tr>
+								<td colspan="3">NO DONATIONS FOUND</td>
+							</tr>
+						</tbody>
+						<%
+							}
+						%>
+					</table>
+				</div>
+				<%			
+			
+			} else {
 			%>
 			<div style="padding-bottom: 250px;"></div>
 			<%
