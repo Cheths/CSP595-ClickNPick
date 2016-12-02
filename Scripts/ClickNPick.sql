@@ -82,6 +82,16 @@ CREATE TABLE `donations` (
   PRIMARY KEY (`id`))
 COMMENT = 'To store he donation details user wise';
 
+CREATE TABLE `geolocation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zipcode` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `country` varchar(45) DEFAULT NULL,
+  `region` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15145 DEFAULT CHARSET=utf8;
+
 /*Sample Product Data*/
 INSERT INTO `product` (`id`,`name`,`gender`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (6,'Alba','female','tops','0',25,'Alba',4,'0','Alba.jpg','Maroon T-shirt');
 INSERT INTO `product` (`id`,`name`,`gender`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (7,'Sera','female','tops','0',26,'Sera',4,'0','Sera.jpg','Black T-shirt');

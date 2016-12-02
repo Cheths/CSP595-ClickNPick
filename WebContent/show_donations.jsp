@@ -7,7 +7,7 @@
 <html>
 <body>
 	<%
-		List<Donation> donationList = MySqlUtil.readDonations(userName);
+		List<Donation> donationList = MySqlUtil.readDonations(userRole);
 	%>
 	<div class="row">
 		<div class="span9">

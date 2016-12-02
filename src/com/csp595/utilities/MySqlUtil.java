@@ -614,21 +614,25 @@ public class MySqlUtil {
 		}
 	}
 	
-	public static List<Donation> readDonations(String username){
+	public static List<Donation> readDonations(String userRole){
 		List<Donation> donationList = new ArrayList<>();
 		Connection connection = getConnection();
 		
 		if (connection != null) {
 			String sql = "";
-			if(username != null){
-				sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+ " where "+ Constants.Donations.USERNAME +"= ?";
-			}else{
-				sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE;
-			}
+			PreparedStatement preparedStatement;
+			ResultSet resultSet = null;
 			try {
-				Statement statement = (Statement) connection.createStatement();
-			
-				ResultSet resultSet = statement.executeQuery(sql);
+				if (userRole.equals(Constants.ROLE_CUSTOMER)){
+					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+ " where "+ Constants.Donations.USERNAME +"= ?";
+					preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+					preparedStatement.setString(1, userRole);
+					resultSet = preparedStatement.executeQuery();
+				}else if(userRole.equals(Constants.ROLE_STORE_MANAGER)){
+					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE;
+					preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+					resultSet= preparedStatement.executeQuery();
+				}
 				while (resultSet.next()){
 					Donation donation = new Donation();
 					donation.setId(resultSet.getString(Constants.Donations.ID));
@@ -637,6 +641,7 @@ public class MySqlUtil {
 					donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
 					donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
 					donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
+					donationList.add(donation);
 				}
 				connection.close();
 			} catch (SQLException e) {
