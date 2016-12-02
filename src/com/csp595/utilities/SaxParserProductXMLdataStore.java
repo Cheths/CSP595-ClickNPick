@@ -1,12 +1,15 @@
 package com.csp595.utilities;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -36,11 +39,11 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		return productList;
 	}
 
-	public SaxParserProductXMLdataStore(String xmlFileName) {
+	public SaxParserProductXMLdataStore(HttpServletRequest request, HttpSession session) throws SQLException {
 		if(productHashMap.isEmpty()){
 			//ParseDocument(xmlFileName);
 			//MySqlUtil.insertRecordstoProductTable();
-			productHashMap = MySqlUtil.getAllProductMap();
+			productHashMap = MySqlUtil.getAllProductMap(request);
 		}
 	}
 

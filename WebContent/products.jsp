@@ -11,7 +11,7 @@
 <body>
 	<%
 		String homePath = System.getProperty("catalina.home").replace("\\", "/");
-		new SaxParserProductXMLdataStore(homePath + "/webapps/A1/Products.xml");
+		new SaxParserProductXMLdataStore(request, session);
 	%>
 	<%@include file="header.jsp"%>
 	<%-- <%@include file="carousel.jsp" %> --%>

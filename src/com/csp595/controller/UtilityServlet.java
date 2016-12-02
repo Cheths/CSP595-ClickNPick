@@ -29,66 +29,51 @@ import com.csp595.utilities.MySqlUtil;
 import com.csp595.utilities.ProductHelper;
 import com.mongodb.MongoTimeoutException;
 
-/*
- * Servlet that handles core capabilities of Products processing.
- */
+
 
 public class UtilityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String shoppingItemIds = (String) session.getAttribute("shoppingItemId");
 		String removeItem = request.getParameter("removeItem");
 		String couponCode = request.getParameter("couponCode");
-
-		if (removeItem != null) {
+		
+		if(removeItem != null){
 			List<String> shoppingItemIdsList = new ArrayList<>(Arrays.asList(shoppingItemIds.split(",")));
 			List<String> tempshoppingItemIdsList = shoppingItemIdsList;
 			for (String tempShoppingItemId : tempshoppingItemIdsList) {
-				if (tempShoppingItemId.equals(removeItem)) {
+				if(tempShoppingItemId.equals(removeItem)){
 					shoppingItemIdsList.remove(tempShoppingItemId);
 					break;
 				}
 			}
-			if (shoppingItemIdsList != null) {
+			if(shoppingItemIdsList != null){
 				String str = shoppingItemIdsList.toString();
-				session.setAttribute("shoppingItemId", str.substring(1, str.length() - 1));
+				session.setAttribute("shoppingItemId", str.substring(1, str.length()-1));
 			}
 			response.sendRedirect("product_summary.jsp");
-		} else if (couponCode != null) {
-			MySqlUtil.insertQueryForCouponTable(request.getParameter("couponCode"), request.getParameter("userBase"),
-					request.getParameter("discount"));
+		} else if(couponCode != null){
+			MySqlUtil.insertQueryForCouponTable(request.getParameter("couponCode"), request.getParameter("userBase"), request.getParameter("discount"));
 			request.setAttribute("addCouponSuccess", true);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_operations.jsp");
 			dispatcher.forward(request, response);
 		}
-		// response.sendRedirect("index.jsp");
+		//response.sendRedirect("index.jsp");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String makePayment = request.getParameter("makePayment");
-		if (makePayment != null) {
+		if(makePayment != null){
 			generateOrderAndCompleteTransaction(request, response, session);
-		} else if (request.getParameter("writeReview") != null) {
+		}else if (request.getParameter("writeReview") != null) {
 			insertReviewIntoMongoDB(request, response, session);
 		}
 	}
 
-	/**
-	 * Method to generate order confirmation and mail the same.
-	 * 
-	 * @param request
-	 * @param response
-	 * @param session
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void generateOrderAndCompleteTransaction(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session) throws ServletException, IOException {
+	private void generateOrderAndCompleteTransaction(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
 		String orderId = "";
 		String shippingAddress = null;
 		String city = null;
@@ -107,12 +92,17 @@ public class UtilityServlet extends HttpServlet {
 		String checkOutAmount = (String) session.getAttribute("checkoutAmount");
 		String orderedDate = ProductHelper.getOrderedDate();
 		String expectedDeliveryDate = ProductHelper.getExpectedDeliveryDate();
-		String userName = (String) session.getAttribute("userName");
-
-		if(expectedDeliveryDate != null){
-			expectedDeliveryDate = expectedDeliveryDate.split(" ")[0];
+		String userName =  " ";
+		if(session.getAttribute("customerSelected")!=null){
+			//for salesman
+			userName = (String) session.getAttribute("customerSelected");
+			session.removeAttribute("customerSelected");
 		}
+			
+		else
+			userName = (String) session.getAttribute("userName");
 		
+
 		Map<String, String> shippingInfoMap = (Map<String, String>) session.getAttribute("shippingInfoMap");
 		if (shippingInfoMap != null) {
 			shippingAddress = shippingInfoMap.get("address");
@@ -135,12 +125,11 @@ public class UtilityServlet extends HttpServlet {
 				cardNo, nameOnCard, cvv, cardExpDate, phone, session);
 
 		StringBuilder mailBody = new StringBuilder();
-		mailBody.append("Hi <strong>"+userName+"<strong>,\r\n\n");
-		mailBody.append("<strong>Your Order Summary:</strong>\r\n");
-		mailBody.append("Ordered date - " + orderedDate + "\r\n");
-		mailBody.append("Expected Delivery date - " + expectedDeliveryDate + "\r\n");
-		mailBody.append("Order Amount - <strong>$" + checkOutAmount + "<strong>\r\t");
-
+		mailBody.append("Order Summary:\n");
+		mailBody.append("Ordered date - "+orderedDate+"\n");
+		mailBody.append("Expected Delivery date - "+expectedDeliveryDate+"\n");
+		mailBody.append("Order Amount - $"+checkOutAmount+"\t");
+		
 		ProductHelper.sendOrderConfirmationMail(mailId, orderId, mailBody.toString());
 		request.setAttribute("shoppingItemIds", shoppingItemIds);
 		request.setAttribute("orderedDate", orderedDate);
@@ -151,46 +140,40 @@ public class UtilityServlet extends HttpServlet {
 
 	}
 
-	/*
-	 * Helper method to send order confirmation mail.
-	 */
 	private void sendOrderConfirmationMail(String mailId, String orderId, String mailBody) {
 		String fromAddress = "clicknpickapp@gmail.com";
 		String host = "smtp.gmail.com";
 		String password = "Qwerty@12";
-
+		
 		Properties properties = System.getProperties();
-
+		
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.socketFactory.port", "465");
 		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.port", "465");
-
+		
 		Session session = Session.getDefaultInstance(properties, new Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
+			protected PasswordAuthentication getPasswordAuthentication(){
 				return new PasswordAuthentication(fromAddress, password);
 			}
 		});
-
+		
+		
 		MimeMessage message = new MimeMessage(session);
 		try {
 			message.setFrom(new InternetAddress("system@ClickNPick.com"));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailId));
-			message.setSubject("Order Placed Successfully #" + orderId + "");
+			message.setSubject("Order Placed Successfully #"+orderId+"");
 			message.setText(mailBody);
-
+			
 			Transport.send(message);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	/*
-	 * Helper method to insert product reviews to Mongo DB.
-	 */
-	private void insertReviewIntoMongoDB(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws ServletException, IOException, MongoTimeoutException {
+	private void insertReviewIntoMongoDB(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException ,MongoTimeoutException{
 		try {
 			MongoUtil.insertProductReview(request.getParameter("manufacturerName"),
 					request.getParameter("productCategory"), request.getParameter("productName"),
@@ -206,7 +189,7 @@ public class UtilityServlet extends HttpServlet {
 			request.setAttribute("mongoConnectionError", "true");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			e.printStackTrace();
-		} catch (Exception e) {
+		} catch (Exception e){
 			request.setAttribute("mongoConnectionError", "true");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			e.printStackTrace();
