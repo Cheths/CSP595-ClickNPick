@@ -61,7 +61,7 @@
 												<div class="thumbnail">
 													<i class="tag"></i> 
 													<a href="product_details.jsp?productId=<%=product.getId()%>">
-														<img src="<%=product.getImage()%>" alt="">
+														<img src="themes/images/products/new/<%=product.getImage()%>" alt="">
 													</a>
 													<div class="caption">
 														<h5><%=product.getName()%></h5>
