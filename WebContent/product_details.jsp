@@ -72,12 +72,25 @@
 						</select>
 						<br/>
 						<br/>
-					
-						<!-- <input type="number" class="span1" placeholder="Qty."/>--> 
-					<% if(session.getAttribute("userName") != null){%>
-						<a class="btn btn-large btn-primary pull-right" href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"> Add to cart </a>
-					 <%} else{ %>
-					 	<a class="btn btn-large btn-primary pull-right" href="login.jsp"> Add to cart</a>
+
+								<!-- <input type="number" class="span1" placeholder="Qty."/>-->
+								<%
+									if (session.getAttribute("userName") != null) {
+								%>
+								<a class="btn btn-large btn-primary pull-right"
+									href="product_summary.jsp?shoppingItemId=<%=product.getId()%>"
+									style="width: 110px";>Add to cart </a> 
+								<a class="btn btn-large btn-primary"
+									href="write_product_reviews.jsp?showReviewSection=<%=product.getId()%>"
+									style="width: 110px; margin-bottom: 10px;">Write Review</a> 
+								<a
+									class="btn btn-large btn-primary"
+									href="read_product_reviews.jsp?readProductReview=<%=product.getId()%>"
+									style="width: 110px ; margin-bottom: 10px;">View Reviews</a>
+								<%
+									} else {
+								%>
+								<a class="btn btn-large btn-primary pull-right" href="login.jsp"> Add to cart</a>
 					 <%} %>	
 					</div>
 				  </div>
