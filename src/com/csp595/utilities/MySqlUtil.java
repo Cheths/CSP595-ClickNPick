@@ -1,5 +1,6 @@
 package com.csp595.utilities;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,23 +9,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.IOException;
-import java.sql.*;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.Request;
 import com.csp595.beans.Coupon;
 import com.csp595.beans.Donation;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
-import com.csp595.beans.TrendingProduct;
 import com.csp595.beans.User;
-import com.csp595.utilities.Constants.Orders;
-import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -499,25 +493,22 @@ public class MySqlUtil {
 	
 	public static List<Donation> readDonations(){
 		List<Donation> donationList = new ArrayList<>();
-		
 		Connection connection = getConnection();
 		
 		if (connection != null) {
-			String sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE+"";
+			String sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+"";
 			try {
 				Statement statement = (Statement) connection.createStatement();
 			
 				ResultSet resultSet = statement.executeQuery(sql);
 				while (resultSet.next()){
-					Product product = new Product();
-					product.setId(resultSet.getString(Constants.Product.ID_COL));
-					product.setName(resultSet.getString(Constants.Product.NAME_COL));
-					product.setPrice(resultSet.getDouble(Constants.Product.PRICE_COL));
-					product.setImage(resultSet.getString(Constants.Product.IMAGE_COL));
-					product.setGender(resultSet.getString(Constants.Product.GEN_COL));
-					product.setCategory(resultSet.getString(Constants.Product.CAT_COL));
-					product.setDescription(resultSet.getString(Constants.Product.DESC_COL));
-					productHashMap.put(resultSet.getString(Constants.Product.ID_COL), product);
+					Donation donation = new Donation();
+					donation.setId(resultSet.getString(Constants.Donations.ID));
+					donation.setUsername(resultSet.getString(Constants.Donations.USERNAME));
+					donation.setOrganization(resultSet.getString(Constants.Donations.ORGANIZATION));
+					donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
+					donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
+					donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
 				}
 				connection.close();
 			} catch (SQLException e) {
