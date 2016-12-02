@@ -63,7 +63,7 @@ public class Constants {
 	}
 	
 	public interface Donations{
-		static final String DONATIONS_TABLE = "Donations";
+		static final String DONATIONS_TABLE = "donations";
 		static final String ID = "id";
 		public static String USERNAME = "username";
 		public static String ORGANIZATION = "organization";
