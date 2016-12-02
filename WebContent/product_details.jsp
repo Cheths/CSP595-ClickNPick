@@ -91,6 +91,10 @@
 									} else {
 								%>
 								<a class="btn btn-large btn-primary pull-right" href="login.jsp"> Add to cart</a>
+								<a
+									class="btn btn-large btn-primary"
+									href="read_product_reviews.jsp?readProductReview=<%=product.getId()%>"
+									style="width: 110px ; margin-bottom: 10px;">View Reviews</a>
 					 <%} %>	
 					</div>
 				  </div>
