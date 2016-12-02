@@ -21,7 +21,7 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="#"><img style="width:100%" src="themes/images/carousel/13.png" alt=""/></a>
+			<a href="register.html"><img style="width:100%" src="themes/images/carousel/new3.jpg" alt=""/></a>
 				<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -30,7 +30,7 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="#"><img src="themes/images/carousel/11.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/new3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -40,7 +40,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="#"><img src="themes/images/carousel/12.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/new3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -50,7 +50,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="#"><img src="themes/images/carousel/1.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/new3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -59,7 +59,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="#"><img src="themes/images/carousel/13.png" alt=""/></a>
+			<a href="register.html"><img src="themes/images/carousel/new3.jpg" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
