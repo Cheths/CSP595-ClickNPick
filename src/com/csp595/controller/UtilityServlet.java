@@ -70,7 +70,15 @@ public class UtilityServlet extends HttpServlet {
 			generateOrderAndCompleteTransaction(request, response, session);
 		}else if (request.getParameter("writeReview") != null) {
 			insertReviewIntoMongoDB(request, response, session);
+		}else if(request.getParameter("insertDonations") != null){
+			insertIntoDonationsTable(request,response,session);
 		}
+	}
+
+	private void insertIntoDonationsTable(HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) {
+		MySqlUtil.insertIntoDonations((String)session.getAttribute("userName"), request.getParameter("quantity"), request.getParameter("organization"),
+				request.getParameter("pickup_date"), request.getParameter("pickup_location"),response);
 	}
 
 	private void generateOrderAndCompleteTransaction(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {

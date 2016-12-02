@@ -6,6 +6,7 @@ drop table user;
 drop table product;
 drop table orders;
 DROP TABLE COUPONS;
+drop table donations;
 
 CREATE TABLE `orders` (
   `id` VARCHAR(30) NOT NULL,
@@ -69,6 +70,17 @@ CREATE TABLE COUPONS (
     discount VARCHAR(5) NOT NULL,
     user_name VARCHAR(100) NOT NULL
 );
+
+
+CREATE TABLE `donations` (
+  `id` INT NOT NULL,
+  `username` VARCHAR(45) NULL,
+  `organization` VARCHAR(45) NULL,
+  `quantity` VARCHAR(45) NULL,
+  `pickup_location` VARCHAR(45) NULL,
+  `pickup_date` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+COMMENT = 'To store he donation details user wise';
 
 /*Sample Product Data*/
 INSERT INTO `product` (`id`,`name`,`gender`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES (6,'Alba','female','tops','0',25,'Alba',4,'0','Alba.jpg','Maroon T-shirt');

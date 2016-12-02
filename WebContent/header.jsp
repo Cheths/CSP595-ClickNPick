@@ -140,8 +140,7 @@
 							class="btn btn-mini btn-primary"><i
 								class="icon-shopping-cart icon-white"></i> <%
  	if (myCartCount != 0) {
- %>
-								My Cart[<%=myCartCount%>] <%
+ %> My Cart[<%=myCartCount%>] <%
  	} else {
  %> My Cart <%
  	}
@@ -183,8 +182,7 @@
 									<%
 										if (userName != null) {
 											if (userRole.equals("Store Manager")) {
-									%> <a
-									href="admin_operations.jsp"><span
+									%> <a href="admin_operations.jsp"><span
 										class="btn btn-large btn-success">Admin</span></a> <%
  	} else if (userRole.equals("Salesman")) {
  %> <a href="register.jsp"><span class="btn btn-large btn-success">Create
@@ -193,6 +191,13 @@
  	}
  %> <a href="history_orders.jsp"><span
 										class="btn btn-large btn-success">My Orders</span></a> <a
+									href="LoginServlet"><span class="btn btn-large btn-success">Log
+											Out</span></a> <%
+ 	
+ %> <a href="history_orders.jsp"><span
+										class="btn btn-large btn-success">My Orders</span></a> <a
+									href="show_donations.jsp"><span
+										class="btn btn-large btn-success">View Donations</span></a> <a
 									href="LoginServlet"><span class="btn btn-large btn-success">Log
 											Out</span></a> <%
  	} else {
