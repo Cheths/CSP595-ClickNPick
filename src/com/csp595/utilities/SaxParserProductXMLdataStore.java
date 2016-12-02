@@ -39,13 +39,21 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		return productList;
 	}
 
-	public SaxParserProductXMLdataStore(HttpServletRequest request, HttpSession session) throws SQLException {
+	public SaxParserProductXMLdataStore(String xmlFileName, HttpServletRequest request, HttpSession session) throws SQLException {
 		if(productHashMap.isEmpty()){
-			//ParseDocument(xmlFileName);
-			//MySqlUtil.insertRecordstoProductTable();
+			ParseDocument(xmlFileName);
+			MySqlUtil.insertRecordstoProductTable();
 			productHashMap = MySqlUtil.getAllProductMap(request);
 		}
 	}
+	
+	/*public SaxParserProductXMLdataStore(String xmlFileName) throws SQLException {
+		if(productHashMap.isEmpty()){
+			ParseDocument(xmlFileName);
+			MySqlUtil.insertRecordstoProductTable();
+			//productHashMap = MySqlUtil.getAllProductMap(request);
+		}
+	}*/
 
 	public static Product getProductByID(String productID) {
 		Product product = new Product();
@@ -80,7 +88,6 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		if (elementName.equalsIgnoreCase("product")) {
 			product = new Product();
 			product.setId(attributes.getValue("id"));
-			product.setCategory(attributes.getValue("category"));
 		}
 
 	}
@@ -93,12 +100,16 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 			productHashMap.put(product.getId(), product);
 			return;
 		}
+		if (element.equalsIgnoreCase("category")) {
+			product.setCategory(elementValueRead);
+			return;
+		}
 		if (element.equalsIgnoreCase("condition")) {
 			product.setCondition(elementValueRead);
 			return;
 		}
 		if (element.equalsIgnoreCase("discount")) {
-			product.setDiscount(Integer.parseInt(elementValueRead));
+			product.setDiscount(Double.parseDouble(elementValueRead));
 			return;
 		}
 		if (element.equalsIgnoreCase("name")) {
@@ -110,11 +121,23 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 			return;
 		}
 		if (element.equalsIgnoreCase("price")) {
-			product.setPrice(Integer.parseInt(elementValueRead));
+			product.setPrice(Double.parseDouble(elementValueRead));
 			return;
 		}
 		if (element.equalsIgnoreCase("description")) {
 			product.setDescription(elementValueRead);
+			return;
+		}
+		if (element.equalsIgnoreCase("type")) {
+			product.setType(elementValueRead);
+			return;
+		}
+		if (element.equalsIgnoreCase("manufacturer")) {
+			product.setManufacturer(elementValueRead);
+			return;
+		}
+		if (element.equalsIgnoreCase("gender")) {
+			product.setGender(elementValueRead);
 			return;
 		}
 	}
