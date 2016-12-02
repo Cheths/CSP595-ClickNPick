@@ -177,8 +177,6 @@
 								class="btn btn-large btn-success">Create Order</span></a> <%
  	}
  %> <a
-							href="deal_matches.jsp"><span
-								class="btn btn-large btn-success">Deal Matcher</span></a> <a
 							href="history_orders.jsp"><span
 								class="btn btn-large btn-success">My Orders</span></a> <a
 							href="LoginServlet"><span class="btn btn-large btn-success">Log
