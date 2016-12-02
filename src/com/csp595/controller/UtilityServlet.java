@@ -92,7 +92,16 @@ public class UtilityServlet extends HttpServlet {
 		String checkOutAmount = (String) session.getAttribute("checkoutAmount");
 		String orderedDate = ProductHelper.getOrderedDate();
 		String expectedDeliveryDate = ProductHelper.getExpectedDeliveryDate();
-		String userName = (String) session.getAttribute("userName");
+		String userName =  " ";
+		if(session.getAttribute("customerSelected")!=null){
+			//for salesman
+			userName = (String) session.getAttribute("customerSelected");
+			session.removeAttribute("customerSelected");
+		}
+			
+		else
+			userName = (String) session.getAttribute("userName");
+		
 
 		Map<String, String> shippingInfoMap = (Map<String, String>) session.getAttribute("shippingInfoMap");
 		if (shippingInfoMap != null) {

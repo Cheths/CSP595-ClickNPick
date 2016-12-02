@@ -48,10 +48,13 @@ Map<String, Order> orderHashMap = MySqlUtil.getUserOrderList(userName, userRole)
 								Order order = orderObj.getValue();
 								List<Product> orderedProductList= order.getProductList();
 								String productNameCsv = "";
+								
 								for(Product product: orderedProductList){
-									productNameCsv += ", "+product.getName();
+									if(product != null){
+										productNameCsv += ", "+product.getName();
+									}
 								}
-								productNameCsv = productNameCsv.replaceFirst(", ", "");
+								productNameCsv = !productNameCsv.isEmpty() ? productNameCsv.replaceFirst(", ", "") : " ";
 								%>
 							<tr>
 							<td><%= order.getOrderId() %></td>

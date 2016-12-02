@@ -8,12 +8,28 @@
 <title>Click N Pick</title>
 </head>
 <body>
-<% String homePath = System.getProperty("catalina.home").replace("\\", "/");
-new SaxParserProductXMLdataStore(homePath+"/webapps/A1/Products.xml"); %>
+<% 
+if(request.getParameter("customerSelected") != null ){
+	session.setAttribute("customerSelected", request.getParameter("customerSelected"));
+}
+String homePath = System.getProperty("catalina.home").replace("\\", "/");
+new SaxParserProductXMLdataStore(request,session); %>
 <%@include file="header.jsp" %>
 <%@include file="carousel.jsp" %>
+<% if(session.getAttribute("userRole") != null && session.getAttribute("userRole").toString().equalsIgnoreCase("Salesman")){
+%>
+<!-- 	<a href="register.jsp"><span class="btn btn-large btn-success">Create User</span></a> -->
+<!-- 	<a href="salesman_operations.jsp"><span class="btn btn-large btn-success">Create Order</span></a> -->
+<%}else{ %>
 <%@include file="sidebar.jsp" %>
 <%@include file="content.jsp" %>
+<%}%>
+<%
+if(session.getAttribute("customerSelected") != null){
+%>
+	<%@include file="sidebar.jsp" %>
+	<%@include file="content.jsp" %>
+<% }%>
 <%@include file="footer.jsp" %>
 </body>
 </html>
