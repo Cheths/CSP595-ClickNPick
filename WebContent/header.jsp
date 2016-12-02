@@ -89,7 +89,7 @@
 	 %>
 <div id="header">
 <div class="container">
-<div id="welcomeLine" class="row">
+<div id="welcomeLine" class="row" style="display: flex;"> 
 	<div class="span6">Welcome!<strong> <%=user%></strong></div>
 	<div class="span6">
 	<div class="pull-right">

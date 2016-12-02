@@ -14,6 +14,7 @@
 		try {
 			Map<String,Product> selectedproducts=new HashMap<String,Product>();
 			Map<String,Product> productIdAndProductMap=new HashMap<String,Product>();
+			boolean noOfferFound = false;
 			productIdAndProductMap = SaxParserProductXMLdataStore.getProductHashMap();
 			String line=null; %>
 			<h2>Welcome to Click N Pick</h2><br>
@@ -29,7 +30,8 @@
 						%>
 						<h2 align='center'>No Offers Found</h2>
 						<%
-					  break;	
+						noOfferFound = true;
+						break;	
 					}else{ 
 					   do {
 							if(line.toLowerCase().contains(entry.getValue().getName().toLowerCase())) {
@@ -64,7 +66,11 @@
 		</li>
 		<%
 		  }
-		}catch (Exception e) {
+		 if(!noOfferFound){%>
+		  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<%
+		  }
+		  }catch (Exception e) {
 			e.printStackTrace();
 		}	%>
 		</div>

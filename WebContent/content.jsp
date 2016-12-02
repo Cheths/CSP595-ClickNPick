@@ -22,7 +22,7 @@
 		 <strong>Failure!</strong>Unable to submit review as Mongo Db is not connected
 		</div>
 		<%} %>
-			<%@include file="deal_matches.jsp" %><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<%@include file="deal_matches.jsp" %>
 			<div class="well well-small">
 			<h4>Featured Products </h4>
 			<div class="row-fluid">
