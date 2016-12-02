@@ -143,7 +143,7 @@
 					%>
 
 					<a href="index.jsp" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a> 
-					<% if (shoppingItemId != null) {%>
+					<% if (shoppingItemId != null && !shoppingItemId.isEmpty()) {%>
 						<a href="shipping_info.jsp?checkoutAmount=<%=checkoutAmount%>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 					<% } %>
 				</div>
