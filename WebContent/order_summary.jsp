@@ -32,7 +32,7 @@
 					</div>
 				<% }%>
 					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+						<li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
 						<li class="active">Order Summary</li>
 					</ul>
 					<h3>Order Summary</h3>

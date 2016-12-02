@@ -67,6 +67,7 @@ function appendProduct(productName,productId) {
 		cell = row.insertCell(0);
 	} else {
 		searchTable.style.display = 'table';
+		searchTable.style.zIndex = '1';
 		row = document.createElement("tr");
 		cell = document.createElement("td");
 		cell.setAttribute("style","background-color: blue;font-family: cursive;padding-left: 10px;");

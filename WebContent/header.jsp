@@ -116,7 +116,7 @@
 		<input id="searchValue" type="search" onkeyup="autoCompleteSearch()"/>
 		<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 		<div id="auto-row">
-			<table id="complete-table" style="position:absolute;width:220px;"></table>
+			<table id="complete-table" style="position:absolute;z-index=1;width:220px;"></table>
 		</div>
 		 <!-- <select class="srchTxt">
 			<option>All</option>
@@ -128,9 +128,6 @@
 		</select> --> 
     </form>
     <ul id="topMenu" class="nav pull-right">
-	<!--  <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
-	 <!-- <li class=""><a href="normal.html">Delivery</a></li>
-	 <li class=""><a href="contact.html">Contact</a></li> -->
 	 <li style="display: -webkit-box;">
 	 <%if(userName != null){
 		 if(userRole.equals("Store Manager")){%>

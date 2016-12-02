@@ -56,7 +56,7 @@ new SaxParserProductXMLdataStore(homePath+"/webapps/A1/Products.xml"); %>
 			<li class="span3">
 				<div class="thumbnail">
 					<a href="product_details.jsp?productId=<%=product.getId()%>"><img
-						src=<%= product.getImage() %> alt="" /></a>
+						src="themes/images/products/new/<%=product.getImage()%>" alt="" /></a>
 					<div class="caption">
 						<h5><%=product.getName() %></h5>
 						<h4 style="text-align: center">

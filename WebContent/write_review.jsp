@@ -14,7 +14,7 @@ String userName = (String) session.getAttribute("userName");
 				<ul class="thumbnails">
 					<div class="span9">
 						<ul class="breadcrumb">
-							<li><a href="index.html">Home</a> <span class="divider">/</span>
+							<li><a href="index.jsp">Home</a> <span class="divider">/</span>
 							</li>
 							<li class="active">Product Review Form</li>
 						</ul>
