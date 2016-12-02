@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<%@page import="com.csp595.utilities.PrepareXmlFile"%>
 <%@page import="com.csp595.beans.Product"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
@@ -9,11 +10,12 @@
 </head>
 <body>
 <% 
+//PrepareXmlFile.prepareXmlFile();//Don't uncomment it.
 if(request.getParameter("customerSelected") != null ){
 	session.setAttribute("customerSelected", request.getParameter("customerSelected"));
 }
 String homePath = System.getProperty("catalina.home").replace("\\", "/");
-new SaxParserProductXMLdataStore(request,session); %>
+new SaxParserProductXMLdataStore(homePath+"/webapps/CSP595-ClicknPick/Scripts/Products.xml", request,session); %>
 <%@include file="header.jsp" %>
 <%@include file="carousel.jsp" %>
 <% if(session.getAttribute("userRole") != null && session.getAttribute("userRole").toString().equalsIgnoreCase("Salesman")){
