@@ -21,6 +21,11 @@
 		 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 		 <strong>Failure!</strong>Unable to submit review as Mongo Db is not connected
 		</div>
+		<%} else if(request.getAttribute("donatedSuccessfully") != null){ %>
+		<div class="alert" style="background-color: #5bb75b;">
+		 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		 <strong>Failure!</strong>Thanks for the donation
+		</div>
 		<%} %>
 			<%@include file="deal_matches.jsp" %>
 			<div class="well well-small">

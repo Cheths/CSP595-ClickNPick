@@ -67,7 +67,7 @@ public class Constants {
 		static final String ID = "id";
 		public static String USERNAME = "username";
 		public static String ORGANIZATION = "organization";
-		public static String UNIT = "quantity";
+		public static String QUANTITY = "quantity";
 		public static String PICKUP_LOCATION = "pickup_location";
 		public static String PICKUP_DATE = "pickup_date";
 	}

@@ -8,16 +8,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.IOException;
 import java.sql.*;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
 import com.csp595.beans.Coupon;
+import com.csp595.beans.Donation;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
+import com.csp595.beans.TrendingProduct;
 import com.csp595.beans.User;
 import com.csp595.utilities.Constants.Orders;
 import com.mysql.jdbc.CallableStatement;
@@ -462,6 +466,66 @@ public class MySqlUtil {
 			}			
 		}
 		return coupon;
+	}
+	
+	public static void insertIntoDonations(String username,String quantity,String organization,String pickUpDate,String pickUpLocation, HttpServletResponse response ){
+		Connection connection = getConnection();
+		if (connection != null) {
+			String sql = "INSERT into "+ Constants.Donations.DONATIONS_TABLE +"("+Constants.Donations.USERNAME+","+Constants.Donations.QUANTITY+
+				","+Constants.Donations.ORGANIZATION+","+Constants.Donations.PICKUP_DATE+","+Constants.Donations.PICKUP_LOCATION+","+Constants.Donations.ID+")"
+			+ " VALUES (?,?,?,?,?,?)";
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				String id ="1";
+				preparedStatement.setString(1, username);
+				preparedStatement.setString(2, quantity);
+				preparedStatement.setString(3, organization);
+				preparedStatement.setString(4, pickUpDate);
+				preparedStatement.setString(5, pickUpLocation);
+				preparedStatement.setString(6, id);
+				preparedStatement.execute();
+				connection.close();
+				try {
+					response.sendRedirect("index.jsp?donatedSuccessfully=true");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static List<Donation> readDonations(){
+		List<Donation> donationList = new ArrayList<>();
+		
+		Connection connection = getConnection();
+		
+		if (connection != null) {
+			String sql = "SELECT * FROM "+Constants.Product.PRODUCTTABLE+"";
+			try {
+				Statement statement = (Statement) connection.createStatement();
+			
+				ResultSet resultSet = statement.executeQuery(sql);
+				while (resultSet.next()){
+					Product product = new Product();
+					product.setId(resultSet.getString(Constants.Product.ID_COL));
+					product.setName(resultSet.getString(Constants.Product.NAME_COL));
+					product.setPrice(resultSet.getDouble(Constants.Product.PRICE_COL));
+					product.setImage(resultSet.getString(Constants.Product.IMAGE_COL));
+					product.setGender(resultSet.getString(Constants.Product.GEN_COL));
+					product.setCategory(resultSet.getString(Constants.Product.CAT_COL));
+					product.setDescription(resultSet.getString(Constants.Product.DESC_COL));
+					productHashMap.put(resultSet.getString(Constants.Product.ID_COL), product);
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return donationList;
 	}
 	
 }
