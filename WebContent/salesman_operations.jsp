@@ -6,13 +6,13 @@
 <%@ page import = "com.csp595.controller.*" %>
 <%@page import="java.util.Map"%>
 <%@page import="com.csp595.utilities.SaxParserProductXMLdataStore"%>
+<%@include file="header.jsp" %>
 <html lang="en">
 <head>
 <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
 <title>Click N Pick</title>
 </head>
 <body>
-<%@include file="header.jsp" %>
 <%-- <%@include file="carousel.jsp" %> --%>
 <%-- <%@include file="sidebar.jsp" %> --%>
 <%-- <%@include file="content.jsp" %> --%>
@@ -22,7 +22,7 @@
 	users = MySqlUtil.fetchAllUsers();
 %>
 
-<table class="table table-bordered" style="width:50%;align:center;">
+<table class="table table-bordered" style="width:50%;margin-left: 250px;">
 	<thead id="productCheckout">
 		<tr>
 			<th> </th>
@@ -51,6 +51,6 @@
 	</tbody>		
 	<%} %>
 </table>
-
 </body>
 </html>
+<%@include file="footer.jsp" %>
