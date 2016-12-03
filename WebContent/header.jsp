@@ -153,8 +153,8 @@
                      style="width: 220px; height: 40px" /></a>
                   <form class="form-inline navbar-search">
                      <input id="searchValue" type="search"
-                        onkeyup="autoCompleteSearch()" />
-                     <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+                        onkeyup="autoCompleteSearch()" placeholder="Search Products here"/>
+                     <!-- <button type="submit" id="submitButton" class="btn btn-primary">Go</button> -->
                      <div id="auto-row">
                         <table id="complete-table"
                            style="position: absolute; z-index =1; width: 220px;"></table>

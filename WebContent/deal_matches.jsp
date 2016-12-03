@@ -15,7 +15,7 @@
 			Map<String,Product> selectedproducts=new HashMap<String,Product>();
 			Map<String,Product> productIdAndProductMap=new HashMap<String,Product>();
 			boolean noOfferFound = false;
-			productIdAndProductMap = SaxParserProductXMLdataStore.getProductHashMap();
+			productIdAndProductMap = SaxParserProductXMLdataStore.getAllProductMap();
 			String line=null; %>
 			<h2>Welcome to Click N Pick</h2><br>
 			<h2>We beat our competitors in all aspects. Price-Match Guaranteed</h2>

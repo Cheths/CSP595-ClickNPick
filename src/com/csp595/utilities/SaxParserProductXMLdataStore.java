@@ -31,6 +31,7 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		return product;
 	}
 
+	
 	public static Map<String, Product> getProductHashMap(){
 		return productHashMap;
 	}
@@ -43,8 +44,8 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		if(productHashMap.isEmpty()){
 			ParseDocument(xmlFileName);
 			MySqlUtil.insertRecordstoProductTable();
-			productHashMap = MySqlUtil.getAllProductMap(request);
 		}
+		productHashMap = MySqlUtil.getAllProductMap(request);
 	}
 	
 	/*public SaxParserProductXMLdataStore(String xmlFileName) throws SQLException {
@@ -66,6 +67,9 @@ public class SaxParserProductXMLdataStore extends DefaultHandler {
 		return product;
 	}
 
+	public static Map<String, Product> getAllProductMap(){
+		return MySqlUtil.getAllProductMap(null);
+	}
 	
 	private void ParseDocument(String xmlFileName) {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
