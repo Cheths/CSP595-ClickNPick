@@ -73,7 +73,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<button type="submit" class="btn">Sign in</button>
-										<a href="forget_password.jsp">Forget password?</a>
+										<a href="forget_password.jsp">Forgot password?</a>
 									</div>
 								</div>
 							</form>

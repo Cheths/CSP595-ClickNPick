@@ -1,99 +1,1083 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Products>
-	<product id="001" category="Smart Phones">
-		<name>Htc One M9</name>
-		<retailer>HTC</retailer>
-		<price>329</price>
-		<discount>5</discount>
-		<image>themes/images/products/htc/htcM9.jpg</image>
-		<description>Smartphone with 5.00-inch 1080x1920 display powered by 1.5GHz processor alongside 3GB RAM and 20-megapixel rear camera</description>
+	<product id="44">
+		<category>casual</category>
+		<name>Wrangler</name>
+		<description>Beige and Navy Casual shirt</description>
+		<type>0</type>
+		<price>31.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Wrangler</manufacturer>
+		<condition>0</condition>
+		<image>Wranglercasualt.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="002" category="Smart Phones">
-		<name>iphone 7</name>
-		<retailer>Apple</retailer>
-		<price>850</price>
-		<discount>10</discount>
-		<image>themes/images/products/iphone/iphone6s-1.png</image>
-		<description>Features 3G, 4.7″ LED-backlit IPS LCD display, 12 MP camera, Wi-Fi, GPS, Bluetooth.</description>
+	<product id="88">
+		<category>girls</category>
+		<name>Scullers</name>
+		<description>Orange girls Top</description>
+		<type>0</type>
+		<price>21.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Scullers</manufacturer>
+		<condition>0</condition>
+		<image>GScullers.jpg</image>
+		<gender>kids</gender>
 	</product>
-	<product id="003" category="Smart Phones">
-		<name>One Plus One</name>
-		<retailer>One Plus</retailer>
-		<price>175</price>
-		<discount>5</discount>
-		<image>themes/images/products/oneplus/OnePlusOne.png</image>
-		<description> Mobile with 5.50-inch 1080x1920 display powered by 2.5GHz processor alongside 3GB RAM and 13-megapixel rear camera</description>
+	<product id="45">
+		<category>casual</category>
+		<name>GANT</name>
+		<description>Navy blue Casual Trouser</description>
+		<type>0</type>
+		<price>30.0</price>
+		<discount>4.0</discount>
+		<manufacturer>GANT</manufacturer>
+		<condition>0</condition>
+		<image>GANT.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="004" category="Tablets">
-		<name>Microsoft Surface 3 - Silver</name>
-		<retailer>Microsoft</retailer>
-		<price>559</price>
-		<discount>10</discount>
-		<image>themes/images/products/microsoft.jpg</image>
-		<description>Tablet with 12.00-inch 2160x1440 display alongside 4GB RAM and 5-megapixel rear camera</description>
+	<product id="89">
+		<category>girls</category>
+		<name>UFO</name>
+		<description>Pink girls Top</description>
+		<type>0</type>
+		<price>28.0</price>
+		<discount>4.0</discount>
+		<manufacturer>UFO</manufacturer>
+		<condition>0</condition>
+		<image>Ufo.jpg</image>
+		<gender>kids</gender>
 	</product>
-	<product id="005" category="Tablets">
-		<name>Samsung Galaxy Tab E (8.0 inches) in Black</name>
-		<retailer>Samsung</retailer>
-		<price>225</price>
-		<discount>10</discount>
-		<image>themes/images/products/samsung.jpg</image>
-		<description>Features a 8-inch display with resolution of 800 ... 12.67 oz (359 g) the average is 20.8 oz (594 g)</description>
+	<product id="46">
+		<category>casual</category>
+		<name>Hubberholme</name>
+		<description>White Strechable Casual Trouser</description>
+		<type>0</type>
+		<price>32.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Hubberholme</manufacturer>
+		<condition>0</condition>
+		<image>Hubberholme.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="006" category="Tablets">
-		<name>Acer - Iconia - 8" - Intel Atom - 32gb - Slate (Grey)</name>
-		<retailer>Acer</retailer>
-		<price>110</price>
-		<discount>15</discount>
-		<image>themes/images/products/acer.jpg</image>
-		<description>Size: 32 GB. Product Description. Acer Iconia W4-820-2894 Tablet comes ... Windows 8.1, 8-Inch Display; Intel Atom Quad-Core Z3740 1.33 GHz Processor; 32 GB Flash Memory, 2 GB RAM</description>
+	<product id="47">
+		<category>casual</category>
+		<name>High Lander</name>
+		<description>Brown Slim-Fit Casual Trouser</description>
+		<type>0</type>
+		<price>34.0</price>
+		<discount>4.0</discount>
+		<manufacturer>High Lander</manufacturer>
+		<condition>0</condition>
+		<image>MHighlandercasual.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="007" category="Laptop">
-		<name>Dell XPS 13 Non-Touch Laptops - DNCWT5154S, 13.3 inch</name>
-		<retailer>Dell</retailer>
-		<price>799</price>
-		<discount>30</discount>
-		<image>themes/images/products/dell.jpg</image>
-		<description>(Core i3, 4GB, 128GB) Features 8.0 ... 2015 with its newly redesigned XPS 13 laptop, which squeezed a 13-inch laptop into ... Display size/resolution, 13.3-inch 1,920 x 1,080 screen</description>
+	<product id="48">
+		<category>formal</category>
+		<name>Arrow</name>
+		<description>Purple Formal Shirt</description>
+		<type>0</type>
+		<price>32.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Arrow</manufacturer>
+		<condition>0</condition>
+		<image>Arrow.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="008" category="Laptop">
-		<name>Hp - 14" Chromebook - Intel Celeron Turbo Silver/snow White</name>
-		<retailer>Hp</retailer>
-		<price>270</price>
-		<discount>5</discount>
-		<image>themes/images/products/hp.jpg</image>
-		<description> Style: Chromebook. Product Description. HP 14-x010nr Chrome book ... HP Chromebook 14-ak010nr 14-Inch (Intel Celeron, 2 GB RAM, 16 GB SSD)</description>
+	<product id="49">
+		<category>formal</category>
+		<name>Hancock</name>
+		<description>Blue Slim Formal Shirt</description>
+		<type>0</type>
+		<price>34.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Hancock</manufacturer>
+		<condition>0</condition>
+		<image>Hancock.jpg</image>
+		<gender>male</gender>
 	</product>
-	<product id="009" category="Laptop">
-		<name>Apple MacBook Pro with Retina Display 13.3"</name>
-		<retailer>Apple</retailer>
-		<price>1300</price>
-		<discount>10</discount>
-		<image>themes/images/products/mac.jpg</image>
-		<description>Apple MacBook Pro with Retina display 2015 (13-inch, 128GB) ... Features 9.0 ... Display size/resolution, 13.3-inch 2,560x1,600 screen</description>
+	<product id="90">
+		<category>dresses</category>
+		<name>Cute Cumber</name>
+		<description>Pink and Black girls Dress</description>
+		<type>0</type>
+		<price>35.0</price>
+		<discount>4.0</discount>
+		<manufacturer>CUTE CUMBER</manufacturer>
+		<condition>0</condition>
+		<image>CUTECUMBER.jpg</image>
+		<gender>kids</gender>
 	</product>
-	<product id="0010" category="TV">
-		<name>Toshiba - 32" Class (31.5" Diag.) - Led - 720p - Hdtv - Black</name>
-		<retailer>Toshiba</retailer>
-		<price>115</price>
-		<discount>5</discount>
-		<image>themes/images/products/toshiba.jpg</image>
-		<description>Toshiba 32" Class (31.5" Diag.) - LED - 720p - Google Cast - HDTV: 720p resolution; 60Hz refresh rate; ... Model: 32L221U; SKU: 4809501 ... LED - 720p </description>
+	<product id="91">
+		<category>dresses</category>
+		<name>Lil Orchids</name>
+		<description>Blue and white girls Dress</description>
+		<type>0</type>
+		<price>31.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Lil Orchids</manufacturer>
+		<condition>0</condition>
+		<image>Lil Orchids.jpg</image>
+		<gender>kids</gender>
 	</product>
-	<product id="0011" category="TV">
-		<name>Lg - 50" Class - (49.6" Diag.) - Led - 1080p - Smart - Hdtv - Black</name>
-		<retailer>Lg</retailer>
-		<price>379</price>
-		<discount>15</discount>
-		<image>themes/images/products/lg.jpg</image>
-		<description>LG 50" Class - LED - 1080p - Smart - HDTV: 3 HDMI inputs; 3 USB 2.0 ports; 1080p resolution; TruMotion 120; Triple XD Engine</description>
+	<product id="92">
+		<category>dresses</category>
+		<name>Naughty Ninos</name>
+		<description>White and Blue girls Dress</description>
+		<type>0</type>
+		<price>33.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Naughty Ninos</manufacturer>
+		<condition>0</condition>
+		<image>naughty ninos.jpg</image>
+		<gender>kids</gender>
 	</product>
-	<product id="0012" category="TV">
-		<name>Haier 55" 4K Ultra HD TV</name>
-		<retailer>Haier</retailer>
-		<price>645</price>
-		<discount>20</discount>
-		<image>themes/images/products/haier.jpg</image>
-		<description>Features. 55" 4k Ultra HD TV w/ HDCP 2.2; Optical Output; 3840 X 2160 Resolution; 60hz Refresh Rate</description>
+	<product id="93">
+		<category>dresses</category>
+		<name>Peppermint</name>
+		<description>Blue girls Dress</description>
+		<type>0</type>
+		<price>38.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Peppermint</manufacturer>
+		<condition>0</condition>
+		<image>Peppermint.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="50">
+		<category>formal</category>
+		<name>John Players</name>
+		<description>White Formal Shirt</description>
+		<type>0</type>
+		<price>35.0</price>
+		<discount>4.0</discount>
+		<manufacturer>John Players</manufacturer>
+		<condition>0</condition>
+		<image>John player.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="94">
+		<category>dresses</category>
+		<name>Style Stone</name>
+		<description>Blue and pink girls Dress</description>
+		<type>0</type>
+		<price>32.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Style Stone</manufacturer>
+		<condition>0</condition>
+		<image>StyleStone.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="51">
+		<category>formal</category>
+		<name>Arrow NewYork</name>
+		<description>Charcoal grey Formal Trouser</description>
+		<type>0</type>
+		<price>40.0</price>
+		<discount>4.0</discount>
+		<manufacturer>ArrowNewYork</manufacturer>
+		<condition>0</condition>
+		<image>Arrownewyork.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="95">
+		<category>dresses</category>
+		<name>Toy Balloon</name>
+		<description>Pink girls Dress</description>
+		<type>0</type>
+		<price>40.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Toy Balloon</manufacturer>
+		<condition>0</condition>
+		<image>Toy Balloon.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="52">
+		<category>formal</category>
+		<name>Invictus</name>
+		<description>Blue Formal Trouser</description>
+		<type>0</type>
+		<price>42.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Invictus</manufacturer>
+		<condition>0</condition>
+		<image>Invictus.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="53">
+		<category>formal</category>
+		<name>Tommy Hilfiger</name>
+		<description>Charcoal grey Formal Trouser</description>
+		<type>0</type>
+		<price>38.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Tommy Hilfiger</manufacturer>
+		<condition>0</condition>
+		<image>Tommyhilfiger.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="10">
+		<category>tops</category>
+		<name>popnetic</name>
+		<description>Black Top</description>
+		<type>0</type>
+		<price>35.0</price>
+		<discount>4.0</discount>
+		<manufacturer>popnetic</manufacturer>
+		<condition>0</condition>
+		<image>popnetic.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="54">
+		<category>jeans</category>
+		<name>High Lander</name>
+		<description>Black slim-fit jeans</description>
+		<type>0</type>
+		<price>44.0</price>
+		<discount>4.0</discount>
+		<manufacturer>High Lander</manufacturer>
+		<condition>0</condition>
+		<image>MHighlanderjeans.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="11">
+		<category>tops</category>
+		<name>Ether</name>
+		<description>Pink Boxy Top</description>
+		<type>0</type>
+		<price>20.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Ether</manufacturer>
+		<condition>0</condition>
+		<image>Ether.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="55">
+		<category>jeans</category>
+		<name>John Players</name>
+		<description>Navy Mid-rise jeans</description>
+		<type>0</type>
+		<price>42.0</price>
+		<discount>4.0</discount>
+		<manufacturer>John Players</manufacturer>
+		<condition>0</condition>
+		<image>MJohnplayersjeans.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="12">
+		<category>jeans</category>
+		<name>Devis</name>
+		<description>Navy Slim-Fit</description>
+		<type>0</type>
+		<price>35.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Devis</manufacturer>
+		<condition>0</condition>
+		<image>Devis.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="56">
+		<category>jeans</category>
+		<name>Levis</name>
+		<description>Blue Low-Rise jeans</description>
+		<type>0</type>
+		<price>46.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Levis</manufacturer>
+		<condition>0</condition>
+		<image>MLevisjeans.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="13">
+		<category>jeans</category>
+		<name>Forever21</name>
+		<description>Navy Mid-Rise</description>
+		<type>0</type>
+		<price>31.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Forever21</manufacturer>
+		<condition>0</condition>
+		<image>Forever21.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="57">
+		<category>jeans</category>
+		<name>UCB</name>
+		<description>Black slim-fit jeans</description>
+		<type>0</type>
+		<price>41.0</price>
+		<discount>4.0</discount>
+		<manufacturer>UCB</manufacturer>
+		<condition>0</condition>
+		<image>MUcbjeans.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="14">
+		<category>jeans</category>
+		<name>Levis</name>
+		<description>Skinny Jeans</description>
+		<type>0</type>
+		<price>38.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Levis</manufacturer>
+		<condition>0</condition>
+		<image>Levis.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="58">
+		<category>jeans</category>
+		<name>Replay</name>
+		<description>Blue fit jeans</description>
+		<type>0</type>
+		<price>45.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Replay</manufacturer>
+		<condition>0</condition>
+		<image>Replay.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="15">
+		<category>jeans</category>
+		<name>Mango</name>
+		<description>White Low-Rise Jeans</description>
+		<type>0</type>
+		<price>40.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Mango</manufacturer>
+		<condition>0</condition>
+		<image>Mango.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="59">
+		<category>jeans</category>
+		<name>WROGN</name>
+		<description>Black Mid-Rise jeans</description>
+		<type>0</type>
+		<price>49.0</price>
+		<discount>4.0</discount>
+		<manufacturer>WROGN</manufacturer>
+		<condition>0</condition>
+		<image>WROGN.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="16">
+		<category>jeans</category>
+		<name>Roadster</name>
+		<description>Blue Slim-Fit Jeans</description>
+		<type>0</type>
+		<price>39.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>Roadsterjeans.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="17">
+		<category>jeans</category>
+		<name>Vero MOda</name>
+		<description>Blue Slim-Fit Jeans</description>
+		<type>0</type>
+		<price>35.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Vero Moda</manufacturer>
+		<condition>0</condition>
+		<image>Veromoda.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="18">
+		<category>sweaters</category>
+		<name>Mast N Harbour</name>
+		<description>MaroonSolid Sweater</description>
+		<type>0</type>
+		<price>19.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Mast N Harbour</manufacturer>
+		<condition>0</condition>
+		<image>MastnHarbor.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="19">
+		<category>sweaters</category>
+		<name>Renka</name>
+		<description>Black Sweater</description>
+		<type>0</type>
+		<price>23.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Renka</manufacturer>
+		<condition>0</condition>
+		<image>Renka.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="6">
+		<category>tops</category>
+		<name>Alba</name>
+		<description>Maroon T-shirt</description>
+		<type>0</type>
+		<price>25.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Alba</manufacturer>
+		<condition>0</condition>
+		<image>Alba.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="7">
+		<category>tops</category>
+		<name>Sera</name>
+		<description>Black T-shirt</description>
+		<type>0</type>
+		<price>26.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Sera</manufacturer>
+		<condition>0</condition>
+		<image>Sera.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="8">
+		<category>tops</category>
+		<name>Taurus</name>
+		<description>Peach colour Top</description>
+		<type>0</type>
+		<price>29.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Taurus</manufacturer>
+		<condition>0</condition>
+		<image>Taurus.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="9">
+		<category>tops</category>
+		<name>Roadster</name>
+		<description>Pink Top</description>
+		<type>0</type>
+		<price>30.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>Roadster.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="60">
+		<category>sweater</category>
+		<name>Ether</name>
+		<description>Black Solid Sweater</description>
+		<type>0</type>
+		<price>55.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Ether</manufacturer>
+		<condition>0</condition>
+		<image>MEthersweater.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="61">
+		<category>sweater</category>
+		<name>SPYKER</name>
+		<description>Grey Sweater</description>
+		<type>0</type>
+		<price>58.0</price>
+		<discount>4.0</discount>
+		<manufacturer>SPYKER</manufacturer>
+		<condition>0</condition>
+		<image>MSpykersweater.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="62">
+		<category>sweater</category>
+		<name>Pepe Jeans</name>
+		<description>Black Sweater</description>
+		<type>0</type>
+		<price>59.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Pepe Jeans</manufacturer>
+		<condition>0</condition>
+		<image>Pepe Jeans.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="63">
+		<category>sweater</category>
+		<name>Santa Monica</name>
+		<description>Charcoal Grey Sweater</description>
+		<type>0</type>
+		<price>48.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Santa Monica</manufacturer>
+		<condition>0</condition>
+		<image>Santa Monica.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="20">
+		<category>sweaters</category>
+		<name>Ether</name>
+		<description>Teal Blue Sweater</description>
+		<type>0</type>
+		<price>26.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Ether</manufacturer>
+		<condition>0</condition>
+		<image>WEthersweater.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="64">
+		<category>sweater</category>
+		<name>SPYKER</name>
+		<description>Red Sweater</description>
+		<type>0</type>
+		<price>49.0</price>
+		<discount>4.0</discount>
+		<manufacturer>SPYKER</manufacturer>
+		<condition>0</condition>
+		<image>SPYKER.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="21">
+		<category>sweaters</category>
+		<name>Foerver21</name>
+		<description>Beige Patterned Sweater</description>
+		<type>0</type>
+		<price>25.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Forever21</manufacturer>
+		<condition>0</condition>
+		<image>WForever21Sweater.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="65">
+		<category>sweater</category>
+		<name>Tokyo Laundry</name>
+		<description>Grey Patterned Sweater</description>
+		<type>0</type>
+		<price>58.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Tokyo Laundry</manufacturer>
+		<condition>0</condition>
+		<image>Tokyo Laundry.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="22">
+		<category>sweaters</category>
+		<name>Roadster</name>
+		<description>Black and Grey Sweater</description>
+		<type>0</type>
+		<price>29.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>WRoadstersweater.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="66">
+		<category>jacket</category>
+		<name>Fila</name>
+		<description>Blue Colourblocked Jacket</description>
+		<type>0</type>
+		<price>60.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Fila</manufacturer>
+		<condition>0</condition>
+		<image>Fila.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="23">
+		<category>sweaters</category>
+		<name>Roadster</name>
+		<description>Beige Ribbed Sweater</description>
+		<type>0</type>
+		<price>33.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>WRoadstersweater2.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="67">
+		<category>jacket</category>
+		<name>Harvard</name>
+		<description>Black Quilted Bomber Jacket</description>
+		<type>0</type>
+		<price>65.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Harvard</manufacturer>
+		<condition>0</condition>
+		<image>Harvard.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="24">
+		<category>jackets</category>
+		<name>Dress Berry</name>
+		<description>Brown Biker Jacket</description>
+		<type>0</type>
+		<price>40.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Dress Berry</manufacturer>
+		<condition>0</condition>
+		<image>Dressberry.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="68">
+		<category>jacket</category>
+		<name>Fort Collins</name>
+		<description>Black Leather Jacket</description>
+		<type>0</type>
+		<price>60.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Fort Collins</manufacturer>
+		<condition>0</condition>
+		<image>MFortCollinsjacket.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="25">
+		<category>jackets</category>
+		<name>Purys</name>
+		<description>Black quilted Jacket</description>
+		<type>0</type>
+		<price>40.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Purys</manufacturer>
+		<condition>0</condition>
+		<image>Purys.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="69">
+		<category>jacket</category>
+		<name>Roadster</name>
+		<description>Brown Biker Jacket</description>
+		<type>0</type>
+		<price>63.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>MRoadsterjacket.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="26">
+		<category>jackets</category>
+		<name>Vanca</name>
+		<description>Red Slim-Fit Jacket</description>
+		<type>0</type>
+		<price>42.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Vanca</manufacturer>
+		<condition>0</condition>
+		<image>Vanca.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="27">
+		<category>jackets</category>
+		<name>Mast N Harbour</name>
+		<description>Tan Brown Biker Jacket</description>
+		<type>0</type>
+		<price>45.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Mast N Harbour</manufacturer>
+		<condition>0</condition>
+		<image>WMastnharbourjacket.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="28">
+		<category>jackets</category>
+		<name>Roadster</name>
+		<description>Tan Brown Biker Jacket</description>
+		<type>0</type>
+		<price>43.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>WRoadsterjacket.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="29">
+		<category>jackets</category>
+		<name>Vero Moda</name>
+		<description>Mustard Yellow Jacket</description>
+		<type>0</type>
+		<price>48.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Vero Moda</manufacturer>
+		<condition>0</condition>
+		<image>WVeromodaJacket.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="70">
+		<category>jacket</category>
+		<name>Puma</name>
+		<description>Black Jacket</description>
+		<type>0</type>
+		<price>67.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Puma</manufacturer>
+		<condition>0</condition>
+		<image>Puma.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="71">
+		<category>jacket</category>
+		<name>Wildcraft</name>
+		<description>Black Hooded Jacket</description>
+		<type>0</type>
+		<price>69.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Wildcraft</manufacturer>
+		<condition>0</condition>
+		<image>Wildcraft.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="72">
+		<category>clothingsets</category>
+		<name>Baby League</name>
+		<description>White and yellow Clothing set</description>
+		<type>0</type>
+		<price>30.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Baby League</manufacturer>
+		<condition>0</condition>
+		<image>Baby League.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="73">
+		<category>clothingsets</category>
+		<name>Marks N Spencer</name>
+		<description>White Clothing Set</description>
+		<type>0</type>
+		<price>25.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Marks N Spencer</manufacturer>
+		<condition>0</condition>
+		<image>Marks Spencer.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="30">
+		<category>blazers</category>
+		<name>Allen Solly</name>
+		<description>Grey Formal Blazer</description>
+		<type>0</type>
+		<price>50.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Allen Solly</manufacturer>
+		<condition>0</condition>
+		<image>AllenSolly.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="74">
+		<category>clothingsets</category>
+		<name>Mother Care</name>
+		<description>White and Red Clothing Set</description>
+		<type>0</type>
+		<price>22.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Mother Care</manufacturer>
+		<condition>0</condition>
+		<image>Mothercare.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="31">
+		<category>blazers</category>
+		<name>Fort Collins</name>
+		<description>Olive Brown Blazer</description>
+		<type>0</type>
+		<price>52.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Fort Collins</manufacturer>
+		<condition>0</condition>
+		<image>Fortcollins.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="75">
+		<category>clothingsets</category>
+		<name>Nauti Nato</name>
+		<description>White  and yellow Clothing Set</description>
+		<type>0</type>
+		<price>28.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Nauti Nato</manufacturer>
+		<condition>0</condition>
+		<image>Nauti Nato.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="32">
+		<category>blazers</category>
+		<name>NewLook</name>
+		<description>Red Blazer</description>
+		<type>0</type>
+		<price>55.0</price>
+		<discount>4.0</discount>
+		<manufacturer>NewLook</manufacturer>
+		<condition>0</condition>
+		<image>Newlook.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="76">
+		<category>clothingsets</category>
+		<name>Pantaloons</name>
+		<description>Black and Pink Clothing Set</description>
+		<type>0</type>
+		<price>31.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Pantaloons</manufacturer>
+		<condition>0</condition>
+		<image>Pantaloons.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="33">
+		<category>blazers</category>
+		<name>ONLY</name>
+		<description>Blue Blazer</description>
+		<type>0</type>
+		<price>51.0</price>
+		<discount>4.0</discount>
+		<manufacturer>ONLY</manufacturer>
+		<condition>0</condition>
+		<image>Only.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="77">
+		<category>clothingsets</category>
+		<name>Pepito</name>
+		<description>Black Clothing Set</description>
+		<type>0</type>
+		<price>29.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Pepito</manufacturer>
+		<condition>0</condition>
+		<image>Pepito.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="34">
+		<category>blazers</category>
+		<name>Park Avenue</name>
+		<description>Charcoal Grey Blazer</description>
+		<type>0</type>
+		<price>54.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Park Avenue</manufacturer>
+		<condition>0</condition>
+		<image>Parkavenue.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="78">
+		<category>boys</category>
+		<name>612 League</name>
+		<description>Green boys T-Shirt</description>
+		<type>0</type>
+		<price>20.0</price>
+		<discount>4.0</discount>
+		<manufacturer>612 League</manufacturer>
+		<condition>0</condition>
+		<image>612 League.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="35">
+		<category>blazers</category>
+		<name>Vero Moda</name>
+		<description>Grey Casual Blazer</description>
+		<type>0</type>
+		<price>56.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Vero Moda</manufacturer>
+		<condition>0</condition>
+		<image>WVeromodablazer.jpg</image>
+		<gender>female</gender>
+	</product>
+	<product id="79">
+		<category>boys</category>
+		<name>Nauti Nati</name>
+		<description>MultiColour Boys T-Shirt</description>
+		<type>0</type>
+		<price>25.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Nauti Nati</manufacturer>
+		<condition>0</condition>
+		<image>BNautinati.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="36">
+		<category>tshirt</category>
+		<name>Avoir Envie</name>
+		<description>Blue N grey T-Shirt</description>
+		<type>0</type>
+		<price>16.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Avoir Envie</manufacturer>
+		<condition>0</condition>
+		<image>Avoirenvie.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="37">
+		<category>tshirt</category>
+		<name>Adidas</name>
+		<description>Blue Round neck T-shirt</description>
+		<type>0</type>
+		<price>20.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Adidas</manufacturer>
+		<condition>0</condition>
+		<image>MAdidastshirt.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="38">
+		<category>tshirt</category>
+		<name>Ether</name>
+		<description>Grey Melange &amp; Maroon T-shirt</description>
+		<type>0</type>
+		<price>23.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Ether</manufacturer>
+		<condition>0</condition>
+		<image>MEthertshirt.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="39">
+		<category>tshirt</category>
+		<name>Moda Rapido</name>
+		<description>Navy Printed T-shirt</description>
+		<type>0</type>
+		<price>28.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Moda Rapido</manufacturer>
+		<condition>0</condition>
+		<image>Moda Rapido.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="80">
+		<category>boys</category>
+		<name>Gini and Jony</name>
+		<description>Grey boys T-Shirt</description>
+		<type>0</type>
+		<price>22.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Giny and Jony</manufacturer>
+		<condition>0</condition>
+		<image>Gini n Jony.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="81">
+		<category>boys</category>
+		<name>Juniors</name>
+		<description>White and Blue boys T-Shirt</description>
+		<type>0</type>
+		<price>18.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Juniors</manufacturer>
+		<condition>0</condition>
+		<image>Juniors.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="82">
+		<category>boys</category>
+		<name>Palm Tree</name>
+		<description>Blue boys T-Shirt</description>
+		<type>0</type>
+		<price>26.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Palm Tree</manufacturer>
+		<condition>0</condition>
+		<image>Palmtree.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="83">
+		<category>boys</category>
+		<name>Scullers</name>
+		<description>White and Orange boys T-Shirt</description>
+		<type>0</type>
+		<price>15.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Scullers</manufacturer>
+		<condition>0</condition>
+		<image>Scullers.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="40">
+		<category>tshirt</category>
+		<name>Roadster</name>
+		<description>Black printed T-shirt</description>
+		<type>0</type>
+		<price>24.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>MRoadstertshirt.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="84">
+		<category>girls</category>
+		<name>Autograph</name>
+		<description>Brown girls Top</description>
+		<type>0</type>
+		<price>22.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Autograph</manufacturer>
+		<condition>0</condition>
+		<image>Autograph.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="41">
+		<category>tshirt</category>
+		<name>UCB</name>
+		<description>White V-neck T-shirt</description>
+		<type>0</type>
+		<price>30.0</price>
+		<discount>4.0</discount>
+		<manufacturer>UCB</manufacturer>
+		<condition>0</condition>
+		<image>UCB.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="85">
+		<category>girls</category>
+		<name>Beebay</name>
+		<description>Pink girls Top</description>
+		<type>0</type>
+		<price>25.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Beebay</manufacturer>
+		<condition>0</condition>
+		<image>Beebay.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="42">
+		<category>casual</category>
+		<name>LP Sport</name>
+		<description>White Casual shirt</description>
+		<type>0</type>
+		<price>27.0</price>
+		<discount>4.0</discount>
+		<manufacturer>LP SPort</manufacturer>
+		<condition>0</condition>
+		<image>LPSport.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="86">
+		<category>girls</category>
+		<name>Biba</name>
+		<description>Blue girls Top</description>
+		<type>0</type>
+		<price>27.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Biba</manufacturer>
+		<condition>0</condition>
+		<image>Biba.jpg</image>
+		<gender>kids</gender>
+	</product>
+	<product id="43">
+		<category>casual</category>
+		<name>Roadster</name>
+		<description>Blue Casual shirt</description>
+		<type>0</type>
+		<price>29.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Roadster</manufacturer>
+		<condition>0</condition>
+		<image>MRoadstercasualt.jpg</image>
+		<gender>male</gender>
+	</product>
+	<product id="87">
+		<category>girls</category>
+		<name>Gini and Jony</name>
+		<description>Navy girls Top</description>
+		<type>0</type>
+		<price>26.0</price>
+		<discount>4.0</discount>
+		<manufacturer>Gini and Jony</manufacturer>
+		<condition>0</condition>
+		<image>GGini n Jony.jpg</image>
+		<gender>kids</gender>
 	</product>
 </Products>
