@@ -10,7 +10,12 @@
 	<div class="container">
 	<div class="row">
 	<div class="span9">
-		<% if(request.getParameter("writeReview") != null){
+		<% if(request.getParameter("donatedSuccessfully") != null){%>
+			<div class="alert" style="background-color: #5bb75b;">
+			 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			 <strong>Success!</strong> Thanks for Donating!  You just helped a needy. 
+			</div>
+		<%} else if(request.getParameter("writeReview") != null){
 		%>
 		<div class="alert" style="background-color: #5bb75b;">
 		 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
