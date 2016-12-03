@@ -5,7 +5,7 @@ use db_clicknpick;
 drop table user;
 drop table product;
 drop table orders;
-DROP TABLE COUPONS;
+drop table coupons;
 drop table donations;
 
 CREATE TABLE `orders` (
