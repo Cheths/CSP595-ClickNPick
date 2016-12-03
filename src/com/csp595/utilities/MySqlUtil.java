@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
+import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,6 +20,8 @@ import com.csp595.beans.Donation;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
 import com.csp595.beans.User;
+import com.csp595.utilities.Constants.Orders;
+import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -60,10 +62,9 @@ public class MySqlUtil {
 		int result = 0;
 		if (connection != null) {
 
-			String sql = "SELECT u." + Constants.User.USERNAME_COL + " FROM " + Constants.User.USERTABLE + " u WHERE u."
-					+ Constants.User.USERNAME_COL + " = ? AND u." + Constants.User.ROLE_COL + " = ?";
-			if (password != null) {
-				sql = sql + " AND u." + Constants.User.PWD_COL + " = ?";
+			String sql = "SELECT u."+Constants.User.USERNAME_COL+" FROM "+ Constants.User.USERTABLE +" u WHERE u."+Constants.User.USERNAME_COL+" = ? AND u."+Constants.User.ROLE_COL+" = ?";
+			if(password != null){
+				sql=sql+" AND u."+Constants.User.PWD_COL+" = ?"; 
 			}
 			PreparedStatement preparedStatement;
 			try {
@@ -401,19 +402,19 @@ public class MySqlUtil {
 			}
 		}
 	}
-
-	public static void insertQueryForCouponTable(String couponCode, String userName, String discount) {
+	
+	public static void insertQueryForCouponTable(String couponCode, String userName, String discount, String isUsed) {
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into " + Constants.Coupon.COUPONTABLE + "(" + Constants.Coupon.COUPON_CODE_COL + ","
-					+ Constants.Coupon.DISCOUNT_COL + "," + Constants.Coupon.USER_NAME_COL + ") VALUES (?,?,?)";
+			String sql = "INSERT into "+ Constants.Coupon.COUPONTABLE +"("+Constants.Coupon.COUPON_CODE_COL+","+Constants.Coupon.DISCOUNT_COL+","+Constants.Coupon.USER_NAME_COL+","+Constants.Coupon.IS_USED_COL+") VALUES (?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, couponCode);
 				preparedStatement.setString(2, discount);
 				preparedStatement.setString(3, userName);
-
+				preparedStatement.setString(4, isUsed);
+				
 				preparedStatement.execute();
 				connection.close();
 			} catch (SQLException e) {
@@ -424,17 +425,18 @@ public class MySqlUtil {
 
 	public static Map<String, Coupon> getCouponHashMap() {
 		Connection connection = getConnection();
+		String isUsed = "no";
 		Map<String, Coupon> couponHashMap = new HashMap<String, Coupon>();
 		if (connection != null) {
-			String sql = "SELECT * FROM " + Constants.Coupon.COUPONTABLE;
+			String sql = "SELECT * FROM "+Constants.Coupon.COUPONTABLE + " WHERE is_used = ?";
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+				preparedStatement.setString(1, isUsed);
 				ResultSet resultSet = preparedStatement.executeQuery();
-				while (resultSet.next()) {
-					String couponCode = resultSet.getString(Constants.Coupon.COUPON_CODE_COL);
-					Coupon coupon = new Coupon(couponCode, resultSet.getString(Constants.Coupon.DISCOUNT_COL),
-							resultSet.getString(Constants.Coupon.USER_NAME_COL));
-					couponHashMap.put(couponCode, coupon);
+				while(resultSet.next()){
+				String couponCode = resultSet.getString(Constants.Coupon.COUPON_CODE_COL);
+				Coupon coupon = new Coupon(couponCode, resultSet.getString(Constants.Coupon.DISCOUNT_COL), resultSet.getString(Constants.Coupon.USER_NAME_COL), resultSet.getString(Constants.Coupon.IS_USED_COL));
+				couponHashMap.put(couponCode, coupon);
 				}
 				connection.close();
 			} catch (SQLException e) {
@@ -555,29 +557,34 @@ public class MySqlUtil {
 		else
 			return null;
 	}
-
-	public static HashMap<String, String> validateCoupon(String couponcode, HttpServletRequest request)
-			throws SQLException {
+	
+	public static Coupon validateCoupon(String couponcode, HttpServletRequest request) throws SQLException{
 		Connection conn = getConnection();
 		HttpSession session = request.getSession(true);
-
-		boolean isValid = false;
-		HashMap<String, String> coupon = new HashMap<String, String>();
+		
+//		boolean isValid = false;
+//		HashMap<String, String> coupon = new HashMap<String, String>(); 
+		Coupon coupon = null;
 		String userName = (String) session.getAttribute("userName");
-		if (conn != null) {
+		if(conn!=null){
 			String sql = "SELECT * FROM coupons WHERE coupon_code = ? AND user_name = ?";
+			
 			PreparedStatement prep = (PreparedStatement) conn.prepareStatement(sql);
 			try {
 				prep.setString(1, couponcode);
 				prep.setString(2, userName);
 				ResultSet rs = prep.executeQuery();
-				while (rs.next()) {
-					coupon.put("couponcode", rs.getString("coupon_code"));
-					coupon.put("discount", rs.getString("discount"));
-					coupon.put("user_name", rs.getString("user_name"));
-					isValid = true;
+				while(rs.next()){
+					coupon = new Coupon();
+					coupon.setCouponCode(rs.getString("coupon_code"));
+					coupon.setDiscount(rs.getString("discount"));
+					coupon.setUserName(rs.getString("user_name"));
+					coupon.setIsUsed(rs.getString("is_used"));
+					
+//					isValid = isUsed.equalsIgnoreCase("no") ? true : false;
 				}
 			} catch (SQLException e) {
+				
 				e.printStackTrace();
 			}
 		}
@@ -652,4 +659,34 @@ public class MySqlUtil {
 		return donationList;
 	}
 	
+	
+		public static void UpdateCoupon(Coupon coupon) throws SQLException{
+		Connection conn = getConnection();
+//		String userName = (String) session.getAttribute("userName");
+		if(conn != null){
+			String sql = "UPDATE COUPONS SET is_used = ? WHERE coupon_code = ? AND user_name = ? AND is_used = ?";
+			PreparedStatement prep = (PreparedStatement) conn.prepareStatement(sql);
+			try {
+				prep.setString(1, "yes");
+				prep.setString(2, coupon.getCouponCode());
+				prep.setString(3, coupon.getUserName());
+				prep.setString(4, coupon.getIsUsed());
+				
+				int rowsAffected = prep.executeUpdate();
+//				while(rs.next()){
+//					coupon = new Coupon();
+//					coupon.setCouponCode(rs.getString("coupon_code"));
+//					coupon.setDiscount(rs.getString("discount"));
+//					coupon.setUserName(rs.getString("user_name"));
+//					coupon.setIsUsed(rs.getString("is_used"));
+//					
+////					isValid = isUsed.equalsIgnoreCase("no") ? true : false;
+//				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+		}
+	}
 }

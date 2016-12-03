@@ -50,6 +50,7 @@ public class Constants {
 		public static String COUPON_CODE_COL = "coupon_code";
 		public static String DISCOUNT_COL = "discount";
 		public static String USER_NAME_COL = "user_name";
+		public static String IS_USED_COL = "is_used";
 	}
 	
 	public interface User{

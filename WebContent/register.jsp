@@ -7,6 +7,7 @@
 	<div class="span9">
 		<%
 			String userCreationStatus = (String) session.getAttribute("userCreationStatus");
+			String isSalesman = request.getParameter("salesman") != null && request.getParameter("salesman").equalsIgnoreCase("yes") ? "yes" : " ";
 			if (userCreationStatus != null) {
 				if (userCreationStatus.equals("Failure")) {
 					session.removeAttribute("userCreationStatus");
@@ -60,6 +61,7 @@
 			<form class="form-horizontal"
 				onsubmit="return validatePasswordFields()" name="registerUserForm"
 				action="RegisterServlet" method="POST">
+				<input type = "hidden" name = "salesman" value = "<%=isSalesman %>" >
 				<h4>Your personal information</h4>
 				<div class="control-group">
 					<label class="control-label">Title <sup>*</sup></label>

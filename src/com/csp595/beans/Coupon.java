@@ -5,15 +5,15 @@ public class Coupon {
 	private String couponCode;
 	private String discount;
 	private String userName;
-	
+	private String isUsed;
 	public Coupon() {
 	}
 
-	public Coupon(String couponCode, String discount, String userName) {
-		super();
+	public Coupon(String couponCode, String discount, String userName, String isUsed) {
 		this.couponCode = couponCode;
 		this.discount = discount;
 		this.userName = userName;
+		this.isUsed = isUsed;
 	}
 
 	public String getCouponCode() {
@@ -40,5 +40,12 @@ public class Coupon {
 		this.userName = userName;
 	}
 	
+	public String getIsUsed() {
+		return isUsed;
+	}
+
+	public void setIsUsed(String isUsed) {
+		this.isUsed = isUsed;
+	}
 	
 }
