@@ -1,6 +1,4 @@
 <!DOCTYPE html">
-<%@page import="com.csp595.beans.Donation"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="com.csp595.utilities.MySqlUtil"%>
@@ -32,10 +30,8 @@
 			<br />
 			<div style="padding-bottom: 20px;">
 				<a href="admin_operations.jsp?addCoupons=true" class="btn btn-large">Add
-					Coupon</a> 
-				<a href="admin_operations.jsp?viewCoupons=true"
+					Coupon</a> <a href="admin_operations.jsp?viewCoupons=true"
 					class="btn btn-large">View Coupons</a>
-			</div>	
 			</div>
 			<%
 				if (addCoupons != null) {
@@ -123,7 +119,7 @@
 				</table>
 			</div>
 			<%
-			} else {
+				} else {
 			%>
 			<div style="padding-bottom: 250px;"></div>
 			<%
