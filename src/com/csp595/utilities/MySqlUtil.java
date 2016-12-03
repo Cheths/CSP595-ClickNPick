@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.sql.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,8 +20,6 @@ import com.csp595.beans.Donation;
 import com.csp595.beans.Order;
 import com.csp595.beans.Product;
 import com.csp595.beans.User;
-import com.csp595.utilities.Constants.Orders;
-import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -30,7 +28,7 @@ public class MySqlUtil {
 	static final String DB_URL = "jdbc:mysql://localhost:3306/db_clicknpick?autoReconnect=true&useSSL=false";
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-	private static List<Product> productList = new ArrayList<Product>();
+	//private static List<Product> productList = new ArrayList<Product>();
 	private static HashMap<String, Product> productHashMap;
 
 	/**
@@ -62,9 +60,10 @@ public class MySqlUtil {
 		int result = 0;
 		if (connection != null) {
 
-			String sql = "SELECT u."+Constants.User.USERNAME_COL+" FROM "+ Constants.User.USERTABLE +" u WHERE u."+Constants.User.USERNAME_COL+" = ? AND u."+Constants.User.ROLE_COL+" = ?";
-			if(password != null){
-				sql=sql+" AND u."+Constants.User.PWD_COL+" = ?"; 
+			String sql = "SELECT u." + Constants.User.USERNAME_COL + " FROM " + Constants.User.USERTABLE + " u WHERE u."
+					+ Constants.User.USERNAME_COL + " = ? AND u." + Constants.User.ROLE_COL + " = ?";
+			if (password != null) {
+				sql = sql + " AND u." + Constants.User.PWD_COL + " = ?";
 			}
 			PreparedStatement preparedStatement;
 			try {
@@ -91,9 +90,9 @@ public class MySqlUtil {
 		return result;
 	}
 
-	public static void dropTableForProduct(){
+	public static void dropTableForProduct() {
 		Connection connection = getConnection();
-		if(connection != null){
+		if (connection != null) {
 			PreparedStatement preparedStatement = null;
 			String sql = "DROP TABLE IF EXISTS PRODUCT;";
 			try {
@@ -105,25 +104,19 @@ public class MySqlUtil {
 			}
 		}
 	}
-	
-	public static void createTableForProduct(){
+
+	public static void createTableForProduct() {
 		dropTableForProduct();
 		Connection connection = getConnection();
-		if(connection != null){
+		if (connection != null) {
 			PreparedStatement preparedStatement = null;
-			String sql = "CREATE TABLE Product ("
-					+ "`id` INT(11) PRIMARY KEY,"
-					+ "`name` VARCHAR(45) NOT NULL,"
-					+ "`category` VARCHAR(45) NOT NULL,"
-					+ "`manufacturer` VARCHAR(45) DEFAULT NULL,"
-					+ "`type` VARCHAR(45) NOT NULL,"
-					+ "`condition` VARCHAR(45) DEFAULT NULL,"
-					+ "`price` DOUBLE NOT NULL,"
-					+ "`discount` INT(11) DEFAULT NULL,"
-					+ "`image` VARCHAR(100) DEFAULT NULL,"
-					+ "`description` VARCHAR(255),"
+			String sql = "CREATE TABLE Product (" + "`id` INT(11) PRIMARY KEY," + "`name` VARCHAR(45) NOT NULL,"
+					+ "`category` VARCHAR(45) NOT NULL," + "`manufacturer` VARCHAR(45) DEFAULT NULL,"
+					+ "`type` VARCHAR(45) NOT NULL," + "`condition` VARCHAR(45) DEFAULT NULL,"
+					+ "`price` DOUBLE NOT NULL," + "`discount` INT(11) DEFAULT NULL,"
+					+ "`image` VARCHAR(100) DEFAULT NULL," + "`description` VARCHAR(255),"
 					+ "`gender` VARCHAR(10) DEFAULT NULL);";
-			
+
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.executeUpdate();
@@ -133,21 +126,21 @@ public class MySqlUtil {
 			}
 		}
 	}
-	
-	public static void insertRecordstoProductTable(){
+
+	public static void insertRecordstoProductTable() {
 		createTableForProduct();
-		
+
 		Connection connection = getConnection();
-		if(connection != null){
+		if (connection != null) {
 			PreparedStatement preparedStatement = null;
 			try {
 				String sql = "INSERT INTO PRODUCT(`id`,`name`,`gender`,`category`,`type`,`price`,`manufacturer`,`discount`,`condition`,`image`,`description`) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				
+
 				Map<String, Product> productHashMap = SaxParserProductXMLdataStore.getProductHashMap();
-				for(Entry<String, Product> productEntryValue: productHashMap.entrySet()){
+				for (Entry<String, Product> productEntryValue : productHashMap.entrySet()) {
 					Product product = productEntryValue.getValue();
-					
+
 					preparedStatement.setString(1, product.getId());
 					preparedStatement.setString(2, product.getName());
 					preparedStatement.setString(3, product.getGender());
@@ -161,14 +154,14 @@ public class MySqlUtil {
 					preparedStatement.setString(11, product.getDescription());
 					preparedStatement.addBatch();
 				}
-				
+
 				preparedStatement.executeBatch();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	public static void insertQueryForUserTable(String title, String first_name, String last_name, String email_id,
 			String password, String date_of_birth, String username, String role, String address_1, String address_2,
 			String city, String state, String zip, String country, String phone) {
@@ -231,10 +224,10 @@ public class MySqlUtil {
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				if (session != null) {
-				if (session.getAttribute("clothing_type") != null) {
-					preparedStatement.setString(1, session.getAttribute("clothing_type").toString());
-					session.removeAttribute("clothing_type");
-				}
+					if (session.getAttribute("clothing_type") != null) {
+						preparedStatement.setString(1, session.getAttribute("clothing_type").toString());
+						session.removeAttribute("clothing_type");
+					}
 				}
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
@@ -402,11 +395,13 @@ public class MySqlUtil {
 			}
 		}
 	}
-	
+
 	public static void insertQueryForCouponTable(String couponCode, String userName, String discount, String isUsed) {
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ Constants.Coupon.COUPONTABLE +"("+Constants.Coupon.COUPON_CODE_COL+","+Constants.Coupon.DISCOUNT_COL+","+Constants.Coupon.USER_NAME_COL+","+Constants.Coupon.IS_USED_COL+") VALUES (?,?,?,?)";
+			String sql = "INSERT into " + Constants.Coupon.COUPONTABLE + "(" + Constants.Coupon.COUPON_CODE_COL + ","
+					+ Constants.Coupon.DISCOUNT_COL + "," + Constants.Coupon.USER_NAME_COL + ","
+					+ Constants.Coupon.IS_USED_COL + ") VALUES (?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
@@ -414,7 +409,7 @@ public class MySqlUtil {
 				preparedStatement.setString(2, discount);
 				preparedStatement.setString(3, userName);
 				preparedStatement.setString(4, isUsed);
-				
+
 				preparedStatement.execute();
 				connection.close();
 			} catch (SQLException e) {
@@ -428,15 +423,17 @@ public class MySqlUtil {
 		String isUsed = "no";
 		Map<String, Coupon> couponHashMap = new HashMap<String, Coupon>();
 		if (connection != null) {
-			String sql = "SELECT * FROM "+Constants.Coupon.COUPONTABLE + " WHERE is_used = ?";
+			String sql = "SELECT * FROM " + Constants.Coupon.COUPONTABLE + " WHERE is_used = ?";
 			try {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
 				preparedStatement.setString(1, isUsed);
 				ResultSet resultSet = preparedStatement.executeQuery();
-				while(resultSet.next()){
-				String couponCode = resultSet.getString(Constants.Coupon.COUPON_CODE_COL);
-				Coupon coupon = new Coupon(couponCode, resultSet.getString(Constants.Coupon.DISCOUNT_COL), resultSet.getString(Constants.Coupon.USER_NAME_COL), resultSet.getString(Constants.Coupon.IS_USED_COL));
-				couponHashMap.put(couponCode, coupon);
+				while (resultSet.next()) {
+					String couponCode = resultSet.getString(Constants.Coupon.COUPON_CODE_COL);
+					Coupon coupon = new Coupon(couponCode, resultSet.getString(Constants.Coupon.DISCOUNT_COL),
+							resultSet.getString(Constants.Coupon.USER_NAME_COL),
+							resultSet.getString(Constants.Coupon.IS_USED_COL));
+					couponHashMap.put(couponCode, coupon);
 				}
 				connection.close();
 			} catch (SQLException e) {
@@ -557,57 +554,57 @@ public class MySqlUtil {
 		else
 			return null;
 	}
-	
-	public static Coupon validateCoupon(String couponcode, HttpServletRequest request) throws SQLException{
+
+	public static Coupon validateCoupon(String couponcode, HttpServletRequest request) throws SQLException {
 		Connection conn = getConnection();
 		HttpSession session = request.getSession(true);
-		
-//		boolean isValid = false;
-//		HashMap<String, String> coupon = new HashMap<String, String>(); 
+
+		// boolean isValid = false;
+		// HashMap<String, String> coupon = new HashMap<String, String>();
 		Coupon coupon = null;
 		String userName = (String) session.getAttribute("userName");
-		if(conn!=null){
+		if (conn != null) {
 			String sql = "SELECT * FROM coupons WHERE coupon_code = ? AND user_name = ?";
-			
+
 			PreparedStatement prep = (PreparedStatement) conn.prepareStatement(sql);
 			try {
 				prep.setString(1, couponcode);
 				prep.setString(2, userName);
 				ResultSet rs = prep.executeQuery();
-				while(rs.next()){
+				while (rs.next()) {
 					coupon = new Coupon();
 					coupon.setCouponCode(rs.getString("coupon_code"));
 					coupon.setDiscount(rs.getString("discount"));
 					coupon.setUserName(rs.getString("user_name"));
 					coupon.setIsUsed(rs.getString("is_used"));
-					
-//					isValid = isUsed.equalsIgnoreCase("no") ? true : false;
+
+					// isValid = isUsed.equalsIgnoreCase("no") ? true : false;
 				}
 			} catch (SQLException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
 		return coupon;
 	}
 
-	
-	public static void insertIntoDonations(String username,String quantity,String organization,String pickUpDate,String pickUpLocation, HttpServletResponse response ){
+	public static void insertIntoDonations(String username, String quantity, String organization, String pickUpDate,
+			String pickUpLocation, HttpServletResponse response) {
 		Connection connection = getConnection();
 		if (connection != null) {
-			String sql = "INSERT into "+ Constants.Donations.DONATIONS_TABLE +"("+Constants.Donations.USERNAME+","+Constants.Donations.QUANTITY+
-				","+Constants.Donations.ORGANIZATION+","+Constants.Donations.PICKUP_DATE+","+Constants.Donations.PICKUP_LOCATION+","+Constants.Donations.ID+")"
-			+ " VALUES (?,?,?,?,?,?)";
+			String sql = "INSERT into " + Constants.Donations.DONATIONS_TABLE + "(" + Constants.Donations.USERNAME + ","
+					+ Constants.Donations.QUANTITY + "," + Constants.Donations.ORGANIZATION + ","
+					+ Constants.Donations.PICKUP_DATE + "," + Constants.Donations.PICKUP_LOCATION + ")"
+					+ " VALUES (?,?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-				String id ="1";
+				String id = "1";
 				preparedStatement.setString(1, username);
 				preparedStatement.setString(2, quantity);
 				preparedStatement.setString(3, organization);
 				preparedStatement.setString(4, pickUpDate);
 				preparedStatement.setString(5, pickUpLocation);
-				preparedStatement.setString(6, id);
 				preparedStatement.execute();
 				connection.close();
 				try {
@@ -620,50 +617,52 @@ public class MySqlUtil {
 			}
 		}
 	}
-	
-	public static List<Donation> readDonations(String userRole){
+
+	public static List<Donation> readDonations(String userRole, String userName) {
 		List<Donation> donationList = new ArrayList<>();
 		Connection connection = getConnection();
-		
-		if (connection != null) {
+
+		if (connection != null && userRole != null) {
 			String sql = "";
 			PreparedStatement preparedStatement;
 			ResultSet resultSet = null;
 			try {
-				if (userRole.equals(Constants.ROLE_CUSTOMER)){
-					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+ " where "+ Constants.Donations.USERNAME +"= ?";
+				if (userRole.equals(Constants.ROLE_CUSTOMER)) {
+					sql = "SELECT * FROM " + Constants.Donations.DONATIONS_TABLE + " where "
+							+ Constants.Donations.USERNAME + "= ?";
 					preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-					preparedStatement.setString(1, userRole);
+					preparedStatement.setString(1, userName);
 					resultSet = preparedStatement.executeQuery();
-				}else if(userRole.equals(Constants.ROLE_STORE_MANAGER)){
-					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE;
+				} else if (userRole.equals(Constants.ROLE_STORE_MANAGER)) {
+					sql = "SELECT * FROM " + Constants.Donations.DONATIONS_TABLE;
 					preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-					resultSet= preparedStatement.executeQuery();
+					resultSet = preparedStatement.executeQuery();
 				}
-				while (resultSet.next()){
+				while (resultSet.next()) {
 					Donation donation = new Donation();
-					donation.setId(resultSet.getString(Constants.Donations.ID));
-					donation.setUsername(resultSet.getString(Constants.Donations.USERNAME));
-					donation.setOrganization(resultSet.getString(Constants.Donations.ORGANIZATION));
-					donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
-					donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
-					donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
-					donationList.add(donation);
+					if (resultSet.getInt(Constants.Donations.ID) != 1) {
+						donation.setId(resultSet.getString(Constants.Donations.ID));
+						donation.setUsername(resultSet.getString(Constants.Donations.USERNAME));
+						donation.setOrganization(resultSet.getString(Constants.Donations.ORGANIZATION));
+						donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
+						donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
+						donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
+						donationList.add(donation);
+					}
 				}
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return donationList;
 	}
-	
-	
-		public static void UpdateCoupon(Coupon coupon) throws SQLException{
+
+	public static void UpdateCoupon(Coupon coupon) throws SQLException {
 		Connection conn = getConnection();
-//		String userName = (String) session.getAttribute("userName");
-		if(conn != null){
+		// String userName = (String) session.getAttribute("userName");
+		if (conn != null) {
 			String sql = "UPDATE COUPONS SET is_used = ? WHERE coupon_code = ? AND user_name = ? AND is_used = ?";
 			PreparedStatement prep = (PreparedStatement) conn.prepareStatement(sql);
 			try {
@@ -671,22 +670,21 @@ public class MySqlUtil {
 				prep.setString(2, coupon.getCouponCode());
 				prep.setString(3, coupon.getUserName());
 				prep.setString(4, coupon.getIsUsed());
-				
+
 				int rowsAffected = prep.executeUpdate();
-//				while(rs.next()){
-//					coupon = new Coupon();
-//					coupon.setCouponCode(rs.getString("coupon_code"));
-//					coupon.setDiscount(rs.getString("discount"));
-//					coupon.setUserName(rs.getString("user_name"));
-//					coupon.setIsUsed(rs.getString("is_used"));
-//					
-////					isValid = isUsed.equalsIgnoreCase("no") ? true : false;
-//				}
-				
+				// while(rs.next()){
+				// coupon = new Coupon();
+				// coupon.setCouponCode(rs.getString("coupon_code"));
+				// coupon.setDiscount(rs.getString("discount"));
+				// coupon.setUserName(rs.getString("user_name"));
+				// coupon.setIsUsed(rs.getString("is_used"));
+				//
+				//// isValid = isUsed.equalsIgnoreCase("no") ? true : false;
+				// }
+
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}		
+			}
 		}
 	}
 }

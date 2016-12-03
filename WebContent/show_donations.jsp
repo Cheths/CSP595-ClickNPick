@@ -7,12 +7,12 @@
 <html>
 <body>
 	<%
-		List<Donation> donationList = MySqlUtil.readDonations(userRole);
+		List<Donation> donationList = MySqlUtil.readDonations(userRole,userName);
 	%>
 	<div class="row">
 		<div class="span9">
 			<%
-				if (donationList.isEmpty()) {
+				if (donationList != null && donationList.isEmpty()) {
 			%>
 			<h3>NO DONATIONS FOUND</h3>
 			<%
@@ -21,6 +21,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
+						<th>Donar Name</th>
 						<th>Organization</th>
 						<th>Pieces of Clothes</th>
 						<th>Pick Up Location</th>
@@ -33,6 +34,7 @@
 				%>
 				<tbody>
 					<tr>
+						<td><%=donation.getUsername()%></td>
 						<td><%=donation.getOrganization()%></td>
 						<td><%=donation.getQuantity()%></td>
 						<td><%=donation.getPickUpLocation()%></td>
