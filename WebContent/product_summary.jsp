@@ -66,7 +66,7 @@
 									double totalTax = 0;
 									String myCart = request.getParameter("myCart");
 
-									if (myCart != null) {
+									if (myCart != null && shoppingItemId!= null) {
 										csvProductIds = shoppingItemId.split(",");
 									}
 									for (int i = 0; i < csvProductIds.length; i++) {
