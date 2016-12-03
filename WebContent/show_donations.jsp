@@ -21,6 +21,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
+						<th>Donar Name</th>
 						<th>Organization</th>
 						<th>Pieces of Clothes</th>
 						<th>Pick Up Location</th>
@@ -33,6 +34,7 @@
 				%>
 				<tbody>
 					<tr>
+						<td><%=donation.getUsername()%></td>
 						<td><%=donation.getOrganization()%></td>
 						<td><%=donation.getQuantity()%></td>
 						<td><%=donation.getPickUpLocation()%></td>

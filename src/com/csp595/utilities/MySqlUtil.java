@@ -625,7 +625,7 @@ public class MySqlUtil {
 				if (userRole.equals(Constants.ROLE_CUSTOMER)){
 					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE+ " where "+ Constants.Donations.USERNAME +"= ?";
 					preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
-					preparedStatement.setString(1, userRole);
+					preparedStatement.setString(1, userName);
 					resultSet = preparedStatement.executeQuery();
 				}else if(userRole.equals(Constants.ROLE_STORE_MANAGER)){
 					sql = "SELECT * FROM "+Constants.Donations.DONATIONS_TABLE;
