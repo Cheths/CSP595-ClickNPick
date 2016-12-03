@@ -24,7 +24,7 @@
 			  for(Map.Entry<String, Product> entry : productIdAndProductMap.entrySet()) {
 				if(selectedproducts.size()<2 && !selectedproducts.containsKey(entry.getKey())){ 
 					BufferedReader reader;
-					reader = new BufferedReader(new FileReader(new File(Constants.TOMCAT_HOME+"/webapps/ClickNPick/DealMatches.txt")));
+					reader = new BufferedReader(new FileReader(new File(Constants.TOMCAT_HOME+"/webapps/CSP595-ClickNPick/DealMatches.txt")));
 					line=reader.readLine();
 					if(line==null) { 
 						%>
