@@ -184,7 +184,9 @@
                               }
                               %> 
                               <a href="history_orders.jsp"><span class="btn btn-large btn-success">My Orders</span></a> 
-                              <a href="show_donations.jsp"><span class="btn btn-large btn-success">View Donations</span></a> 
+                              <%if(!userRole.equals("Salesman")) {%>
+                              	<a href="show_donations.jsp"><span class="btn btn-large btn-success">View Donations</span></a>
+                              <%} %>
                               <a href="LoginServlet"><span class="btn btn-large btn-success">Log Out</span></a> <%
                               } else {
                               %> <a href="login.jsp"><span class="btn btn-large btn-success">My

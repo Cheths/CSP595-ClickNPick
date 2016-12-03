@@ -4,14 +4,15 @@
 <% String display = "";
 String checkOutAmount = (String) session.getAttribute("checkoutAmount");
 if(myCartCount == 0){
-	display = "No Items in Cart";	
+	display = "No Items in Cart";
+	checkOutAmount = "";
 } else {
 	display = myCartCount+" Items in your cart";
 } %>
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
 		<div class="well well-small"><a id="myCart" href="product_summary.jsp?myCart=true"><img src="themes/images/ico-cart.png" alt="cart"><%=display %> 
-		<% if(checkOutAmount != null){%>
+		<% if(checkOutAmount != null && !checkOutAmount.equals("")){%>
 			<span class="badge badge-warning pull-right">$ <%=checkOutAmount %></span>			
 		<%} %>
 		</a></div>

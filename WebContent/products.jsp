@@ -12,7 +12,6 @@
 	<%
 		String homePath = System.getProperty("catalina.home").replace("\\", "/");
 	new SaxParserProductXMLdataStore(homePath+"/webapps/CSP595-ClicknPick/Scripts/Products.xml", request,session); %>
-	%>
 	<%@include file="header.jsp"%>
 	<%-- <%@include file="carousel.jsp" %> --%>
 	<%@include file="sidebar.jsp"%>
