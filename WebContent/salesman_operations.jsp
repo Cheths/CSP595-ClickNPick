@@ -44,7 +44,7 @@
 			<td></td>
 			<td><%= ++i %></td>
 <%-- 			<td><a href = "index.jsp?customerSelected="+<%= usr.getUserName()%> > <%=usr.getUserName() %> </a></td> --%>
-			<td><a href =<%=navigationURL %> > <%=usr.getUserName() %> </a></td> 	
+			<td style="text-decoration: underline;"><a style="color:#08c!important;" href =<%=navigationURL %> > <%=usr.getUserName() %> </a></td> 	
 			<td><%=usr.getFirstName() %></td>
 			<td><%=usr.getLastName() %></td>
 		</tr>
