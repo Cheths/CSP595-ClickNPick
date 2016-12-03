@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.csp595.utilities.MySqlUtil"%>
 <%@page import="javax.swing.text.Document"%>
 <%@page import="javax.sql.rowset.serial.SerialArray"%>
 <%@page import="java.util.Map"%>
@@ -22,8 +23,14 @@
 		shoppingItemId = (String) session.getAttribute("shoppingItemId");
 		boolean isValid = request.getParameter("isValid")!=null && request.getParameter("isValid").equals("yes") ? true : false;
 		int discountPercentage = 0;
+		String isAlreadyUsed = "";
 		if(isValid)
-			discountPercentage =  (request.getParameter("disc")!=null && !request.getParameter("disc").isEmpty()) ? Integer.parseInt(request.getParameter("disc")) : 0 ;  
+			discountPercentage =  (request.getParameter("disc")!=null && !request.getParameter("disc").isEmpty()) ? Integer.parseInt(request.getParameter("disc")) : 0 ;
+		else{
+			isAlreadyUsed = request.getParameter("alreadyUsed") != null ?  request.getParameter("alreadyUsed") : " ";	
+		}
+			
+				
 	%>
 	<div id="mainBody">
 		<div class="container">
@@ -150,13 +157,22 @@
 												<button id="addCoupon_button" type="submit"   class="btn">ADD</button>												
 											<%} 
 											
-											if(request.getParameter("isValid")!=null && request.getParameter("isValid").equalsIgnoreCase("no")){%>
-													<div class="alert" style="width:220px;background-color: #f44336;">
+											if(request.getParameter("isValid")!=null && request.getParameter("isValid").equalsIgnoreCase("no")){
+												if(isAlreadyUsed != null && !isAlreadyUsed.isEmpty() && isAlreadyUsed.equalsIgnoreCase("yes")){
+												%>
+													<div class="alert" style="background-color: #f44336;width:220px;">
+													<span class="closebtn"
+													onclick="this.parentElement.style.display='none';">&times;</span>
+													<strong>This coupon is already redeemed!</strong>
+													</div>
+												<%}else{ %>
+													<div class="alert" style="background-color: #f44336;width:220px;">
 													<span class="closebtn"
 													onclick="this.parentElement.style.display='none';">&times;</span>
 													<strong>Invalid coupon for this user!</strong>
 													</div>
-											<%}%>
+											<%}
+											}%>
 											</div>
 										</div>
 									</form>

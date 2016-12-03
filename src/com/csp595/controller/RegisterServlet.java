@@ -16,10 +16,11 @@ import com.csp595.utilities.MySqlUtil;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	String isSalesman = " ";
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		isSalesman = request.getParameter("salesman") != null && !request.getParameter("salesman").isEmpty() ? "yes" : " ";
 		String role = request.getParameter("role");
 		HttpSession session = request.getSession(true);
 
@@ -38,9 +39,10 @@ public class RegisterServlet extends HttpServlet {
 		MySqlUtil.insertQueryForUserTable(request.getParameter("title"),request.getParameter("first_name"),request.getParameter("last_name"),request.getParameter("email_id"),
 				password,request.getParameter("date_of_birth"),username,role,request.getParameter("address_1"),request.getParameter("address_2"),
 				request.getParameter("city"),request.getParameter("state"),request.getParameter("zip"),	request.getParameter("country"),request.getParameter("phone"));
-		
-		session.setAttribute("userName", username);
-		session.setAttribute("userRole", role);
+		if(isSalesman.isEmpty() && !isSalesman.equals("yes")){
+			session.setAttribute("userName", username);
+			session.setAttribute("userRole", role);			
+		}
 		session.setAttribute("userCreationStatus", "Success");
 		try {
 			response.sendRedirect("index.jsp");

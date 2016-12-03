@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.*;
+
+import com.csp595.beans.Coupon;
 import com.csp595.utilities.*;
 
 import com.csp595.utilities.MySqlUtil;
@@ -26,17 +28,23 @@ public class ValidateCouponServlet extends HttpServlet {
 		boolean isValid = false;
 		if(!couponCode.isEmpty() && couponCode != null){
 			response.setContentType("text/xml");
-			HashMap<String, String> coupon = null;
+			Coupon coupon = null;
 			try {
 				coupon = MySqlUtil.validateCoupon(couponCode, request);
-				if( coupon != null && coupon.size() >0 ){
+				if( coupon != null && coupon.getIsUsed().equalsIgnoreCase("no")){
+					
+					MySqlUtil.UpdateCoupon(coupon);
+					
 //					RequestDispatcher dispatcher = request.getRequestDispatcher("admin_operations.jsp");
 //					dispatcher.forward(request, response);
-					RequestDispatcher disp = request.getRequestDispatcher("product_summary.jsp?fromCouponValidation="+shopItemId+"&isValid=yes&disc="+coupon.get("discount"));
+					RequestDispatcher disp = request.getRequestDispatcher("product_summary.jsp?fromCouponValidation="+shopItemId+"&isValid=yes&disc="+coupon.getDiscount());
 					disp.forward(request, response);
 //					response.sendRedirect("product_summary.jsp?fromCouponValidation="+shopItemId+"isValid=yes&disc="+coupon.get("discount"));	
 					}
-				else
+				else if(coupon != null && coupon.getIsUsed().equalsIgnoreCase("yes")){
+					RequestDispatcher disp = request.getRequestDispatcher("product_summary.jsp?fromCouponValidation="+shopItemId+"&isValid=no&disc="+coupon.getDiscount()+"&alreadyUsed=yes");
+					disp.forward(request, response);
+				}else
 					response.sendRedirect("product_summary.jsp?fromCouponValidation="+shopItemId+"&isValid=no&disc=0");	
 			} catch (SQLException e) {
 				e.printStackTrace();

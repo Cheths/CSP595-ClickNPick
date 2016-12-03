@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet {
 				}
 				else if(season.equalsIgnoreCase("Spring"))
 				{
-					clothingType = "Shorts";
+					clothingType = "Light linens";
 				}
 				else if(season.equalsIgnoreCase("Fall or Winter"))
 				{
@@ -90,7 +90,7 @@ public class LoginServlet extends HttpServlet {
 		case "South":
 			if(season.equalsIgnoreCase("Summer"))
 			{
-				clothingType = "Bikinis";
+				clothingType = "Light linens";
 			}
 			else if(season.equalsIgnoreCase("Spring"))
 			{
@@ -122,7 +122,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(season.equalsIgnoreCase("Spring"))
 			{
-				clothingType = "Shorts";
+				clothingType = "Light linens";
 			}
 			else if(season.equalsIgnoreCase("Fall or Winter"))
 			{
@@ -150,7 +150,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(season.equalsIgnoreCase("Spring"))
 			{
-				clothingType = "Shorts";
+				clothingType = "Light linens";
 			}
 			else if(season.equalsIgnoreCase("Fall or Winter"))
 			{
@@ -160,7 +160,7 @@ public class LoginServlet extends HttpServlet {
 		case "SouthEast":
 			if(season.equalsIgnoreCase("Summer"))
 			{
-				clothingType = "Bikinis";
+				clothingType = "Light linens";
 			}
 			else if(season.equalsIgnoreCase("Spring"))
 			{
@@ -168,7 +168,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(season.equalsIgnoreCase("Fall or Winter"))
 			{
-				clothingType = "Heavy and wind proof";
+				clothingType = "Heavy and warm";
 			}
 			break;
 		case "SouthWest":
@@ -178,11 +178,11 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(season.equalsIgnoreCase("Spring"))
 			{
-				clothingType = "Shorts";
+				clothingType = "Light linens";
 			}
 			else if(season.equalsIgnoreCase("Fall or Winter"))
 			{
-				clothingType = "Sport wear";
+				clothingType = "Light linens";
 			}
 			break;
 		default:

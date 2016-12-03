@@ -55,7 +55,7 @@ public class UtilityServlet extends HttpServlet {
 			}
 			response.sendRedirect("product_summary.jsp");
 		} else if(couponCode != null){
-			MySqlUtil.insertQueryForCouponTable(request.getParameter("couponCode"), request.getParameter("userBase"), request.getParameter("discount"));
+			MySqlUtil.insertQueryForCouponTable(request.getParameter("couponCode"), request.getParameter("userBase"), request.getParameter("discount"), "no");
 			request.setAttribute("addCouponSuccess", true);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_operations.jsp");
 			dispatcher.forward(request, response);
