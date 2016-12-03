@@ -589,8 +589,8 @@ public class MySqlUtil {
 		Connection connection = getConnection();
 		if (connection != null) {
 			String sql = "INSERT into "+ Constants.Donations.DONATIONS_TABLE +"("+Constants.Donations.USERNAME+","+Constants.Donations.QUANTITY+
-				","+Constants.Donations.ORGANIZATION+","+Constants.Donations.PICKUP_DATE+","+Constants.Donations.PICKUP_LOCATION+","+Constants.Donations.ID+")"
-			+ " VALUES (?,?,?,?,?,?)";
+				","+Constants.Donations.ORGANIZATION+","+Constants.Donations.PICKUP_DATE+","+Constants.Donations.PICKUP_LOCATION+")"
+			+ " VALUES (?,?,?,?,?)";
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
@@ -600,7 +600,6 @@ public class MySqlUtil {
 				preparedStatement.setString(3, organization);
 				preparedStatement.setString(4, pickUpDate);
 				preparedStatement.setString(5, pickUpLocation);
-				preparedStatement.setString(6, id);
 				preparedStatement.execute();
 				connection.close();
 				try {
@@ -614,11 +613,11 @@ public class MySqlUtil {
 		}
 	}
 	
-	public static List<Donation> readDonations(String userRole){
+	public static List<Donation> readDonations(String userRole,String userName){
 		List<Donation> donationList = new ArrayList<>();
 		Connection connection = getConnection();
 		
-		if (connection != null) {
+		if (connection != null && userRole != null) {
 			String sql = "";
 			PreparedStatement preparedStatement;
 			ResultSet resultSet = null;
@@ -635,13 +634,15 @@ public class MySqlUtil {
 				}
 				while (resultSet.next()){
 					Donation donation = new Donation();
-					donation.setId(resultSet.getString(Constants.Donations.ID));
-					donation.setUsername(resultSet.getString(Constants.Donations.USERNAME));
-					donation.setOrganization(resultSet.getString(Constants.Donations.ORGANIZATION));
-					donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
-					donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
-					donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
-					donationList.add(donation);
+					if(resultSet.getInt(Constants.Donations.ID) != 1){
+						donation.setId(resultSet.getString(Constants.Donations.ID));
+						donation.setUsername(resultSet.getString(Constants.Donations.USERNAME));
+						donation.setOrganization(resultSet.getString(Constants.Donations.ORGANIZATION));
+						donation.setQuantity(resultSet.getString(Constants.Donations.QUANTITY));
+						donation.setPickUpDate(resultSet.getString(Constants.Donations.PICKUP_DATE));
+						donation.setPickUpLocation(resultSet.getString(Constants.Donations.PICKUP_LOCATION));
+						donationList.add(donation);
+					}
 				}
 				connection.close();
 			} catch (SQLException e) {
@@ -651,5 +652,4 @@ public class MySqlUtil {
 		
 		return donationList;
 	}
-	
 }

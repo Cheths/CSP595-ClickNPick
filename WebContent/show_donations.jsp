@@ -7,12 +7,12 @@
 <html>
 <body>
 	<%
-		List<Donation> donationList = MySqlUtil.readDonations(userRole);
+		List<Donation> donationList = MySqlUtil.readDonations(userRole,userName);
 	%>
 	<div class="row">
 		<div class="span9">
 			<%
-				if (donationList.isEmpty()) {
+				if (donationList != null && donationList.isEmpty()) {
 			%>
 			<h3>NO DONATIONS FOUND</h3>
 			<%
